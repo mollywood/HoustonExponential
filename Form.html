@@ -1,0 +1,27 @@
+{{> header}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="Form.css">	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Registration Form</title>
+</head>
+<body>
+	<h1>Register a new Profile</h1>
+	<fieldset>
+		<legend>Please choose a profile type:</legend>
+		<input type="radio" id="startup" name="profile" />
+		<label for="startup">Startup</label>
+		<input type="radio" id="investor" name="profile" />
+		<label for="investor">Investor</label>
+		<input type="radio" id="hub" name="profile" />
+		<label for="hub">Hub</label>
+	</fieldset>	
+	<br>
+<button href="/{{> form}}">Next</button>
+	{{> footer }}
+	<script src="Form.js"></script>
+</body>
+</html>
