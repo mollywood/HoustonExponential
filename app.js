@@ -20,6 +20,7 @@ db.User.findOrCreate({ where:
 
 
 
+
 // User
 //   .findOrCreate({where: {username: 'sdepold'}, defaults: {job: 'Technical Lead JavaScript'}})
 //   .spread((user, created) => {
