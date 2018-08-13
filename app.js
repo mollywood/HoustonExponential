@@ -4,6 +4,7 @@ const body_parser = require("body-parser");
 const exphbs = require("express-handlebars");
 const db = require("./models/index.js");
 const app = express();
+// const pg = require('pg');
 
 // Investor is the model name defined in the models/investor.js
 db.Investor.create({ name: "Katy" }).then(result => {
