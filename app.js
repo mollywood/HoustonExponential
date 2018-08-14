@@ -4,11 +4,12 @@ const body_parser = require("body-parser");
 const exphbs = require("express-handlebars");
 const db = require("./models/index.js");
 const app = express();
+const pg = require('pg');
 
-// Investor is the model name defined in the models/investor.js
-db.Investor.create({ name: "Katy" }).then(result => {
-  console.log(result);
-});
+const companies = require('./routes/companies');
+const hubs = require('./routes/hubs');
+const investors = require('./routes/investors');
+const users = require('./routes/users');
 
 //Middleware
 app.use(express.static("public"));
@@ -17,6 +18,8 @@ app.use(
     extended: false
   })
 );
+app.use(body_parser.json());
+
 app.engine(
   ".hbs",
   exphbs({
@@ -26,9 +29,14 @@ app.engine(
 );
 app.set("view engine", ".hbs");
 
+// what do we want to grab?
 app.get("/api/data", (req, res) => {});
 
+// @route GET /
+// @desc Renders home.hbs view
+// @access Public
 app.get("/", (req, res) => {
+  console.log(req.user);
   res.render("home", {
     title: "Welcome",
     message: "Hello world",
@@ -36,41 +44,13 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/register", (req, res) => {
-  res.render("register", {
-    title: "Register",
-    message: "Hello world",
-    subheading: "It's nice to meet you"
-  });
-});
-
-app.post("/register", (req, res) => {});
-
-app.get("/register/company", (req, res) => {
-  res.render("register-company", {
-    title: "Register a Company"
-  });
-});
-
-app.post("/register/company", (req, res) => {});
-
-app.get("/register/investor", (req, res) => {
-  res.render("register-investor", {
-    title: "Register an Investor"
-  });
-});
-
-app.post("/register/investor", (req, res) => {});
-
-app.get("/register/hub", (req, res) => {
-  res.render("register-hub", {
-    title: "Register a Hub"
-  });
-});
-
-app.post("/register/hub", (req, res) => {});
-
-// post for register for user, company, investor, hub.
+// Use routes
+app.use('/companies', companies);
+app.use('/hubs', hubs);
+app.use('/investors', investors);
+app.use('/users', users);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
+
+module.exports = app;
