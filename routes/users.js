@@ -3,8 +3,6 @@ const router = express.Router();
 const Sequelize = require('sequelize');
 const passport = require("passport");
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
-
-// Load User model
 const db = require('../models/index');
 
 router.use(passport.initialize());
@@ -13,7 +11,6 @@ router.use(passport.session());
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
-
 passport.deserializeUser(function(user, done) {
   done(null, user);
 });
@@ -39,12 +36,12 @@ passport.use(
   )
 );
 
-// @route GET users/test
+// @route GET routes/users/test
 // @desc Tests users route
 // @access Public
 router.get('/test', (req, res) => res.json({msg: 'User works'}));
 
-// // @route GET users/register
+// // @route GET routes/users/register
 // // @desc Renders register.hbs view
 // // @access Public
 router.get("/register", (req, res) => {
@@ -52,7 +49,7 @@ router.get("/register", (req, res) => {
   });
 });
 
-// @route POST users/register
+// @route POST routes/users/register
 // @desc Posts user inputs into database
 // @access Public
 router.post('/register', (req, res) => {
@@ -80,7 +77,7 @@ router.post('/register', (req, res) => {
     });
 });
 
-// @route GET /login
+// @route GET routes/users/login
 // @desc Renders login.hbs view
 // @access Public
 router.get("/login", (req, res) => {
@@ -88,15 +85,15 @@ router.get("/login", (req, res) => {
   });
 });
 
-// @route POST users/login
+// @route POST routes/users/login
 // @desc
 // @access Public
 router.post('/login', (req, res) => {
 
 });
 
-// @route GET /login
-// @desc Renders login.hbs view
+// @route GET routes/users/linkedin
+// @desc
 // @access Public
 router.get(
   "/linkedin",
@@ -107,8 +104,8 @@ router.get(
   }
 );
 
-// @route GET /login
-// @desc Renders login.hbs view
+// @route GET routes/users/linkedin/callback
+// @desc 
 // @access Public
 router.get(
   "/linkedin/callback",
