@@ -29,6 +29,8 @@ app.engine(
 );
 app.set("view engine", ".hbs");
 
+// what do we want to grab?
+app.get("/api/data", (req, res) => {});
 
 // @route GET /
 // @desc Renders home.hbs view
