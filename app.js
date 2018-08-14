@@ -6,9 +6,9 @@ const db = require("./models/index.js");
 const app = express();
 
 // Investor is the model name defined in the models/investor.js
-db.Investor.create({ name: "Katy" }).then(result => {
-  console.log(result);
-});
+// db.Investor.create({ name: "Katy" }).then(result => {
+//   console.log(result);
+// });
 
 //Middleware
 app.use(express.static("public"));
@@ -30,17 +30,13 @@ app.get("/api/data", (req, res) => {});
 
 app.get("/", (req, res) => {
   res.render("home", {
-    title: "Welcome",
-    message: "Hello world",
-    subheading: "It's nice to meet you"
+    title: "Welcome"
   });
 });
 
 app.get("/register", (req, res) => {
   res.render("register", {
-    title: "Register",
-    message: "Hello world",
-    subheading: "It's nice to meet you"
+    title: "Register"
   });
 });
 

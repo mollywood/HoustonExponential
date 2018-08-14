@@ -1,0 +1,46 @@
+.welcome-container {
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+.welcome-div {
+    background-image: url("../Images/houston.jpg");
+    background-color: blue;
+    background-size: 100% 100%;
+    height: 100%;
+    width: 100%;
+    border: 1px solid;
+    opacity: .4;
+    position: absolute;
+    z-index: 10
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    color: #3F637B;
+    font-size: 4em;
+    position: absolute;
+    border: 1px solid red;
+    z-index: 1;
+}
+
+accepted #container {
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+#navi,
+#infoi {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#infoi {
+    z-index: 10;
+}
