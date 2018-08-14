@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 
 .DS_Store
+=======
+.DS_Store
+.vscode
+>>>>>>> fc4e5156b14c4062aa85429034d9530af540ffb1
 
 # Logs
 logs
