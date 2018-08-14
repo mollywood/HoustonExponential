@@ -34,6 +34,7 @@ app.set("view engine", ".hbs");
 // @desc Renders home.hbs view
 // @access Public
 app.get("/", (req, res) => {
+  console.log(req.user);
   res.render("home", {
     title: "Welcome",
     message: "Hello world",
