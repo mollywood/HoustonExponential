@@ -37,6 +37,15 @@ passport.use(
         // represent the logged-in user. In a typical application, you would want
         // to associate the LinkedIn account with a user record in your database,
         // and return that user instead.
+        // console.log(profile);
+        // console.log(profile._json.firstName);
+        // console.log(profile._json.lastName);
+        // profile._json.id
+        // profile._json.firstName
+        // profile._json.lastName
+        // profile._json.emailAddress
+        // profile._json.publicProfileUrl
+
         return done(null, profile);
       });
     }
@@ -94,10 +103,6 @@ app.get(
     failureRedirect: "/register"
   })
 );
-
-// app.get("auth/linkedin/callback/:code", (req, res) => {
-//   console.log(req.params.code);
-// });
 
 app.post("/register", (req, res) => {});
 
