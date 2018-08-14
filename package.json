@@ -12,8 +12,11 @@
     "@fortawesome/fontawesome-free": "^5.2.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
+<<<<<<< HEAD
     "handlebars": "^4.0.11",
     "jquery": "^3.3.1",
+=======
+>>>>>>> 5721d6cc4491e6b32cb4205129d624bcb21c2b1a
     "express-handlebars": "^3.0.0",
     "nodemon": "^1.18.3",
     "pg": "^7.4.3",
