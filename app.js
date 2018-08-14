@@ -4,7 +4,9 @@ const body_parser = require("body-parser");
 const exphbs = require("express-handlebars");
 const db = require("./models/index.js");
 const app = express();
-// const pg = require('pg');
+const pg = require('pg');
+
+const users = require('./routes/api/users');
 
 // Investor is the model name defined in the models/investor.js
 db.Investor.create({ name: "Katy" }).then(result => {
@@ -18,6 +20,8 @@ app.use(
     extended: false
   })
 );
+app.use(body_parser.json());
+
 app.engine(
   ".hbs",
   exphbs({
@@ -28,6 +32,9 @@ app.engine(
 app.set("view engine", ".hbs");
 
 app.get("/api/data", (req, res) => {});
+
+// Use routes
+app.use('/api/users', users);
 
 app.get("/", (req, res) => {
   res.render("home", {
@@ -75,3 +82,5 @@ app.post("/register/hub", (req, res) => {});
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
+
+module.exports = app;
