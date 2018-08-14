@@ -5,8 +5,8 @@ const exphbs = require("express-handlebars");
 const db = require("./models/index.js");
 const app = express();
 
-// Investor is the model name defined in the models/investor.js
-// db.Investor.create({ name: "Katy" }).then(result => {
+// // Investor is the model name defined in the models/investor.js
+// db.Investor.create({ name: "Chris" }).then(result => {
 //   console.log(result);
 // });
 
@@ -26,11 +26,16 @@ app.engine(
 );
 app.set("view engine", ".hbs");
 
+// what do we want to grab?
 app.get("/api/data", (req, res) => {});
 
 app.get("/", (req, res) => {
-  res.render("home", {
-    title: "Welcome"
+  db.Investor.findAll().then(result => {
+    let investors = result
+    res.render("home", {
+      title: "Welcome",
+      investors: investors
+    });
   });
 });
 

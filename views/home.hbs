@@ -3,8 +3,14 @@
     <div class="welcome-div"></div>
 
     <div class="overlay">
-        Hello
+        Explore Houston Start-Ups
     </div>
+</div>
+
+<div>
+    <ul>{{#each investors}}
+        <li>{{this.dataValues.name}}</li>
+        {{/each}}</ul>
 </div>
 
 {{> footer}}
