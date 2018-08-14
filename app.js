@@ -44,18 +44,13 @@ app.get("/", (req, res) => {
   });
 });
 
-// @route GET /register
-// @desc Renders register.hbs view
-// @access Public
-app.get("/register", (req, res) => {
-  res.render("register", {
-  });
-});
-
-// @route POST /register
-// @desc
-// @access Public
-app.post("/register", (req, res) => {});
+// // @route GET /register
+// // @desc Renders register.hbs view
+// // @access Public
+// app.get("/register", (req, res) => {
+//   res.render("register", {
+//   });
+// });
 
 // @route GET /login
 // @desc Renders login.hbs view
@@ -115,7 +110,7 @@ app.post("/register/hub", (req, res) => {});
 // post for register for user, company, investor, hub.
 
 // Use routes
-app.use('/api/users', users);
+app.use('/users', users);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));

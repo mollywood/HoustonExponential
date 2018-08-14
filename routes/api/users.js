@@ -10,8 +10,13 @@ const db = require('../../models/index');
 // @access Public
 router.get('/test', (req, res) => res.json({msg: 'User works'}));
 
-// @route GET api/users/register
-// @desc
+router.get("/register", (req, res) => {
+  res.render("register", {
+  });
+});
+
+// @route POST api/users/register
+// @desc Posts user inputs into database
 // @access Public
 router.post('/register', (req, res) => {
   db.User
@@ -31,12 +36,15 @@ router.post('/register', (req, res) => {
         // create JWT
       }
       else {
-        res.json({
-          message: 'User already exists'
+        res.render('register',{
+          message : "User already exist"
         })
       }
     });
 });
 
+router.post('/login', (req, res) => {
+
+});
 
 module.exports = router;

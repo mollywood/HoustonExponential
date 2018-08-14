@@ -13,6 +13,8 @@
 
   {{> header}}
 
+  {{message}}
+
   <!-- Register -->
   <div class="register">
     <div class="container">
@@ -20,7 +22,7 @@
         <div class="col-md-8 m-auto">
           <h1 class="display-4 text-center">Sign Up</h1>
           <p class="lead text-center">Create your Houston Exponential account</p>
-          <form action="create-profile.html">
+          <form action="/users/register" method='POST'>
             <div class="form-group">
               <input type="text" class="form-control form-control-lg" placeholder="First Name" name="firstName" required />
             </div>
