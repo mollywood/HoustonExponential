@@ -6,12 +6,7 @@ const db = require("./models/index.js");
 const app = express();
 const pg = require('pg');
 
-const users = require('./routes/api/users');
-
-// Investor is the model name defined in the models/investor.js
-db.Investor.create({ name: "Katy" }).then(result => {
-  console.log(result);
-});
+const users = require('./routes/users');
 
 //Middleware
 app.use(express.static("public"));
@@ -52,18 +47,13 @@ app.get("/", (req, res) => {
 //   });
 // });
 
-// @route GET /login
-// @desc Renders login.hbs view
-// @access Public
-app.get("/login", (req, res) => {
-  res.render("login", {
-  });
-});
-
-// @route POST /login
-// @desc
-// @access Public
-app.post("/login", (req, res) => {});
+// // @route GET /login
+// // @desc Renders login.hbs view
+// // @access Public
+// app.get("/login", (req, res) => {
+//   res.render("login", {
+//   });
+// });
 
 // @route GET /register/company
 // @desc
