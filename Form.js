@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 $(document).ready(function() {
 	let startup = $('#startup').val()
 	let investor = $('#investor').val()
@@ -20,7 +19,6 @@ $(document).ready(function() {
 		$( ".investor" ).hide();
 	}
 })
-=======
 const investor = {
 	Type,
 	Themes,
@@ -68,4 +66,3 @@ const form = (input) => {
 		throw error;
 	}
 }
->>>>>>> fc4e5156b14c4062aa85429034d9530af540ffb1
