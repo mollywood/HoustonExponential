@@ -10,15 +10,21 @@
   "license": "ISC",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.2.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
+    "jwt-simple": "^0.5.1",
     "nodemon": "^1.18.3",
     "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
     "passport-linkedin-oauth2": "^1.5.0",
+    "passport-local": "^1.0.0",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.38.0",
-    "sequelize-cli": "^4.0.0"
+    "sequelize-cli": "^4.0.0",
+    "sequelize-values": "^1.1.0",
+    "validator": "^10.5.0"
   }
 }
