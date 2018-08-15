@@ -1,0 +1,18 @@
+.logo-header {
+    width: 100px;
+}
+
+.nav-item-wrapper {
+    width: 100%
+}
+
+.nav-item-box {
+    display: flex;
+    justify-content: space-between;
+    width: 100%
+}
+
+.nav-item-group {
+    display: flex;
+}
+

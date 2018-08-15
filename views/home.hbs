@@ -1,0 +1,16 @@
+{{> header}}
+<div class="welcome-container">
+    <div class="welcome-div"></div>
+
+    <div class="overlay">
+        Explore Houston Start-Ups
+    </div>
+</div>
+
+<div>
+    <ul>{{#each investors}}
+        <li>{{this.dataValues.name}}</li>
+        {{/each}}</ul>
+</div>
+
+{{> footer}}
