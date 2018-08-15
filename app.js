@@ -32,24 +32,15 @@ app.set("view engine", ".hbs");
 // @route GET /
 // @desc Renders home.hbs view
 // @access Public
-// app.get("/", (req, res) => {
-//   console.log(req.user);
-//   res.render("home", {
-//     title: "Welcome",
-//     message: "Hello world",
-//     subheading: "It's nice to meet you"
-//   });
-// });
 app.get("/", (req, res) => {
-
-db.Company.findAll().then(result => {
-  res.render("home", {
-    title: "Welcome",
-    companies: result
+  db.Company.findAll().then(result => {
+    res.render("home", {
+      title: "Welcome",
+      companies: result
+    });
   });
 });
 
-});
 // Use routes
 app.use("/companies", companies);
 app.use("/hubs", hubs);
