@@ -41,14 +41,14 @@ app.set("view engine", ".hbs");
 //   });
 // });
 app.get("/", (req, res) => {
-  db.User.findAll().then(result => {
-    console.log(result);
-  });
+
+db.Company.findAll().then(result => {
   res.render("home", {
     title: "Welcome",
-    message: "Hello world",
-    subheading: "It's nice to meet you"
+    companies: result
   });
+});
+
 });
 // Use routes
 app.use("/companies", companies);
