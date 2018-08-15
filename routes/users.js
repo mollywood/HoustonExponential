@@ -67,11 +67,10 @@ router.post("/register", (req, res) => {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       password: req.body.password,
-      password2: req.body.password2
     }
   }).spread((user, created) => {
     if (created) {
-      // create JWT
+
     } else {
       res.render("register", {
         message: "User already exist"
