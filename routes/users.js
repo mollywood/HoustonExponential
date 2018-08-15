@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 const passport = require("passport");
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
-const db = require('../models/index');
+const db = require("../models/index");
 
 router.use(passport.initialize());
 router.use(passport.session());
@@ -20,16 +20,23 @@ passport.use(
     {
       clientID: "78umadn462runs",
       clientSecret: "JzPt9cNwIpvkSQZ1",
-      callbackURL: "http://127.0.0.1:8000/auth/linkedin/callback",
+      callbackURL: "http://127.0.0.1:8000/users/linkedin/callback",
       scope: ["r_emailaddress", "r_basicprofile"]
     },
     function(accessToken, refreshToken, profile, done) {
       // asynchronous verification, for effect...
       process.nextTick(function() {
-        // To keep the example simple, the user's LinkedIn profile is returned to
-        // represent the logged-in user. In a typical application, you would want
-        // to associate the LinkedIn account with a user record in your database,
-        // and return that user instead.
+        db.User.findOrCreate({
+          where: {
+            email: profile._json.emailAddress
+          },
+          defaults: {
+            firstName: profile._json.firstName,
+            lastName: profile._json.lastName,
+            linkedinprofile: profile._json.publicProfileUrl
+          }
+        });
+
         return done(null, profile);
       });
     }
@@ -39,58 +46,51 @@ passport.use(
 // @route GET routes/users/test
 // @desc Tests users route
 // @access Public
-router.get('/test', (req, res) => res.json({msg: 'User works'}));
+router.get("/test", (req, res) => res.json({ msg: "User works" }));
 
 // // @route GET routes/users/register
 // // @desc Renders register.hbs view
 // // @access Public
 router.get("/register", (req, res) => {
-  res.render("register", {
-  });
+  res.render("register", {});
 });
 
 // @route POST routes/users/register
 // @desc Posts user inputs into database
 // @access Public
-router.post('/register', (req, res) => {
-  db.User
-    .findOrCreate({
-      where: {
-        email: req.body.email,
-      },
-      defaults: {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        password: req.body.password,
-        password2: req.body.password2
-      }
-    })
-    .spread((user, created) => {
-      if(created) {
-        // create JWT
-      }
-      else {
-        res.render('register',{
-          message : "User already exist"
-        })
-      }
-    });
+router.post("/register", (req, res) => {
+  db.User.findOrCreate({
+    where: {
+      email: req.body.email
+    },
+    defaults: {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      password: req.body.password,
+      password2: req.body.password2
+    }
+  }).spread((user, created) => {
+    if (created) {
+      // create JWT
+    } else {
+      res.render("register", {
+        message: "User already exist"
+      });
+    }
+  });
 });
 
 // @route GET routes/users/login
 // @desc Renders login.hbs view
 // @access Public
 router.get("/login", (req, res) => {
-  res.render("login", {
-  });
+  res.render("login", {});
 });
 
 // @route POST routes/users/login
 // @desc
 // @access Public
-router.post('/login', (req, res) => {
-
-});
+router.post("/login", (req, res) => {});
 
 // @route GET routes/users/linkedin
 // @desc
@@ -105,7 +105,7 @@ router.get(
 );
 
 // @route GET routes/users/linkedin/callback
-// @desc 
+// @desc
 // @access Public
 router.get(
   "/linkedin/callback",

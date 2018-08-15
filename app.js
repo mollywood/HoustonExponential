@@ -39,7 +39,6 @@ app.get("/", (req, res) => {
       companies: result
     });
   });
-
 });
 
 // Use routes
