@@ -33,7 +33,7 @@ app.set("view engine", ".hbs");
 app.get("/api/data", (req, res) => {});
 
 // @route GET /
-// @desc Renders home.hbs view
+// @desc Renders home.hbs viewnode
 // @access Public
 app.get("/", (req, res) => {
   console.log(req.user);
