@@ -6,7 +6,6 @@ const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
 
-
 router.use(passport.initialize());
 router.use(passport.session());
 
