@@ -7,7 +7,7 @@ const app = express();
 const pg = require('pg');
 
 const companies = require('./routes/companies');
-const hubs = require('./routes/hubs');
+const services = require('./routes/services');
 const investors = require('./routes/investors');
 const users = require('./routes/users');
 
