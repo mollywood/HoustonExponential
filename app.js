@@ -46,7 +46,7 @@ app.get("/", (req, res) => {
 
 // Use routes
 app.use('', companies);
-app.use('', hubs);
+app.use('', services);
 app.use('', investors);
 app.use('/users', users);
 
