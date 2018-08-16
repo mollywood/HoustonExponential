@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const Sequelize = require("sequelize");
+const db = require("../models/index");
 const passport = require("passport");
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
-const db = require("../models/index");
+
 
 router.use(passport.initialize());
 router.use(passport.session());
