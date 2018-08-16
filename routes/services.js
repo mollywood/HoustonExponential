@@ -18,7 +18,7 @@ router.get("/register", (req, res) => {
 router.post("/register", (req, res) => {});
 
 // display services on /services page
-router.get('/services', function(req,res){
+router.get('', function(req,res){
   db.Service.findAll().then(function(services){
     res.render('services', {serviceList: services})
   })

@@ -7,7 +7,7 @@ const app = express();
 const pg = require('pg');
 
 const companies = require('./routes/companies');
-const hubs = require('./routes/hubs');
+const services = require('./routes/services');
 const investors = require('./routes/investors');
 const users = require('./routes/users');
 
@@ -42,15 +42,9 @@ app.get("/", (req, res) => {
 });
 
 // Use routes
-<<<<<<< HEAD
-app.use('', companies);
-app.use('', services);
-app.use('', investors);
-=======
-app.use('/', companies);
-app.use('/', hubs);
-app.use('/', investors);
->>>>>>> master
+app.use('/companies', companies);
+app.use('/services', services);
+app.use('/investors', investors);
 app.use('/users', users);
 
 const PORT = process.env.PORT || 8000;

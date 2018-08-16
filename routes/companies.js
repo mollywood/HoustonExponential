@@ -18,7 +18,7 @@ router.get("/register", (req, res) => {
 router.post("/register", (req, res) => {});
 
 // display companies on /companies page
-router.get('/companies', function(req,res){
+router.get('', function(req,res){
   db.Company.findAll().then(function(companies){
     res.render('companies', {companyList: companies})
   })
