@@ -45,9 +45,9 @@ app.get("/", (req, res) => {
 });
 
 // Use routes
-app.use('/companies', companies);
-app.use('/hubs', hubs);
-app.use('/investors', investors);
+app.use('', companies);
+app.use('', hubs);
+app.use('', investors);
 app.use('/users', users);
 
 const PORT = process.env.PORT || 8000;

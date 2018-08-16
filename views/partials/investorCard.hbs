@@ -1,0 +1,23 @@
+
+{{#each investorList}}
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{logo}}" alt="{{name}} logo">
+        <div class="card-body">
+            <h5 class="card-title">{{name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{description}}</h6>
+            <a href="#" class="btn btn-blue">More Info</a>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">
+                
+                    <div class="float-left">
+                        Founded {{foundedDate}}
+                    </div>
+                    <div class="float-right">
+                        {{investorType}}
+                    </div>
+                
+            </small>
+        </div>
+    </div>
+{{/each}}
