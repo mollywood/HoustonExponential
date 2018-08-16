@@ -29,25 +29,28 @@ app.engine(
 );
 app.set("view engine", ".hbs");
 
-// what do we want to grab?
-app.get("/api/data", (req, res) => {});
-
 // @route GET /
 // @desc Renders home.hbs view
 // @access Public
 app.get("/", (req, res) => {
-  console.log(req.user);
-  res.render("home", {
-    title: "Welcome",
-    message: "Hello world",
-    subheading: "It's nice to meet you"
+  db.Company.findAll().then(result => {
+    res.render("home", {
+      title: "Welcome",
+      companies: result
+    });
   });
 });
 
 // Use routes
+<<<<<<< HEAD
 app.use('', companies);
 app.use('', services);
 app.use('', investors);
+=======
+app.use('/', companies);
+app.use('/', hubs);
+app.use('/', investors);
+>>>>>>> master
 app.use('/users', users);
 
 const PORT = process.env.PORT || 8000;
