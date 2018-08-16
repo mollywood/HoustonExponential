@@ -4,12 +4,12 @@ const body_parser = require("body-parser");
 const exphbs = require("express-handlebars");
 const db = require("./models/index.js");
 const app = express();
-const pg = require("pg");
+const pg = require('pg');
 
-const companies = require("./routes/companies");
-const hubs = require("./routes/hubs");
-const investors = require("./routes/investors");
-const users = require("./routes/users");
+const companies = require('./routes/companies');
+const services = require('./routes/services');
+const investors = require('./routes/investors');
+const users = require('./routes/users');
 
 //Middleware
 app.use(express.static("public"));
@@ -42,10 +42,10 @@ app.get("/", (req, res) => {
 });
 
 // Use routes
-app.use("/companies", companies);
-app.use("/hubs", hubs);
-app.use("/investors", investors);
-app.use("/users", users);
+app.use('/companies', companies);
+app.use('/services', services);
+app.use('/investors', investors);
+app.use('/users', users);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));

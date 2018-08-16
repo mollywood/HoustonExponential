@@ -7,20 +7,10 @@
     </div>
 </div>
 
-<div class="company-cards-box">
-    {{#each companies}}
-    <div class="card company-cards">
-        <div class="company-cards-img">
-            <img class="card-img-top" src={{this.dataValues.logo}} alt="Card image cap">
-        </div>
-        <div class="card-body company-cards-text">
-            <h4 class="card-title text-center">{{this.dataValues.name}}</h4>
-            <p class="card-text">{{this.dataValues.description}}.</p>
-            <a href="#" class="btn btn-primary">View Profile</a>
-        </div>
-    </div>
-
-    {{/each}}
+<div>
+    <ul>{{#each investors}}
+        <li>{{this.dataValues.name}}</li>
+        {{/each}}</ul>
 </div>
 
 {{> footer}}

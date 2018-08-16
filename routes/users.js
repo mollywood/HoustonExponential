@@ -23,7 +23,7 @@ passport.use(
       callbackURL: "http://127.0.0.1:8000/users/linkedin/callback",
       scope: ["r_emailaddress", "r_basicprofile"]
     },
-    function(accessToken, refreshToken, profile, done) {
+    (accessToken, refreshToken, profile, done) => {
       // asynchronous verification, for effect...
       process.nextTick(function() {
         db.User.findOrCreate({
@@ -46,13 +46,14 @@ passport.use(
 // @route GET routes/users/test
 // @desc Tests users route
 // @access Public
-router.get("/test", (req, res) => res.json({ msg: "User works" }));
+router.get('/test', (req, res) => res.json({msg: 'User works'}));
 
 // // @route GET routes/users/register
 // // @desc Renders register.hbs view
 // // @access Public
 router.get("/register", (req, res) => {
-  res.render("register", {});
+  res.render("register", {
+  });
 });
 
 // @route POST routes/users/register
@@ -67,11 +68,10 @@ router.post("/register", (req, res) => {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       password: req.body.password,
-      password2: req.body.password2
     }
   }).spread((user, created) => {
     if (created) {
-      // create JWT
+
     } else {
       res.render("register", {
         message: "User already exist"
@@ -84,7 +84,8 @@ router.post("/register", (req, res) => {
 // @desc Renders login.hbs view
 // @access Public
 router.get("/login", (req, res) => {
-  res.render("login", {});
+  res.render("login", {
+  });
 });
 
 // @route POST routes/users/login
@@ -98,7 +99,7 @@ router.post("/login", (req, res) => {});
 router.get(
   "/linkedin",
   passport.authenticate("linkedin", { state: "SOME STATE" }),
-  function(req, res) {
+  (req, res) => {
     // The request will be redirected to LinkedIn for authentication, so this
     // function will not be called.
   }
