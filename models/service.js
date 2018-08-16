@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     website: DataTypes.STRING,
     associatedFund: DataTypes.STRING
   }, {});
-  Service.associate = function(models) {
+  Service.associate = (models) => {
     // associations can be defined here
   };
   return Service;

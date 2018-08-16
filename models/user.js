@@ -24,15 +24,15 @@ module.exports = (sequelize, DataTypes) => {
               if(err) console.log(err);
               user.password = hash;
               user.save()
-                .then((savedUser)=>{console.log(savedUser)})
-                  .catch((error)=>{console.log(error)})
+                .then((savedUser) => {console.log(savedUser)})
+                  .catch((error )=> {console.log(error)})
             });
           });
         }
       }
     }
   );
-  User.associate = function(models) {
+  User.associate = (models) => {
     // associations can be defined here
   };
   return User;

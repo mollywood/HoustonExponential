@@ -43,14 +43,9 @@ passport.use(
   )
 );
 
-// @route GET routes/users/test
-// @desc Tests users route
+// @route GET routes/users/register
+// @desc Renders register.hbs view
 // @access Public
-router.get('/test', (req, res) => res.json({msg: 'User works'}));
-
-// // @route GET routes/users/register
-// // @desc Renders register.hbs view
-// // @access Public
 router.get("/register", (req, res) => {
   res.render("register", {
   });
