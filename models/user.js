@@ -15,19 +15,16 @@ module.exports = (sequelize, DataTypes) => {
       email: DataTypes.STRING,
       password: DataTypes.STRING,
       linkedinprofile: DataTypes.STRING
-    },  {
+    },
+    {
       hooks: {
         beforeCreate: (user, options) => {
-          bcrypt.genSalt(10, (err, salt) => {
-            console.log(user.password)
-            bcrypt.hash(user.password, salt, (err, hash) => {
-              if(err) console.log(err);
+          return bcrypt.hash(user.password, 10)
+            .then((hash) => {
               user.password = hash;
-              user.save()
-                .then((savedUser) => {console.log(savedUser)})
-                  .catch((error )=> {console.log(error)})
-            });
-          });
+              return user
+            })
+            .catch((err) => {console.log(err)});
         }
       }
     }
@@ -37,4 +34,3 @@ module.exports = (sequelize, DataTypes) => {
   };
   return User;
 };
-
