@@ -1,0 +1,22 @@
+<div class="company-cards-box">
+{{#each companyList}}
+    <div class="card company-cards">
+        <div class="company-cards-img">
+            <img class="card-img-top" src={{logo}} alt="Card image cap">
+        </div>
+        <div class="card-body company-cards-text">
+            <h4 class="card-title text-center">{{name}}</h4>
+            <p class="card-text">{{description}}.</p>
+            <a href="#" class="btn btn-blue">View Profile</a>
+        </div>
+        <div class="card-footer">
+            <div class="float-left">
+                Founded {{foundedDate}}
+            </div>
+            <div class="float-right">
+
+            </div>
+        </div>
+    </div>
+
+{{/each}}

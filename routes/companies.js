@@ -17,4 +17,11 @@ router.get("/register", (req, res) => {
 // @access Protected
 router.post("/register", (req, res) => {});
 
+// display companies on /companies
+db.get('/companies', function(req,res){
+  models.Company.findAll().then(function(companies){
+    res.render('/companies', {companyList: companies})
+  })
+})
+
 module.exports = router;

@@ -17,4 +17,11 @@ router.get("/register", (req, res) => {
 // @access Protected
 router.post("/register", (req, res) => {});
 
+//display hubs on /hubs
+db.get('/hubs', function(req,res){
+  models.Service.findAll().then(function(hubs){
+    res.render('/hubs', {hubList: hubs})
+  })
+})
+
 module.exports = router;
