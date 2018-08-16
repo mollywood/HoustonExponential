@@ -1,0 +1,18 @@
+{{> header}}
+
+  {{message}}
+
+<form action="/register/hub" method='POST'>
+<div class="hub" name="hubInput">
+	<input type="text" id="hName" required/>
+	<label for="sName">Hub Name</label>
+	<input type="textarea" id="desc" required/>
+	<label for="desc">Description</label>
+	<input type="text" id="type" required/>
+	<label for="type">Type of Startup</label>
+	<input type="text" id="location" required/>
+	<label for="location">Location</label>
+	<button href="" id="startup">Submit</button>
+</div>
+</form>
+{{> footer}}

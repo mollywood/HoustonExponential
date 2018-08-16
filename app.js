@@ -37,7 +37,6 @@ app.get("/api/data", (req, res) => {});
 // @desc Renders home.hbs view
 // @access Public
 app.get("/", (req, res) => {
-  console.log(req.user);
   res.render("home", {
     title: "Welcome",
     message: "Hello world",
@@ -45,7 +44,6 @@ app.get("/", (req, res) => {
   });
 });
 app.get("/register/entity", (req, res) => {
-  console.log(req.user);
   res.render("registerentity", {
     title: "Welcome",
     message: "Hello world",
