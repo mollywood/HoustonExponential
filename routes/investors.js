@@ -18,7 +18,7 @@ router.get("/register", (req, res) => {
 router.post("/register", (req, res) => {});
 
 // display investors on /investors page
-router.get('/investors', function(req,res){
+router.get('', function(req,res){
   db.Investor.findAll().then(function(investors){
     res.render('investors', {investorList: investors})
   })
