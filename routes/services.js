@@ -17,10 +17,10 @@ router.get("/register", (req, res) => {
 // @access Protected
 router.post("/register", (req, res) => {});
 
-// display hubs on /hubs page
-router.get('/hubs', function(req,res){
-  db.Service.findAll().then(function(hubs){
-    res.render('hubs', {hubList: hubs})
+// display services on /services page
+router.get('/services', function(req,res){
+  db.Service.findAll().then(function(services){
+    res.render('services', {serviceList: services})
   })
 })
 
