@@ -43,6 +43,14 @@ app.get("/", (req, res) => {
     subheading: "It's nice to meet you"
   });
 });
+app.get("/register/entity", (req, res) => {
+  console.log(req.user);
+  res.render("registerentity", {
+    title: "Welcome",
+    message: "Hello world",
+    subheading: "It's nice to meet you"
+  });
+});
 
 // Use routes
 app.use('/companies', companies);
