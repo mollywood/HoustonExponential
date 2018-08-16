@@ -3,6 +3,7 @@ const router = express.Router();
 const Sequelize = require("sequelize");
 const db = require("../models/index");
 const passport = require("passport");
+const bcrypt = require("bcryptjs");
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
 
 
@@ -48,8 +49,7 @@ passport.use(
 // @desc Renders register.hbs view
 // @access Public
 router.get("/register", (req, res) => {
-  res.render("register", {
-  });
+  res.render("register", {});
 });
 
 // @route POST routes/users/register
@@ -67,7 +67,7 @@ router.post("/register", (req, res) => {
     }
   }).spread((user, created) => {
     if (created) {
-
+      res.render("login", {});
     } else {
       res.render("register", {
         message: "User already exist"
@@ -80,14 +80,33 @@ router.post("/register", (req, res) => {
 // @desc Renders login.hbs view
 // @access Public
 router.get("/login", (req, res) => {
-  res.render("login", {
-  });
+  res.render("login", {});
 });
 
 // @route POST routes/users/login
-// @desc
+// @desc Login User / Return JsonWebToken
 // @access Public
-router.post("/login", (req, res) => {});
+router.post("/login", (req, res) => {
+  db.User.findOne({
+    where: {
+      email: req.body.email,
+    }
+  }).then(user => {
+    if(!user)  {
+      return res.status(404).json({email: 'User not found'});
+    }
+
+    //Checks for password
+    bcrypt.compare(req.body.password, user.password)
+      .then(isMatch => {
+        if(isMatch) {
+          return res.json({msg: 'Success'});
+        } else {
+          return res.status(400).json({password: 'Password is incorrect'});
+        }
+    });
+  });
+});
 
 // @route GET routes/users/linkedin
 // @desc
