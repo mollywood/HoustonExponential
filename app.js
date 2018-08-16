@@ -1,14 +1,12 @@
 const express = require("express");
-// const routes = require("./routes");
 const body_parser = require("body-parser");
 const exphbs = require("express-handlebars");
-const db = require("./models/index.js");
 const app = express();
-const pg = require('pg');
 
 const companies = require('./routes/companies');
-const hubs = require('./routes/hubs');
+const home = require('./routes/home');
 const investors = require('./routes/investors');
+const services = require('./routes/services');
 const users = require('./routes/users');
 
 //Middleware
@@ -29,25 +27,11 @@ app.engine(
 );
 app.set("view engine", ".hbs");
 
-// what do we want to grab?
-app.get("/api/data", (req, res) => {});
-
-// @route GET /
-// @desc Renders home.hbs viewnode
-// @access Public
-app.get("/", (req, res) => {
-  console.log(req.user);
-  res.render("home", {
-    title: "Welcome",
-    message: "Hello world",
-    subheading: "It's nice to meet you"
-  });
-});
-
 // Use routes
 app.use('/companies', companies);
-app.use('/hubs', hubs);
+app.use('', home);
 app.use('/investors', investors);
+app.use('/services', services);
 app.use('/users', users);
 
 const PORT = process.env.PORT || 8000;
