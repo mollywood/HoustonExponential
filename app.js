@@ -1,14 +1,12 @@
 const express = require("express");
-// const routes = require("./routes");
 const body_parser = require("body-parser");
 const exphbs = require("express-handlebars");
-const db = require("./models/index.js");
 const app = express();
-const pg = require('pg');
 
 const companies = require('./routes/companies');
-const services = require('./routes/services');
+const home = require('./routes/home');
 const investors = require('./routes/investors');
+const services = require('./routes/services');
 const users = require('./routes/users');
 
 //Middleware
@@ -29,22 +27,11 @@ app.engine(
 );
 app.set("view engine", ".hbs");
 
-// @route GET /
-// @desc Renders home.hbs view
-// @access Public
-app.get("/", (req, res) => {
-  db.Company.findAll().then(result => {
-    res.render("home", {
-      title: "Welcome",
-      companies: result
-    });
-  });
-});
-
 // Use routes
 app.use('/companies', companies);
-app.use('/services', services);
+app.use('', home);
 app.use('/investors', investors);
+app.use('/services', services);
 app.use('/users', users);
 
 const PORT = process.env.PORT || 8000;
