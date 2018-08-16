@@ -1,0 +1,170 @@
+
+{{!-- Button Group --}}
+<div class="container filter-buttons mx-auto">
+    <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#type">Type</button>
+    <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#investmentStages">Investment Stages</button>
+    <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#investmentRange">Investment Range</button>
+    <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#managedAssets">Managed Assets</button>
+    <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#portfolioSize">Portfolio Size</button>
+    <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#foundedDate">Founded</button>
+</div>
+
+{{!-- Type Modal --}}
+<div class="modal fade" id="type" tabindex="-1" role="dialog" aria-labelledby="typeLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="typeLabel">Type</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{#each investorList}}
+                        <button type="button" class="btn btn-blue" data-toggle="button">{{type}}</button>
+                    {{/each}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-blue">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- Investment Stages Modal --}}
+<div class="modal fade" id="investmentStages" tabindex="-1" role="dialog" aria-labelledby="investmentStagesLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="investmentStagesLabel">Investment Stages</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <div class="btn-group" data-toggle="buttons">
+
+                            <label class="btn btn-blue">
+                                <input type="checkbox" autocomplete="off" id="investmentStagesCheck1"> Pre-Seed
+                            </label>
+
+                            <label class="btn btn-blue">
+                                <input type="checkbox" autocomplete="off" id="investmentStagesCheck2">Pre-Clinical Trial
+                            </label>
+
+                            <label class="btn btn-blue">
+                                <input type="checkbox" autocomplete="off" id="investmentStagesCheck3">Seed
+                            </label>
+                        
+                            <label class="btn btn-blue">
+                                <input type="checkbox" autocomplete="off" id="investmentStagesCheck4">Clinical Trial
+                            </label>
+
+                            <label class="btn btn-blue">
+                                <input type="checkbox" autocomplete="off" id="investmentStagesCheck5">A
+                            </label>
+                       
+                            <label class="btn btn-blue">
+                                <input type="checkbox" autocomplete="off" id="investmentStagesCheck6">B
+                            </label>
+
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-blue">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- Investment Range Modal --}}
+<div class="modal fade" id="investmentRange" tabindex="-1" role="dialog" aria-labelledby="investmentRangeLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="investmentRangeLabel">Investment Range</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-blue">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- Managed Assets Modal --}}
+<div class="modal fade" id="managedAssets" tabindex="-1" role="dialog" aria-labelledby="managedAssetsLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="managedAssetsLabel">Managed Assets</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-blue">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- Portfolio Size Modal --}}
+<div class="modal fade" id="portfolioSize" tabindex="-1" role="dialog" aria-labelledby="portfolioSizeLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioSizeLabel">Portfolio Size</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-blue">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- Founded Date Modal --}}
+<div class="modal fade" id="foundedDate" tabindex="-1" role="dialog" aria-labelledby="foundedDateLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="foundedDateLabel">Founded Date</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-blue">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
