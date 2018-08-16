@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     website: DataTypes.STRING
   }, {});
-  Investor.associate = function(models) {
+  Investor.associate = (models) => {
     // associations can be defined here
   };
   return Investor;

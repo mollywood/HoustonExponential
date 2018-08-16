@@ -5,10 +5,11 @@ const exphbs = require("express-handlebars");
 const db = require("./models/index.js");
 const app = express();
 const pg = require('pg');
-
+const home = require('./routes/home');
 const companies = require('./routes/companies');
 const hubs = require('./routes/hubs');
 const investors = require('./routes/investors');
+const services = require('./routes/services');
 const users = require('./routes/users');
 
 //Middleware
@@ -54,8 +55,12 @@ app.get("/register/entity", (req, res) => {
 
 // Use routes
 app.use('/companies', companies);
+app.use('', home);
+
 app.use('/hubs', hubs);
 app.use('/investors', investors);
+app.use('/services', services);
+
 app.use('/users', users);
 
 const PORT = process.env.PORT || 8000;
