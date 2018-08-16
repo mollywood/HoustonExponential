@@ -26,6 +26,4 @@ router.get("/register", (req, res) => {
 // @access Protected
 router.post("/register", (req, res) => {});
 
-
-
 module.exports = router;
