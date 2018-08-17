@@ -1,54 +1,129 @@
 .welcome-container {
-    width: 100%;
-    height: 400px;
-    position: relative;
+  width: 100%;
+  height: 400px;
+  position: relative;
 }
 
 .welcome-div {
-    background-image: url("../Images/houston.jpg");
-    background-size: 100% 100%;
-    height: 100%;
-    width: 100%;
-    border: 1px solid;
-    opacity: .4;
-    position: absolute;
-    z-index: 10
+  background-image: url("../Images/houston.jpg");
+  background-size: 100% 100%;
+  height: 100%;
+  width: 100%;
+  border: 1px solid;
+  opacity: .4;
+  position: absolute;
+  z-index: 10
 }
 
 .overlay {
-    height: 100%;
-    width: 100%;
-    color: #3F637B;
-    font-size: 4em;
-    position: absolute;
-    z-index: 1;
+  height: 100%;
+  width: 100%;
+  color: #3F637B;
+  font-size: 4em;
+  position: absolute;
+  z-index: 1;
 }
 
 .company-cards-box {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
 }
 
 .company-cards {
-    min-height: 600px;
-    margin: 20px;
-    width: 18rem;
-    display: flex;
+  min-height: 600px;
+  margin: 20px;
+  width: 18rem;
+  display: flex;
 }
 
 .company-cards-img {
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center
 }
 
 .company-cards-text {
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.carousel-item {
+  position: relative;
+  display: none;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  transition: -webkit-transform 0.6s ease;
+  transition: transform 0.6s ease;
+  transition: transform 0.6s ease, -webkit-transform 0.6s ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+
+@media (min-width: 768px) {
+  /* show 3 items */
+  .carousel-inner .active,
+  .carousel-inner .active+.carousel-item,
+  .carousel-inner .active+.carousel-item+.carousel-item {
+    display: block;
+  }
+  .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+  .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item,
+  .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item+.carousel-item {
+    transition: none;
+  }
+  .carousel-inner .carousel-item-next,
+  .carousel-inner .carousel-item-prev {
+    position: relative;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  .carousel-inner .active.carousel-item+.carousel-item+.carousel-item+.carousel-item {
+    position: absolute;
+    top: 0;
+    right: -33.3333%;
+    z-index: -1;
+    display: block;
+    visibility: visible;
+  }
+  /* left or forward direction */
+  .active.carousel-item-left+.carousel-item-next.carousel-item-left,
+  .carousel-item-next.carousel-item-left+.carousel-item,
+  .carousel-item-next.carousel-item-left+.carousel-item+.carousel-item,
+  .carousel-item-next.carousel-item-left+.carousel-item+.carousel-item+.carousel-item {
+    position: relative;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+  /* farthest right hidden item must be abso position for animations */
+  .carousel-inner .carousel-item-prev.carousel-item-right {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    display: block;
+    visibility: visible;
+  }
+  /* right or prev direction */
+  .active.carousel-item-right+.carousel-item-prev.carousel-item-right,
+  .carousel-item-prev.carousel-item-right+.carousel-item,
+  .carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item,
+  .carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item+.carousel-item {
+    position: relative;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+    display: block;
+    visibility: visible;
+  }
 }
