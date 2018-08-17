@@ -2,49 +2,10 @@ const express = require("express");
 const router = express.Router();
 const Sequelize = require("sequelize");
 const db = require("../models/index");
-const passport = require("passport");
 const bcrypt = require("bcryptjs");
+const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const keys = require("../config/keys")
-const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
-
-router.use(passport.initialize());
-router.use(passport.session());
-
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.use(
-  new LinkedInStrategy(
-    {
-      clientID: "78umadn462runs",
-      clientSecret: "JzPt9cNwIpvkSQZ1",
-      callbackURL: "http://127.0.0.1:8000/users/linkedin/callback",
-      scope: ["r_emailaddress", "r_basicprofile"]
-    },
-    (accessToken, refreshToken, profile, done) => {
-      // asynchronous verification, for effect...
-      process.nextTick(function() {
-        db.User.findOrCreate({
-          where: {
-            email: profile._json.emailAddress
-          },
-          defaults: {
-            firstName: profile._json.firstName,
-            lastName: profile._json.lastName,
-            linkedinprofile: profile._json.publicProfileUrl
-          }
-        });
-
-        return done(null, profile);
-      });
-    }
-  )
-);
 
 // @route GET routes/users/register
 // @desc Renders register.hbs view
