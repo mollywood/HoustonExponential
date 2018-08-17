@@ -21,9 +21,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    {{#each investorList}}
-                        <button type="button" class="btn btn-blue" data-toggle="button">{{type}}</button>
-                    {{/each}}
+                    <div class="">
+                        {{#each investorList}}
+                            <button type="button" class="btn btn-blue" data-toggle="button">{{type}}</button>
+                        {{/each}}
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-blue">Submit</button>
@@ -45,7 +47,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                        <div class="btn-group" data-toggle="buttons">
+                        <div data-toggle="buttons">
 
                             <label class="btn btn-blue">
                                 <input type="checkbox" autocomplete="off" id="investmentStagesCheck1"> Pre-Seed
