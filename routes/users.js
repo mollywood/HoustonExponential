@@ -7,6 +7,10 @@ const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const keys = require("../config/keys")
 
+// Load input validation
+const validateRegisterInput = require("../validation/register");
+const validateLoginInput = require("../validation/login");
+
 // @route GET routes/users/register
 // @desc Renders register.hbs view
 // @access Public
@@ -18,6 +22,11 @@ router.get("/register", (req, res) => {
 // @desc Posts user inputs into database
 // @access Public
 router.post("/register", (req, res) => {
+  const {errors, isValid} = validateRegisterInput(req.body);
+  if(!isValid) {
+    return res.status(400).json(errors);
+  }
+
   db.User.findOrCreate({
     where: {
       email: req.body.email
@@ -31,11 +40,10 @@ router.post("/register", (req, res) => {
     if (created) {
       res.render("login", {});
     } else {
-      res.render("register", {
-        message: "User already exist"
-      });
-    }
-  });
+        errors.email = "Email already exist"
+        return res.status(400).json(errors);
+      };
+    });
 });
 
 // @route GET routes/users/login
@@ -49,13 +57,19 @@ router.get("/login", (req, res) => {
 // @desc Login User / Return JsonWebToken
 // @access Public
 router.post("/login", (req, res) => {
+  const {errors, isValid} = validateLoginInput(req.body);
+  if(!isValid) {
+    return res.status(400).json(errors);
+  }
+
   db.User.findOne({
     where: {
       email: req.body.email,
     }
   }).then(user => {
     if(!user)  {
-      return res.status(404).json({email: 'User not found'});
+      errors.email = "User not found"
+      return res.status(404).json(errors);
     }
 
     //Checks for password
@@ -77,7 +91,8 @@ router.post("/login", (req, res) => {
             }
           );
         } else {
-          return res.status(400).json({password: 'Password is incorrect'});
+          errors.password = "Password is incorrect"
+          return res.status(400).json(errors);
         }
     });
   });
