@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     contact: DataTypes.STRING,
     description: DataTypes.STRING,
     website: DataTypes.STRING,
-    associatedFund: DataTypes.STRING
+    associatedFund: DataTypes.STRING,
+    bio: DataTypes.STRING,
+    logo: DataTypes.STRING
   }, {});
   Service.associate = function(models) {
     // associations can be defined here
