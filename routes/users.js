@@ -4,6 +4,8 @@ const Sequelize = require("sequelize");
 const db = require("../models/index");
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const keys = require("../config/keys")
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
 
 router.use(passport.initialize());
@@ -99,7 +101,20 @@ router.post("/login", (req, res) => {
     bcrypt.compare(req.body.password, user.password)
       .then(isMatch => {
         if(isMatch) {
-          return res.json({msg: 'Success'});
+          //Create JWT payload
+          const payload = { id: user.id, email: user.email}
+          // Sign Token
+          jwt.sign(
+            payload,
+            keys.secretOrKey,
+            {expiresIn: 3600},
+            (err, token) => {
+              res.json({
+                success: true,
+                token: "Bearer " + token
+              });
+            }
+          );
         } else {
           return res.status(400).json({password: 'Password is incorrect'});
         }
@@ -129,5 +144,20 @@ router.get(
     failureRedirect: "/register"
   })
 );
+
+// @route GET routes/users/current
+// @desc Return current user
+// @access Private
+router.get("/current", passport.authenticate("jwt", {session: false}), (req, res) => {
+  res.json({
+    id: req.user.id,
+     firstName: req.user.firstName,
+     lastName: req.user.lastName,
+     email: req.user.email,
+     linkedinprofile: req.user.linkedinprofile,
+     createdAt: req.user.createdAt,
+     updatedAt: req.user.updatedAt
+  });
+});
 
 module.exports = router;
