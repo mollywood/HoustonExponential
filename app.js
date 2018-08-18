@@ -8,6 +8,7 @@ const home = require('./routes/home');
 const investors = require('./routes/investors');
 const services = require('./routes/services');
 const users = require('./routes/users');
+const about = require('./routes/about');
 
 //Middleware
 app.use(express.static("public"));
@@ -33,6 +34,7 @@ app.use('', home);
 app.use('/investors', investors);
 app.use('/services', services);
 app.use('/users', users);
+app.use('/about', about);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
