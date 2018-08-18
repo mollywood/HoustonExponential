@@ -1,0 +1,73 @@
+{{> header}}
+
+  {{message}}
+
+<form action="/registerCompany" method='POST'>
+ <div class="container">
+      <div class="row">
+        <div class="col-md-8 m-auto mt-10">
+	<label for="sName">Startup Name</label>
+	<input type="text" class="form-control" id="sName" required/>
+	<label for="logo">Logo URL</label>
+	<input id="logo" class="form-control" type="url" placeholder="Link to logo image"/>
+	<label for="desc">Description</label>
+	<textarea rows="3" class="form-control" id="desc" required/></textarea>
+	<label for="category">Type of Startup</label>
+	<select id="category" class="form-control" >
+  		<option value="volvo">Software</option>
+  		<option value="saab">Information Technology, Privacy and Security</option>
+  		<option value="opel">Biotechnology, Health Care, Science and Engineering</option>
+  		<option value="audi">Energy, Natural Resources, Sustainability</option>
+		<option value="volvo">Apps, Health Care, Mobile, Software</option>
+		<option value="volvo">Artificial Intelligence, Data and Analytics, Financial Services, Sales and Marketing, Software</option>
+		<option value="volvo">Consumer Goods</option>
+		<option value="volvo">Apps, Data and Analytics, Software</option>
+	</select>
+	<label for="location">Location</label>
+	<input type="text" class="form-control" id="location" required/>
+	<label for="employees">Number of Employees</label>
+	<select id="employees" class="form-control">
+		<option value="volvo">1 - 10</option>
+		<option value="volvo">11 - 50</option>
+		<option value="volvo">51 - 200</option>
+		<option value="volvo">201 - 500</option>
+		<option value="volvo">500+</option>
+	</select>
+	<label for="fundingStage">Funding Stage</label>
+	<select class="form-control" id="fundingStage">
+		<option value="volvo">Bootstrapped</option>
+		<option value="volvo">Pre-seed</option>
+		<option value="volvo">Seed</option>
+		<option value="volvo">A</option>
+		<option value="volvo">B</option>
+		<option value="volvo">C+</option>
+		<option value="volvo">Public</option>
+		<option value="volvo">Revenue Financed</option>
+		<option value="volvo">Established</option>
+	</select>
+	<label for="founded">Founded Year</label>
+	<input class="form-control" type="number" maxlength="4" id="founded"/>
+	<label for "fundingStage">Funding Stage</label>
+	<select id="fundingStage"class="form-control" >
+		<option value="volvo">IDGAF</option>
+		<option value="volvo">Software</option>
+		<option value="volvo">Software</option>
+	</select>
+	<label for "businessModel">Business Model</label>
+	<select id="productStage"class="form-control" >
+		<option value="volvo">B2B</option>
+		<option value="volvo">B2C</option>
+		<option value="volvo">B2B2C</option>
+		<option value="volvo">B2G</option>
+	</select>
+	<label for="web site">Company Web site</label>
+	<input class="form-control" id="web site" type="url" placeholder="Link to company site"/>
+	<label for="contactPerson">Point of Contact</label>
+	<input class="form-control" id="contactPerson" placeholder="John Smith"/>
+	<button class="btn btn-info btn-block mt-4" href="" id="startupSubmit">Submit</button>
+</div>
+</div>
+</div>
+</form>
+
+{{> footer}}

@@ -1,0 +1,23 @@
+{{> header}}
+
+  {{message}}
+
+  
+<form action="/register/investor" method='POST'>
+<div class="investor" name="investorInput">
+	<input type="text" id="iName" required/>
+	<label for="iName">Investor Name</label>
+	<label for="investorType">Type of Investor</label>
+	<select id="investorType">
+  		<option value="volvo">Software</option>
+  		<option value="saab">Information Technology, Privacy and Security</option>
+  		<option value="opel">Biotechnology, Health Care, Science and Engineering</option>
+  		<option value="audi">Energy, Natural Resources, Sustainability</option>
+	</select>
+	<label for="investmentThesis">Investment Thesis</label>
+	<input type="text" id="investmentThesis" required/>
+	
+	<label for="location">Location</label>
+	<button href="" id="startup">Submit</button>
+</div>
+</form>
