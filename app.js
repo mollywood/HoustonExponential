@@ -1,16 +1,15 @@
 const express = require("express");
-// const routes = require("./routes");
 const body_parser = require("body-parser");
 const exphbs = require("express-handlebars");
-const db = require("./models/index.js");
 const app = express();
-const pg = require('pg');
-const home = require('./routes/home');
+
 const companies = require('./routes/companies');
-const hubs = require('./routes/hubs');
+const home = require('./routes/home');
 const investors = require('./routes/investors');
 const services = require('./routes/services');
 const users = require('./routes/users');
+const registerentity = require('./routes/registerentity');
+const registerCompany = require('./routes/registerCompany');
 
 //Middleware
 app.use(express.static("public"));
@@ -30,36 +29,14 @@ app.engine(
 );
 app.set("view engine", ".hbs");
 
-// what do we want to grab?
-app.get("/api/data", (req, res) => {});
-
-// @route GET /
-// @desc Renders home.hbs view
-// @access Public
-app.get("/", (req, res) => {
-  res.render("home", {
-    title: "Welcome",
-    message: "Hello world",
-    subheading: "It's nice to meet you"
-  });
-});
-app.get("/register/entity", (req, res) => {
-  res.render("registerentity", {
-    title: "Welcome",
-    message: "Hello world",
-    subheading: "It's nice to meet you"
-  });
-});
-
 // Use routes
 app.use('/companies', companies);
 app.use('', home);
-
-app.use('/hubs', hubs);
 app.use('/investors', investors);
 app.use('/services', services);
-
 app.use('/users', users);
+app.use('/registerentity', registerentity);
+app.use('/registerCompany', registerCompany);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
