@@ -10,6 +10,7 @@ const services = require('./routes/services');
 const users = require('./routes/users');
 const registerentity = require('./routes/registerentity');
 const registerCompany = require('./routes/registerCompany');
+const registerInvestor = require('./routes/registerInvestor');
 
 //Middleware
 app.use(express.static("public"));
@@ -37,6 +38,7 @@ app.use('/services', services);
 app.use('/users', users);
 app.use('/registerentity', registerentity);
 app.use('/registerCompany', registerCompany);
+app.use('/registerInvestor', registerInvestor);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
