@@ -3,19 +3,26 @@
   <div class="welcome-div"></div>
 
   <div class="overlay">
-    Explore Houston Start-Ups
+    <div>Explore Houston Start-Ups</div>
   </div>
 </div>
 
-<div class="container-fluid">
-  <h1 class="text-center mb-3">Houston Start-Ups</h1>
+<div class="whoweare-container">
+  <h2 class="whoweare-title">Who We Are</h2>
+  <div class="whoweare text-center">
+    <h4>We wanted to create a comprehensive database of Houston start-ups where users can add and update their business and
+      allow others to search and review.</h4>
+    <a type="button" href="/users/register" class="btn whoweare-button">Join Us Now!</a></div>
+</div>
+
+<div class="container-fluid carousel-wrapper">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner row w-100 mx-auto">
       {{#each companies}}
       <div class="carousel-item col-md-4">
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="{{logo}}" alt="{{name}} logo">
-          <div class="card-body">
+        <div class="card company-cards">
+          <div class="company-cards-img"><img class="card-img-top" src="{{logo}}" alt="{{name}} logo"></div>
+          <div class="card-body company-cards-text">
             <h5 class="card-title">{{name}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{description}}</h6>
             <div calss="text-center">
@@ -48,6 +55,9 @@
     </a>
   </div>
 </div>
+</div>
+
+
 
 {{> footer}}
 <script src="/JavaScript/home.js"></script>
