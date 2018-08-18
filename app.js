@@ -8,7 +8,10 @@ const home = require('./routes/home');
 const investors = require('./routes/investors');
 const services = require('./routes/services');
 const users = require('./routes/users');
-const about = require('./routes/about');
+
+const registerentity = require('./routes/registerentity');
+const registerCompany = require('./routes/registerCompany');
+
 
 //Middleware
 app.use(express.static("public"));
@@ -34,7 +37,8 @@ app.use('', home);
 app.use('/investors', investors);
 app.use('/services', services);
 app.use('/users', users);
-app.use('/about', about);
+app.use('/registerentity', registerentity);
+app.use('/registerCompany', registerCompany);git 
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
