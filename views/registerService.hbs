@@ -5,17 +5,17 @@
 <div class="container">
 	<h1 class="text-center" style="margin-top: 20px">Create a Service Hub Profile</h1>
 </div>
-<form action="/registerCompany" method='POST'>
+<form action="/registerService" method='POST'>
 <div class="container">
       <div class="row"><div class="col-md-8 m-auto mt-10">
 		<label for="name">Service Name</label>
 			<input class="form-control" type="text" id="name" required/>
 		<label for="type">Type of Service</label>
 			<select class="form-control" id="type">
-				<option value="volvo">Software</option>
-				<option value="saab">Information Technology, Privacy and Security</option>
-				<option value="opel">Biotechnology, Health Care, Science and Engineering</option>
-				<option value="audi">Energy, Natural Resources, Sustainability</option>
+				<option value="Accelerator">Accelerator</option>
+				<option value="Corporate Accelerator">Corporate Accelerator</option>
+				<option value="Co-Working Space">Co-Working Space</option>
+				<option value="Entrepreneurship Program">Entrepreneurship Program</option>
 			</select>
 		<label for="description">Description</label>
 			<textarea rows="1" class="form-control" id="description" placeholder="Quick summary of your business" required/></textarea>
@@ -50,7 +50,7 @@
 		<textarea rows="3" class="form-control" id="bio" 
 		placeholder="A more in-depth summary of your business's origins, interests, and future plans."></textarea>
 	
-	<input type="Submit" class="btn btn-info btn-block mt-4" href="" id="service"/>
+	<input type="Submit" class="btn btn-info btn-block mt-4"/>
 </div></div></div>
 </form>
 

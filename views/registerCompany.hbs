@@ -4,12 +4,12 @@
 <div class="container">
 	<h1 class="text-center" style="margin-top: 20px">Create a Company Profile</h1>
 </div>
-<form action="/registerCompany" method='POST'>
  <div class="container">
       <div class="row">
         <div class="col-md-8 m-auto mt-10">
-	<label for="name">Startup Name</label>
-		<input type="text" class="form-control" id="name" placeholder="Company Name"required/>
+		<form action="/registerCompany" method='POST'>
+	<label for="cname">Startup Name</label>
+		<input type="text" class="form-control" id="cname" placeholder="Company Name"required/>
 	<label for="logo">Logo URL</label>
 		<input id="logo" class="form-control" type="url" placeholder="Link to logo image"/>
 	<label for="description">Description</label>
@@ -77,13 +77,12 @@
 		<input class="form-control" id="websiteUrl" type="url" placeholder="Link to company site"/>
 	<label for="contact">Point of Contact</label>
 		<input class="form-control" id="contact" placeholder="e.g. John Smith: johnsmith@company.com, (281) 555-5555"/>
-	<label for="desc">About Summary</label>
-		<textarea rows="3" class="form-control" id="desc" 
+	<label for="bio">About Summary</label>
+		<textarea rows="3" class="form-control" id="bio" 
 		placeholder="A more in-depth summary of your business's origins, interests, and future plans."></textarea>
-	<input type="Submit" class="btn btn-info btn-block mt-4" href="" id="startup"/>
-</div>
-</div>
-</div>
+	<input type="submit" class="btn btn-info btn-block mt-4"/>
 </form>
-
+</div>
+</div>
+</div>
 {{> footer}}

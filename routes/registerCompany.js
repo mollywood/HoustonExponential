@@ -8,16 +8,16 @@ router.get('', (req, res) => {
     res.render("registerCompany", {});
 });
 
-router.post("registerCompany", (req, res) => {
-	db.Companies.findOrCreate({
+router.post("", (req, res) => {
+	db.Company.findOrCreate({
 	  where: {
-		name: req.body.name
+		name: req.body.cname
 	  },
 	  defaults: {
 		logo: req.body.logo,
-		description: req.body.description,
+		// description: req.body.description,
 		category: req.body.category,
-		location: req.body.location,
+		// location: req.body.location,
 		employees: req.body.employees,
 		fundingstage: req.body.fundingstage,
 		foundedDate: req.body.foundedDate,
@@ -25,7 +25,7 @@ router.post("registerCompany", (req, res) => {
 		businessModel: req.body.businessModel,
 		websiteUrl: req.body.websiteUrl,
 		contact: req.body.contact,
-		bio: req.body.bio,
+		bio: req.body.bio
 	  }
 	}).spread((company, created) => {
 	  if (created) {
