@@ -8,4 +8,33 @@ router.get('', (req, res) => {
     res.render("registerCompany", {});
 });
 
+router.post("", (req, res) => {
+	db.Company.findOrCreate({
+	  where: {
+		name: req.body.cname
+	  },
+	  defaults: {
+		logo: req.body.logo,
+		description: req.body.cdescription,
+		category: req.body.category,
+		location: req.body.clocation,
+		employees: req.body.employees,
+		fundingstage: req.body.fundingstage,
+		foundedDate: req.body.foundedDate,
+		productStage: req.body.productStage,
+		businessModel: req.body.businessModel,
+		websiteUrl: req.body.websiteUrl,
+		contact: req.body.contact,
+		bio: req.body.bio
+	  }
+	}).spread((company, created) => {
+	  if (created) {
+		res.render("companies", {});
+	  } else {
+		res.render("registerCompany", {
+		  message: "Company already exists"
+		});
+	  }
+	});
+  });
 module.exports = router;
