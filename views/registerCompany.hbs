@@ -1,0 +1,88 @@
+{{> header}}
+
+  {{message}}
+<div class="container">
+	<h1 class="text-center" style="margin-top: 20px">Create a Company Profile</h1>
+</div>
+ <div class="container">
+      <div class="row">
+        <div class="col-md-8 m-auto mt-10">
+		<form action="/registerCompany" method='POST'>
+	<label for="cname">Startup Name</label>
+		<input type="text" class="form-control" id="cname" placeholder="Company Name"required/>
+	<label for="logo">Logo URL</label>
+		<input id="logo" class="form-control" type="url" placeholder="Link to logo image"/>
+	<label for="cdescription">Description</label>
+		<textarea rows="1" class="form-control" 
+		placeholder="Quick summary of your business"id="cdescription" required/></textarea>
+	<label for="category">Type of Startup</label>
+		<select id="category" class="form-control" >
+			<option value="Agricultural and Food Technology">Agricultural and Food Technology</option>
+			<option value="Clean Technology">Clean Technology</option>
+			<option value="Consumer Electronics">Consumer Electronics</option>
+			<option value="Digital Health and Medical Technologies">Digital Health and Medical Technologies</option>
+			<option value="Education and Knowledge Technologies">Education and Knowledge Technologies</option>
+			<option value="socmedia">Enterprise Solutions</option>
+			<option value="Finance Technology and E-Commerce">Finance Technology and E-Commerce</option>
+			<option value="Industrial Technologies">Industrial Technologies</option>
+			<option value="Mobile and Telecom Technologies">Mobile and Telecom Technologies</option>
+			<option value="Pharmaceuticals">Pharmaceuticals</option>
+			<option value="Security and Safety Technologies">Security and Safety Technologies</option>
+			<option value="Social Media and Advertising">Social Media and Advertising</option>
+			<option value="Software Applications">Software Applications</option>
+			<option value="Other">Other: See Description</option>
+		</select>
+	<label for="clocation">Location</label>
+		<input type="text" class="form-control" id="clocation" placeholder="Enter a street address or Houston neighborhood"required/>
+	<label for="employees">Number of Employees</label>
+		<select id="employees" class="form-control">
+			<option value="volvo">1 - 10</option>
+			<option value="volvo">11 - 50</option>
+			<option value="volvo">51 - 200</option>
+			<option value="volvo">201 - 500</option>
+			<option value="volvo">500+</option>
+		</select>
+	<label for="fundingstage">Funding Stage</label>
+		<select class="form-control" id="fundingstage">
+			<option value="volvo">Bootstrapped</option>
+			<option value="volvo">Pre-seed</option>
+			<option value="volvo">Seed</option>
+			<option value="volvo">A</option>
+			<option value="volvo">B</option>
+			<option value="volvo">C+</option>
+			<option value="volvo">Public</option>
+			<option value="volvo">Revenue Financed</option>
+			<option value="volvo">Established</option>
+		</select>
+	<label for="foundedDate">Founded Year</label>
+		<input class="form-control" type="number" maxlength="4" placeholder="e.g. 2014"id="foundedDate"/>
+	<label for "productStage">Product Stage</label>
+		<select id="productStage"class="form-control" >
+			<option value="Customer development">Customer development</option>
+			<option value="R&D">R&D</option>
+			<option value="Clinical Trial">Clinical Trial</option>
+			<option value="Alpha">Alpha</option>
+			<option value="Beta">Beta</option>
+			<option value="Released">Released</option>
+
+		</select>
+	<label for "businessModel">Business Model</label>
+		<select id="businessModel"class="form-control" >
+			<option value="B2B">B2B</option>
+			<option value="B2C">B2C</option>
+			<option value="B2B2C">B2B2C</option>
+			<option value="B2G">B2G</option>
+		</select>
+	<label for="websiteUrl">Company Web site</label>
+		<input class="form-control" id="websiteUrl" type="url" placeholder="Link to company site"/>
+	<label for="contact">Point of Contact</label>
+		<input class="form-control" id="contact" placeholder="e.g. John Smith: johnsmith@company.com, (281) 555-5555"/>
+	<label for="bio">About Summary</label>
+		<textarea rows="3" class="form-control" id="bio" 
+		placeholder="A more in-depth summary of your business's origins, interests, and future plans."></textarea>
+	<input type="submit" class="btn btn-info btn-block mt-4"/>
+</form>
+</div>
+</div>
+</div>
+{{> footer}}

@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  Investor.associate = models => {
+
+  Investor.associate = (models) => {
     // associations can be defined here
   };
   return Investor;

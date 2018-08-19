@@ -24,7 +24,7 @@ router.get("", (req, res) => {
 // @route GET routes/companies/register
 // @desc
 // @access Protected
-router.get("/register", (req, res) => {
+router.get("/registerCompany", (req, res) => {
   res.render("#", {
     title: "Register a Company"
   });
@@ -49,6 +49,8 @@ router.get("/", function(req, res) {
 
 router.get("/foo", function(req, res) {
   res.render("foo", { foo: "Hello World" });
+router.post("/companies", (req, res) => {
+  db.Company.findAll({ where: j }).then();
 });
 
 /*
