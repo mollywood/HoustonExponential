@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Service.associate = models => {
-    // associations can be defined here
+    Service.hasOne(Users.id, { as: "User ID", foreignKey: "userid" });
   };
   return Service;
 };

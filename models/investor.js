@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Investor.associate = models => {
-    // associations can be defined here
+    Investor.hasOne(Users.id, { as: "User ID", foreignKey: "userid" });
   };
   return Investor;
 };
