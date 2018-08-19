@@ -8,8 +8,8 @@
 <form action="/registerService" method='POST'>
 <div class="container">
       <div class="row"><div class="col-md-8 m-auto mt-10">
-		<label for="name">Service Name</label>
-			<input class="form-control" type="text" id="name" required/>
+		<label for="sname">Service Name</label>
+			<input class="form-control" type="text" id="sname" required/>
 		<label for="type">Type of Service</label>
 			<select class="form-control" id="type">
 				<option value="Accelerator">Accelerator</option>
@@ -17,8 +17,8 @@
 				<option value="Co-Working Space">Co-Working Space</option>
 				<option value="Entrepreneurship Program">Entrepreneurship Program</option>
 			</select>
-		<label for="description">Description</label>
-			<textarea rows="1" class="form-control" id="description" placeholder="Quick summary of your business" required/></textarea>
+		<label for="sdescription">Description</label>
+			<textarea rows="1" class="form-control" id="sdescription" placeholder="Quick summary of your business" required/></textarea>
 		<label for="batchSize">Batch Size</label>
 			<select class="form-control" id="batchSize">
 				<option value="1 - 10">1 - 10</option>
@@ -29,8 +29,8 @@
 			<input class="form-control" id="website" type="url" placeholder="Link to company site"/>
 		<label for="founded">Founded Year</label>
 			<input class="form-control" type="number" maxlength="4" id="founded" placeholder="e.g. 2004"/>
-		<label for="location">Location</label>
-			<input type="text" class="form-control" id="location" placeholder="Enter a street address or Houston neighborhood"required/>
+		<label for="slocation">Location</label>
+			<input type="text" class="form-control" id="slocation" placeholder="Enter a street address or Houston neighborhood"required/>
 		<div class="form-check">
     		<input type="checkbox" class="form-check-input" id="academiaSupported">
     		<label class="form-check-label" for="academiaSupported">Academia Supported?</label>

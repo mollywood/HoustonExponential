@@ -11,13 +11,13 @@ router.get('', (req, res) => {
 router.post("", (req, res) => {
 	db.Service.findOrCreate({
 	  where: {
-		name: req.body.name
+		name: req.body.sname
 	  },
 	  defaults: {
 		logo: req.body.logo,
-		description: req.body.description,
+		description: req.body.sdescription,
 		type: req.body.type,
-		location: req.body.location,
+		location: req.body.slocation,
 		batchSize: req.body.batchSize,
 		academiaSupported: req.body.academiaSupported,
 		associatedFund: req.body.associatedFund,

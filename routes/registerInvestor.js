@@ -11,7 +11,7 @@ router.get('', (req, res) => {
 router.post("", (req, res) => {
 	db.Investor.findOrCreate({
 	  where: {
-		name: req.body.name
+		name: req.body.iname
 	  },
 	  defaults: {
 		logo: req.body.logo,
