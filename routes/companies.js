@@ -7,7 +7,16 @@ const db = require("../models/index");
 // @desc Display companies on companies.hbs page
 // @access Public
 router.get("", (req, res) => {
-  db.Company.findAll().then(companies => {
+  console.log("root url for companies");
+  // need to access the query string which was just passed
+  let stage = req.query.fundingStage;
+  console.log(stage);
+
+  db.Company.findAll({
+    where: {
+      fundingStage: stage
+    }
+  }).then(companies => {
     res.render("companies", { companyList: companies });
   });
 });
@@ -27,14 +36,24 @@ router.get("/registerCompany", (req, res) => {
 router.post("/register", (req, res) => {});
 
 // display companies on /companies page
-router.get("", function(req, res) {
+router.get("/", function(req, res) {
+  console.log("root url for companies");
+  // need to access the query string which was just passed
+  let stage = req.query.fundingStage;
+  console.log(stage);
+
   db.Company.findAll().then(function(companies) {
     res.render("companies", { companyList: companies });
   });
 });
 
-router.post("/companies", (req, res) => {
-  db.Company.findAll({ where: j }).then();
+router.get("/foo", function(req, res) {
+  res.render("foo", { foo: "Hello World" });
 });
+
+/*
+router.post("/companies", (req, res) => {
+  db.Company.findAll({ where: {productstage: } }).then();
+}); */
 
 module.exports = router;
