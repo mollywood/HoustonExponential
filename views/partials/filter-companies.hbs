@@ -17,22 +17,21 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <button type="button" class="btn btn-success">BOOTSTRAPPED</button>
-        <button type="button" class="btn btn-success">PRE-SEED</button>
-        <button type="button" class="btn btn-success">SEED</button>
-        <button type="button" class="btn btn-success">A</button>
-        <button type="button" class="btn btn-success">B</button>
-        <button type="button" class="btn btn-success">C</button>
-        <button type="button" class="btn btn-success">PUBLIC</button>
-        <button type="button" class="btn btn-success">REVENUE FINANCED</button>
-        <button type="button" class="btn btn-success">ESTABLISHED</button>
-
-
-      </div>
+      <form method="post" action="/companies">
+        <div class="modal-body">
+          <button type="button" name="fundingstage" value="bootstrapped" class="btn btn-success">BOOTSTRAPPED</button>
+          <button type="button" name="fundingstage" value="pre-seed" class="btn btn-success">PRE-SEED</button>
+          <button type="button" name="fundingstage" value="A" class="btn btn-success">SEED</button>
+          <button type="button" name="fundingstage" value="B" class="btn btn-success">B</button>
+          <button type="button" name="fundingstage" value="B" class="btn btn-success">C</button>
+          <button type="button" name="fundingstage" value="public" class="btn btn-success">PUBLIC</button>
+          <button type="button" name="fundingstage" value="revenue financed" class="btn btn-success">REVENUE FINANCED</button>
+          <button type="button" name="fundingstage" value="established" class="btn btn-success">ESTABLISHED</button>
+        </div>
+      </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>
       </div>
     </div>
   </div>
@@ -54,7 +53,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>
       </div>
     </div>
   </div>
@@ -138,3 +137,18 @@
     </div>
   </div>
 </div>
+
+<script>
+
+  function saveChanges() {
+    console.log("save changes")
+    window.location.href = "/companies?fundingStage=" + `${}`
+  }
+
+  if (localStorage) {
+    // LocalStorage is supported!
+  } else {
+    // No support. Use a fallback such as browser cookies or store on the server.
+  }
+
+</script>
