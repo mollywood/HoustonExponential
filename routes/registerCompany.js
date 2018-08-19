@@ -15,9 +15,9 @@ router.post("", (req, res) => {
 	  },
 	  defaults: {
 		logo: req.body.logo,
-		// description: req.body.description,
+		description: req.body.cdescription,
 		category: req.body.category,
-		// location: req.body.location,
+		location: req.body.clocation,
 		employees: req.body.employees,
 		fundingstage: req.body.fundingstage,
 		foundedDate: req.body.foundedDate,
