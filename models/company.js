@@ -1,6 +1,9 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 059fb4f1759a56d774befe9885e2e817a8655196
   var Company = sequelize.define(
     "Company",
     {
@@ -21,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Company.associate = function(models) {
+<<<<<<< HEAD
 =======
   var Company = sequelize.define('Company', {
     name: DataTypes.STRING,
@@ -38,6 +42,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Company.associate = (models) => {
 >>>>>>> master
+=======
+>>>>>>> 059fb4f1759a56d774befe9885e2e817a8655196
     // associations can be defined here
   };
   return Company;

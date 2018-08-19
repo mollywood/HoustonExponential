@@ -2,48 +2,14 @@ const express = require("express");
 const router = express.Router();
 const Sequelize = require("sequelize");
 const db = require("../models/index");
-const passport = require("passport");
 const bcrypt = require("bcryptjs");
-const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
+const passport = require("passport");
+const jwt = require("jsonwebtoken");
+const keys = require("../config/keys")
 
-
-router.use(passport.initialize());
-router.use(passport.session());
-
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.use(
-  new LinkedInStrategy(
-    {
-      clientID: "78umadn462runs",
-      clientSecret: "JzPt9cNwIpvkSQZ1",
-      callbackURL: "http://127.0.0.1:8000/users/linkedin/callback",
-      scope: ["r_emailaddress", "r_basicprofile"]
-    },
-    (accessToken, refreshToken, profile, done) => {
-      // asynchronous verification, for effect...
-      process.nextTick(function() {
-        db.User.findOrCreate({
-          where: {
-            email: profile._json.emailAddress
-          },
-          defaults: {
-            firstName: profile._json.firstName,
-            lastName: profile._json.lastName,
-            linkedinprofile: profile._json.publicProfileUrl
-          }
-        });
-
-        return done(null, profile);
-      });
-    }
-  )
-);
+// Load input validation
+const validateRegisterInput = require("../validation/register");
+const validateLoginInput = require("../validation/login");
 
 // @route GET routes/users/register
 // @desc Renders register.hbs view
@@ -56,6 +22,11 @@ router.get("/register", (req, res) => {
 // @desc Posts user inputs into database
 // @access Public
 router.post("/register", (req, res) => {
+  const {errors, isValid} = validateRegisterInput(req.body);
+  if(!isValid) {
+    return res.status(400).json(errors);
+  }
+
   db.User.findOrCreate({
     where: {
       email: req.body.email
@@ -69,11 +40,10 @@ router.post("/register", (req, res) => {
     if (created) {
       res.render("login", {});
     } else {
-      res.render("register", {
-        message: "User already exist"
-      });
-    }
-  });
+        errors.email = "Email already exist"
+        return res.status(400).json(errors);
+      };
+    });
 });
 
 // @route GET routes/users/login
@@ -87,22 +57,42 @@ router.get("/login", (req, res) => {
 // @desc Login User / Return JsonWebToken
 // @access Public
 router.post("/login", (req, res) => {
+  const {errors, isValid} = validateLoginInput(req.body);
+  if(!isValid) {
+    return res.status(400).json(errors);
+  }
+
   db.User.findOne({
     where: {
       email: req.body.email,
     }
   }).then(user => {
     if(!user)  {
-      return res.status(404).json({email: 'User not found'});
+      errors.email = "User not found"
+      return res.status(404).json(errors);
     }
 
     //Checks for password
     bcrypt.compare(req.body.password, user.password)
       .then(isMatch => {
         if(isMatch) {
-          return res.json({msg: 'Success'});
+          //Create JWT payload
+          const payload = { id: user.id, email: user.email}
+          // Sign Token
+          jwt.sign(
+            payload,
+            keys.secretOrKey,
+            {expiresIn: 3600},
+            (err, token) => {
+              res.json({
+                success: true,
+                token: "Bearer " + token
+              });
+            }
+          );
         } else {
-          return res.status(400).json({password: 'Password is incorrect'});
+          errors.password = "Password is incorrect"
+          return res.status(400).json(errors);
         }
     });
   });
@@ -130,5 +120,20 @@ router.get(
     failureRedirect: "/register"
   })
 );
+
+// @route GET routes/users/current
+// @desc Return current user
+// @access Private
+router.get("/current", passport.authenticate("jwt", {session: false}), (req, res) => {
+  res.json({
+    id: req.user.id,
+     firstName: req.user.firstName,
+     lastName: req.user.lastName,
+     email: req.user.email,
+     linkedinprofile: req.user.linkedinprofile,
+     createdAt: req.user.createdAt,
+     updatedAt: req.user.updatedAt
+  });
+});
 
 module.exports = router;
