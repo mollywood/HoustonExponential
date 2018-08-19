@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 
 .DS_Store
-=======
-.DS_Store
-.vscode
->>>>>>> fc4e5156b14c4062aa85429034d9530af540ffb1
 
 # Logs
 logs
@@ -78,11 +73,4 @@ typings/
 .vuepress/dist
 
 # Serverless directories
-<<<<<<< HEAD
 .serverless
-=======
-.serverless
-
-config/local.json
->>>>>>> 31f15a7c6a99ed93cf45487ff526e8d89b047472
-

@@ -9,6 +9,10 @@ const home = require("./routes/home");
 const investors = require("./routes/investors");
 const services = require("./routes/services");
 const users = require("./routes/users");
+const registerentity = require("./routes/registerentity");
+const registerCompany = require("./routes/registerCompany");
+const registerInvestor = require("./routes/registerInvestor");
+const registerService = require("./routes/registerService");
 
 //Middleware
 app.use(express.static("public"));
@@ -40,6 +44,10 @@ app.use("", home);
 app.use("/investors", investors);
 app.use("/services", services);
 app.use("/users", users);
+app.use("/registerentity", registerentity);
+app.use("/registerCompany", registerCompany);
+app.use("/registerInvestor", registerInvestor);
+app.use("/registerService", registerService);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
