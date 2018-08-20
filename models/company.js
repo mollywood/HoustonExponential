@@ -15,12 +15,15 @@ module.exports = (sequelize, DataTypes) => {
       productStage: DataTypes.STRING,
       websiteUrl: DataTypes.STRING,
       contact: DataTypes.STRING,
+<<<<<<< HEAD
       bio: DataTypes.STRING(500000)
+=======
+      bio: DataTypes.STRING,
+      userid: DataTypes.UUID
+>>>>>>> 1ef4eaaa71dc2449cc66437663c4a73b23e6929e
     },
     {}
   );
-  Company.associate = function(models) {
-    // associations can be defined here
-  };
+  Company.associate = models => {};
   return Company;
 };

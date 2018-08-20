@@ -22,20 +22,55 @@
   font-size: 4em;
   position: absolute;
   z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 5rem
 }
 
-.company-cards-box {
+.whoweare-container {
+  height: 40vh;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px;
+}
+
+.whoweare-title {
+  font-size: 3rem
+}
+
+.whoweare {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px
+}
+
+.whoweare-button {
+  margin: 20px;
+  background-color: #3F637B;
+  color: white
+}
+
+.whoweare-button:hover {
+  background-color: #24BCE6;
+  color: #3F637B
+}
+
+.carousel-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .company-cards {
   min-height: 600px;
   margin: 20px;
-  width: 18rem;
+  width: 20rem;
   display: flex;
 }
 
@@ -44,6 +79,11 @@
   display: flex;
   justify-content: center;
   align-items: center
+}
+
+.company-cards-img>* {
+  width: 90%;
+  align-self: center;
 }
 
 .company-cards-text {
@@ -69,7 +109,7 @@
   perspective: 1000px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 918px) {
   /* show 3 items */
   .carousel-inner .active,
   .carousel-inner .active+.carousel-item,
