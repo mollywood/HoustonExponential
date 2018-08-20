@@ -20,8 +20,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  Investor.associate = models => {
-    Investor.hasOne(Users.id, { as: "User ID", foreignKey: "userid" });
-  };
+  Investor.associate = models => {};
   return Investor;
 };

@@ -20,8 +20,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  Company.associate = models => {
-    Company.hasOne(Users.id, { as: "User ID", foreignKey: "userid" });
-  };
+  Company.associate = models => {};
   return Company;
 };

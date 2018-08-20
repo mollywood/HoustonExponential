@@ -7,6 +7,7 @@
 </div>
 
 
+
 <!-- Funding Stage Modal -->
 <div class="modal fade" id="FundingStage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -17,18 +18,20 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" action="/companies">
-        <div class="modal-body">
-          <button type="button" name="fundingstage" value="bootstrapped" class="btn btn-success">BOOTSTRAPPED</button>
-          <button type="button" name="fundingstage" value="pre-seed" class="btn btn-success">PRE-SEED</button>
-          <button type="button" name="fundingstage" value="A" class="btn btn-success">SEED</button>
-          <button type="button" name="fundingstage" value="B" class="btn btn-success">B</button>
-          <button type="button" name="fundingstage" value="B" class="btn btn-success">C</button>
-          <button type="button" name="fundingstage" value="public" class="btn btn-success">PUBLIC</button>
-          <button type="button" name="fundingstage" value="revenue financed" class="btn btn-success">REVENUE FINANCED</button>
-          <button type="button" name="fundingstage" value="established" class="btn btn-success">ESTABLISHED</button>
-        </div>
+      <form id="funding_stage_form">
+        <select name="funding_stage" multiple class="modal-body form-control-lg">
+
+          <option name="bootstrapped" value="bootstrapped">Bootstrapped</button>
+            <option name="pre-seed" value="pre-seed">Pre-seed</button>
+              <option name="A" value="A">Seed</button>
+                <option name="B" value="B">B</button>
+                  <option name="B" value="B">C</button>
+                    <option name="public" value="public">Public</button>
+                      <option name="revenue" value="revenue">Revenue Financed</button>
+                        <option name="established" value="established">established</button>
+        </select>
       </form>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>
@@ -43,7 +46,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalCenterTitle">Range</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -64,12 +67,12 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Funding Stage</h5>
+        <h5 class="modal-title" id="exampleModalCenterTitle">Business Model</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <form id="business_model_form" <select name="business_model" class="modal-body form-control-lg">
         <button type="button" class="btn btn-success">B2B</button>
         <button type="button" class="btn btn-success">B2C</button>
         <button type="button" class="btn btn-success">B2B2C</button>
@@ -77,7 +80,8 @@
 
 
 
-      </div>
+        </select>
+      </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
@@ -92,19 +96,21 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Funding Stage</h5>
+        <h5 class="modal-title" id="exampleModalCenterTitle">Product Stage</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <button type="button" class="btn btn-success">CUSTOMER DEVELOPMENT</button>
-        <button type="button" class="btn btn-success">R&D</button>
-        <button type="button" class="btn btn-success">CLINICAL TRIAL</button>
-        <button type="button" class="btn btn-success">ALPHA</button>
-        <button type="button" class="btn btn-success">BETA</button>
-        <button type="button" class="btn btn-success">RELEASED</button>
-      </div>
+      <form id="product_stage_form">
+        <select name="product_stage" class="modal-body form-control-lg">
+          <button type="button" class="btn btn-success">CUSTOMER DEVELOPMENT</button>
+          <button type="button" class="btn btn-success">R&D</button>
+          <button type="button" class="btn btn-success">CLINICAL TRIAL</button>
+          <button type="button" class="btn btn-success">ALPHA</button>
+          <button type="button" class="btn btn-success">BETA</button>
+          <button type="button" class="btn btn-success">RELEASED</button>
+        </select>
+      </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
@@ -118,37 +124,161 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Funding Stage</h5>
+        <h5 class="modal-title" id="exampleModalCenterTitle">Number of Employees</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <button type="button" class="btn btn-success">1-10</button>
-        <button type="button" class="btn btn-success">11-50</button>
-        <button type="button" class="btn btn-success">51-200</button>
-        <button type="button" class="btn btn-success">201-500</button>
-        <button type="button" class="btn btn-success">500+</button>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      <form id="number_of_employees_form">
+        <select multiple name="number_of_employees" class="modal-body form-control form-control-lg">
+          <option value="1-10">1-10</option>
+          <option value="11-50">11-50</option>
+          <option value="51-200">51-200</option>
+          <option value="201-500">201-500</option>
+          <option value="500+">500+</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </form <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
     </div>
   </div>
 </div>
+</div>
+
+<button type="button" class="btn btn-primary">Save changes</button>
+
 
 <script>
 
-  function saveChanges() {
-    console.log("save changes")
-    window.location.href = "/companies?fundingStage=" + `${}`
+
+
+
+  $.ajax({
+    url: "/companies/get_all"
+  }).done(function (companies) {
+
+    localStorage.setItem('hx_companies', JSON.stringify(companies))
+    var retrieved = localStorage.getItem('hx_companies');
+    //console.log(JSON.parse(retrieved), 'retrieved')
+
+  });
+
+
+  var numberOfEmployees = $('#number_of_employees_form')
+  var productStageForm = $('#product_stage_form')
+  var businessModelForm = $('#business_model_form')
+  var fundingStageForm = $('#funding_stage_form')
+
+  numberOfEmployees.submit((event) => {
+    event.preventDefault()
+
+    // ------ this code is specific to the unique .submit function ----
+    var selected = event.target.number_of_employees.selectedOptions
+
+    var selectedOptions = []
+
+    for (var i = 0; i < selected.length; i++) {
+      var option = selected[i]
+      selectedOptions.push(option.value)
+    }
+    // ---------- //
+
+
+
+    function filterGate(company) {
+
+      //  --- just change the contents of the if and the else to match the specific form -- //
+      if (selectedOptions.includes(company.employees)) {
+        return company
+      }
+      else {
+        return undefined
+      }
+      // ------ //
+    }
+
+
+    filter_companies_array(filterGate)
+
+
+
   }
 
-  if (localStorage) {
-    // LocalStorage is supported!
-  } else {
-    // No support. Use a fallback such as browser cookies or store on the server.
+  )
+
+
+
+  // this function is re-used to comply with DRY
+  function filter_companies_array(filterGate) {
+
+    var companiesJson = JSON.parse(localStorage.getItem('hx_companies'))
+
+    var companies = companiesJson.companies
+
+    if (companiesJson && companiesJson.companies) {
+
+      var companies = companiesJson.companies
+
+      var filtered = companies.filter((company) => {
+
+        return filterGate(company)
+
+      })
+
+      render_results(filtered)
+
+    }
   }
+
+  // this function is re-used to comply with DRY
+  function render_results(filtered) {
+
+
+
+    if (filtered && filtered.length) {
+
+      var companiesContainer = $('#companies_wrapper')
+      var renderedHTML = ''
+
+      filtered.map((company) => {
+
+        var renderedCompany =
+          `<div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="${company.logo}" alt="${company.name} logo">
+                  <div class="card-body">
+                      <h5 class="card-title">${company.name}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">${company.description}</h6>
+                      <div calss="text-center">
+                          <a href="#" class="btn btn-blue mx-auto">More Info</a>
+                      </div>
+                  </div>
+                  <div class="card-footer">
+                      <small class="text-muted">
+
+                              <div class="float-left">
+                                  Founded ${company.foundedDate}
+                              </div>
+                              <div class="float-right">
+                                  ${company.category}
+                              </div>
+
+                      </small>
+                  </div>
+              </div>`
+
+        renderedHTML += renderedCompany
+
+
+
+
+      })
+
+      companiesContainer.html(renderedHTML)
+
+    }
+
+  }
+
 
 </script>
