@@ -13,13 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       description: DataTypes.STRING,
       website: DataTypes.STRING,
       associatedFund: DataTypes.STRING,
+      bio: DataTypes.STRING,
+      logo: DataTypes.STRING,
       userid: DataTypes.UUID
     },
     {}
   );
-
-  Service.associate = (models) => {
-    // associations can be defined here
-  };
+  Service.associate = models => {};
   return Service;
 };

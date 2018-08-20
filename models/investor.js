@@ -14,13 +14,12 @@ module.exports = (sequelize, DataTypes) => {
       contact: DataTypes.STRING,
       description: DataTypes.STRING,
       website: DataTypes.STRING,
+      bio: DataTypes.STRING,
+      logo: DataTypes.STRING,
       userid: DataTypes.UUID
     },
     {}
   );
-
-  Investor.associate = (models) => {
-    // associations can be defined here
-  };
+  Investor.associate = models => {};
   return Investor;
 };
