@@ -8,7 +8,7 @@ const home = require('./routes/home');
 const investors = require('./routes/investors');
 const services = require('./routes/services');
 const users = require('./routes/users');
-
+const about = require('./routes/about');
 const registerentity = require('./routes/registerentity');
 const registerCompany = require('./routes/registerCompany');
 
@@ -31,14 +31,21 @@ app.engine(
 );
 app.set("view engine", ".hbs");
 
+//Used to change header
+app.use(function(req, res, next){
+  res.locals.isAuthenticated = req.isAuthenticated();
+  next();
+})
+
 // Use routes
 app.use('/companies', companies);
 app.use('', home);
 app.use('/investors', investors);
 app.use('/services', services);
 app.use('/users', users);
+app.use('/about', about);
 app.use('/registerentity', registerentity);
-app.use('/registerCompany', registerCompany);git 
+app.use('/registerCompany', registerCompany);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
