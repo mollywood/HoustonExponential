@@ -31,7 +31,9 @@ router.get("/registerCompany", (req, res) => {
 // @access Protected
 router.post("/register", (req, res) => {});
 
-// display companies on /companies page
+// @route GET routes/companies
+// @desc display companies on /companies page
+// @access Public
 router.get("/", function(req, res) {
   db.Company.findAll().then(function(companies) {
     res.render("companies", { companyList: companies });
