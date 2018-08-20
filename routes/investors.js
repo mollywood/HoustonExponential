@@ -26,6 +26,19 @@ router.get("/register", (req, res) => {
 // @access Protected
 router.post("/register", (req, res) => {});
 
+// @route POST routes/investors/investorprofile
+// @desc display investors profile page
+// @access Public
+router.post("/investorprofile", (req,res) => {
+  
+  db.Investor.findOne({
+    where: {
+      id : req.body.investor_id
+    }
+  }).then(function(investor) {
+    res.render("investorprofile", {investorInfo: investor.dataValues})
+    })
+})
 
 
 module.exports = router;

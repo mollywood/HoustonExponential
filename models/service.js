@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     website: DataTypes.STRING,
     associatedFund: DataTypes.STRING,
-    bio: DataTypes.STRING,
+    bio: DataTypes.STRING(500000),
     logo: DataTypes.STRING
   }, {});
   Service.associate = (models) => {

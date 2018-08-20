@@ -33,8 +33,22 @@ router.get("", function(req, res) {
   });
 });
 
-router.post("/companies", (req, res) => {
-  db.Company.findAll({ where: j }).then();
-});
+// router.post("/companies", (req, res) => {
+//   db.Company.findAll({ where: j }).then();
+// });
+
+// @route routes/companies/companyprofile
+// @desc POST display company's profile page
+// @access Public
+router.post("/companyprofile", (req,res) => {
+  
+  db.Company.findOne({
+    where: {
+      id : req.body.company_id
+    }
+  }).then(function(company) {
+    res.render("companyprofile", {companyInfo: company.dataValues})
+    })
+})
 
 module.exports = router;
