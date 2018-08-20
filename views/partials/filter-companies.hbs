@@ -18,17 +18,18 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <p>Hold down the shift button to select multiple</p>
       <form id="funding_stage_form">
-        <select name="funding_stage" multiple class="modal-body form-control-lg">
+        <select multiple name="funding_stage" multiple class="modal-body form-control form-control-lg">
 
-          <option name="bootstrapped" value="bootstrapped">Bootstrapped</button>
-            <option name="pre-seed" value="pre-seed">Pre-seed</button>
-              <option name="A" value="A">Seed</button>
-                <option name="B" value="B">B</button>
-                  <option name="B" value="B">C</button>
-                    <option name="public" value="public">Public</button>
-                      <option name="revenue" value="revenue">Revenue Financed</button>
-                        <option name="established" value="established">established</button>
+          <option name="bootstrapped" value="bootstrapped">Bootstrapped</option>
+          <option name="pre-seed" value="pre-seed">Pre-seed</option>
+          <option name="A" value="A">Seed</option>
+          <option name="B" value="B">B</option>
+          <option name="B" value="B">C</option>
+          <option name="public" value="public">Public</option>
+          <option name="revenue" value="revenue">Revenue Financed</option>
+          <option name="established" value="established">established</option>
         </select>
       </form>
 
@@ -72,14 +73,13 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form id="business_model_form" <select name="business_model" class="modal-body form-control-lg">
-        <button type="button" class="btn btn-success">B2B</button>
-        <button type="button" class="btn btn-success">B2C</button>
-        <button type="button" class="btn btn-success">B2B2C</button>
-        <button type="button" class="btn btn-success">B2G</button>
-
-
-
+      <p>Hold down the shift button to select multiple</p>
+      <form id="business_model_form">
+        <select multiple name="business_model" class="modal-body form-control form-control-lg">
+          <option value="B2B">B2B</option>
+          <option value="B2C">B2C</option>
+          <option value="B2B2C">B2B2C</option>
+          <option value="B2G">B2G</option>
         </select>
       </form>
       <div class="modal-footer">
@@ -101,14 +101,15 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <p>Hold down the shift button to select multiple</p>
       <form id="product_stage_form">
-        <select name="product_stage" class="modal-body form-control-lg">
-          <button type="button" class="btn btn-success">CUSTOMER DEVELOPMENT</button>
-          <button type="button" class="btn btn-success">R&D</button>
-          <button type="button" class="btn btn-success">CLINICAL TRIAL</button>
-          <button type="button" class="btn btn-success">ALPHA</button>
-          <button type="button" class="btn btn-success">BETA</button>
-          <button type="button" class="btn btn-success">RELEASED</button>
+        <select multiple name="product_stage" class="modal-body form-control form-control-lg">
+          <option value="customer development">CUSTOMER DEVELOPMENT</option>
+          <option value="R&D">R&D</option>
+          <option value="clinical trial">CLINICAL TRIAL</option>
+          <option value="alpha">ALPHA</option>
+          <option value="beta">BETA</option>
+          <option value="released">RELEASED</option>
         </select>
       </form>
       <div class="modal-footer">
@@ -119,7 +120,7 @@
   </div>
 </div>
 
-<!-- Product Stage Modal -->
+<!-- Number of employees Modal -->
 <div class="modal fade" id="Employees" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -129,6 +130,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <p>Hold down the shift button to select multiple</p>
       <form id="number_of_employees_form">
         <select multiple name="number_of_employees" class="modal-body form-control form-control-lg">
           <option value="1-10">1-10</option>
@@ -146,13 +148,12 @@
 </div>
 </div>
 
-<button type="button" class="btn btn-primary">Save changes</button>
 
 
 <script>
 
 
-
+  // ------- Number of Employees --------
 
   $.ajax({
     url: "/companies/get_all"
@@ -201,13 +202,9 @@
 
     filter_companies_array(filterGate)
 
-
-
   }
 
   )
-
-
 
   // this function is re-used to comply with DRY
   function filter_companies_array(filterGate) {
@@ -280,5 +277,39 @@
 
   }
 
+  //---------- End of number of employees ---------
 
+
+  //----------- Funding Stage ---------------
+
+  fundingStageForm.submit((event) => {
+    event.preventDefault()
+
+    // ------ this code is specific to the unique .submit function ----
+    var selected = event.target.funding_stage.selectedOptions
+
+    var selectedOptions = []
+
+    for (var i = 0; i < selected.length; i++) {
+      var option = selected[i]
+      selectedOptions.push(option.value)
+    }
+    // ---------- //
+
+    function filterGate(company) {
+
+      //  --- just change the contents of the if and the else to match the specific form -- //
+      if (selectedOptions.includes(company.funingstage)) {
+        return company
+      }
+      else {
+        return undefined
+      }
+      // ------ //
+    }
+
+
+    filter_companies_array(filterGate)
+  }
+  )
 </script>
