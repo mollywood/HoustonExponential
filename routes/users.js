@@ -5,7 +5,7 @@ const db = require("../models/index");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
-const keys = require("../config/keys")
+const keys = require("../config/keys");
 
 // Load input validation
 const validateRegisterInput = require("../validation/register");
@@ -22,8 +22,8 @@ router.get("/register", (req, res) => {
 // @desc Posts user inputs into database
 // @access Public
 router.post("/register", (req, res) => {
-  const {errors, isValid} = validateRegisterInput(req.body);
-  if(!isValid) {
+  const { errors, isValid } = validateRegisterInput(req.body);
+  if (!isValid) {
     return res.render("register", { errors: errors });
   }
 
@@ -34,16 +34,16 @@ router.post("/register", (req, res) => {
     defaults: {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      password: req.body.password,
+      password: req.body.password
     }
   }).spread((user, created) => {
     if (created) {
       res.render("login", {});
     } else {
-        errors.email = "Email already exist"
-        return res.render("register", { errors: errors });
-      };
-    });
+      errors.email = "Email already exist";
+      return res.render("register", { errors: errors });
+    }
+  });
 });
 
 // @route GET routes/users/login
@@ -57,42 +57,44 @@ router.get("/login", (req, res) => {
 // @desc Login User / Return JsonWebToken
 // @access Public
 router.post("/login", (req, res) => {
-  const {errors, isValid} = validateLoginInput(req.body);
-  if(!isValid) {
+  const { errors, isValid } = validateLoginInput(req.body);
+  if (!isValid) {
     return res.render("login", { errors: errors });
   }
 
   db.User.findOne({
     where: {
-      email: req.body.email,
+      email: req.body.email
     }
   }).then(user => {
-    if(!user)  {
-      errors.email = "User not found"
+    if (!user) {
+      errors.email = "User not found";
       return res.render("login", { errors: errors });
     }
 
     //Checks for password
-    bcrypt.compare(req.body.password, user.password)
-      .then(isMatch => {
-        if(isMatch) {
-          //Create JWT payload
-          const payload = { id: user.id, email: user.email}
-          // Sign Token
-          jwt.sign(
-            payload,
-            keys.secretOrKey,
-            {expiresIn: 3600},
-            (err, token) => {
-              res.render("home", {});
-            }
-          );
-        } else {
-          errors.password = "Password is incorrect"
-          return res.render("login", { errors: errors });
-        }
+    bcrypt.compare(req.body.password, user.password).then(isMatch => {
+      if (isMatch) {
+        //Create JWT payload
+        const payload = { id: user.id, email: user.email };
+        // Sign Token
+        jwt.sign(
+          payload,
+          keys.secretOrKey,
+          { expiresIn: 3600 },
+          (err, token) => {
+            console.log(req.isAuthenticated())
+            res.render("home", {});
+          }
+        );
+      } else {
+        errors.password = "Password is incorrect";
+        return res.render("login", { errors: errors });
+      }
     });
   });
+
+
 });
 
 // @route GET routes/users/linkedin
@@ -121,16 +123,20 @@ router.get(
 // @route GET routes/users/current
 // @desc Return current user
 // @access Private
-router.get("/current", passport.authenticate("jwt", {session: false}), (req, res) => {
-  res.json({
-    id: req.user.id,
-     firstName: req.user.firstName,
-     lastName: req.user.lastName,
-     email: req.user.email,
-     linkedinprofile: req.user.linkedinprofile,
-     createdAt: req.user.createdAt,
-     updatedAt: req.user.updatedAt
-  });
-});
+router.get(
+  "/current",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    res.json({
+      id: req.user.id,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
+      email: req.user.email,
+      linkedinprofile: req.user.linkedinprofile,
+      createdAt: req.user.createdAt,
+      updatedAt: req.user.updatedAt
+    });
+  }
+);
 
 module.exports = router;

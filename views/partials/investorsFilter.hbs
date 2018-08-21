@@ -1,5 +1,4 @@
-
-{{!-- Button Group --}}
+ {{!-- Button Group --}}
 <div class="container filter-buttons mx-auto">
     <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#type">Type</button>
     <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#investmentStages">Investment Stages</button>
@@ -15,25 +14,32 @@
         <div class="modal-content">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="typeLabel">Type</h5>
+                    <h5 class="modal-title" id="typeLabel">Investment Type</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="">
-                        {{#each investorList}}
-                            <button type="button" class="btn btn-blue" data-toggle="button">{{type}}</button>
-                        {{/each}}
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-blue">Submit</button>
-                </div>
+                <p>Hold down the shift button to select multiple</p>
+                <form id="investor_type_form">
+                    <select multiple name="investor_type" class="modal-body form-control form-control-lg">
+                        <option value="venture capital">Venture Capital</option>
+                        <option value="private equity">Private Equity</option>
+                        <option value="vc and pe">Venture Capital and Private Equity</option>
+                        <option value="angel group">Angel Group</option>
+                        <option value="angel">Angel</option>
+                        <option value="incubator">Incubator</option>
+                        <option value="accelerator">Accelerator</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
+
 
 {{!-- Investment Stages Modal --}}
 <div class="modal fade" id="investmentStages" tabindex="-1" role="dialog" aria-labelledby="investmentStagesLabel" aria-hidden="true">
@@ -46,35 +52,20 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                        <div data-toggle="buttons">
-
-                            <label class="btn btn-blue">
-                                <input type="checkbox" autocomplete="off" id="investmentStagesCheck1"> Pre-Seed
-                            </label>
-
-                            <label class="btn btn-blue">
-                                <input type="checkbox" autocomplete="off" id="investmentStagesCheck2">Pre-Clinical Trial
-                            </label>
-
-                            <label class="btn btn-blue">
-                                <input type="checkbox" autocomplete="off" id="investmentStagesCheck3">Seed
-                            </label>
-                        
-                            <label class="btn btn-blue">
-                                <input type="checkbox" autocomplete="off" id="investmentStagesCheck4">Clinical Trial
-                            </label>
-
-                            <label class="btn btn-blue">
-                                <input type="checkbox" autocomplete="off" id="investmentStagesCheck5">A
-                            </label>
-                       
-                            <label class="btn btn-blue">
-                                <input type="checkbox" autocomplete="off" id="investmentStagesCheck6">B
-                            </label>
-
-                        </div>
-                </div>
+                <p>Hold down the shift button to select multiple</p>
+                <form id="service_type_form">
+                    <select multiple name="service_type" class="modal-body form-control form-control-lg">
+                        <option value="pre-seed">Pre-Seed</option>
+                        <option value="pre-clinical trial">Pre-Clinical Trial</option>
+                        <option value="seed">Seed</option>
+                        <option value="clinical trial">Clinical Trial</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="late stage">Late Stage</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-blue">Submit</button>
                 </div>
@@ -95,7 +86,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-blue">Submit</button>
@@ -117,7 +108,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-blue">Submit</button>
@@ -139,7 +130,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-blue">Submit</button>
@@ -161,7 +152,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-blue">Submit</button>
@@ -170,3 +161,128 @@
         </div>
     </div>
 </div>
+
+
+
+<script>
+    $.ajax({
+        url: "/investors/get_all"
+    }).done(function (investors) {
+
+        localStorage.setItem('hx_investors', JSON.stringify(investors))
+        var retrieved = localStorage.getItem('hx_investors');
+        console.log(JSON.parse(retrieved), 'retrieved')
+
+    });
+
+
+    var investorTypeForm = $('#investor_type_form')
+    var investmentStageForm = $('#investment_stage_form')
+    //var businessModelForm = $('#business_model_form')
+    //var fundingStageForm = $('#funding_stage_form')
+
+    investorTypeForm.submit((event) => {
+        event.preventDefault()
+
+        // ------ this code is specific to the unique .submit function ----
+        var selected = event.target.investor_type.selectedOptions
+
+        var selectedOptions = []
+
+        for (var i = 0; i < selected.length; i++) {
+            var option = selected[i]
+            selectedOptions.push(option.value)
+        }
+        // ---------- //
+
+
+        console.log(selectedOptions)
+        function filterGate(investor) {
+
+            //  --- just change the contents of the if and the else to match the specific form -- //
+            if (selectedOptions.includes(investor.investorType)) {
+                return investor
+            }
+            else {
+                return undefined
+            }
+            // ------ //
+        }
+
+
+        filter_investors_array(filterGate)
+
+    }
+
+    )
+
+    // this function is re-used to comply with DRY
+    function filter_investors_array(filterGate) {
+
+        var investorsJson = JSON.parse(localStorage.getItem('hx_investors'))
+
+        if (investorsJson && investorsJson.investorList) {
+
+            var investors = investorsJson.investorList
+
+            var filtered = investors.filter((investor) => {
+
+                return filterGate(investor)
+                console.log(investor)
+            })
+
+            render_results(filtered)
+
+        }
+    }
+
+    // this function is re-used to comply with DRY
+    function render_results(filtered) {
+
+
+
+        if (filtered && filtered.length) {
+
+            var investorsContainer = $('#investors_wrapper')
+            var renderedHTML = ''
+
+            filtered.map((investor) => {
+                console.log(investor)
+
+                var renderedInvestor =
+                    `<div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="${investor.logo}" alt="${investor.name} logo">
+                  <div class="card-body">
+                      <h5 class="card-title">${investor.name}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">${investor.description}</h6>
+                      <div calss="text-center">
+                          <a href="#" class="btn btn-blue mx-auto">More Info</a>
+                      </div>
+                  </div>
+                  <div class="card-footer">
+                      <small class="text-muted">
+
+                              <div class="float-left">
+                                  Founded ${investor.foundedDate}
+                              </div>
+                              <div class="float-right">
+                                  ${investor.category}
+                              </div>
+
+                      </small>
+                  </div>
+              </div>`
+
+                renderedHTML += renderedInvestor
+
+
+
+            })
+
+            investorsContainer.html(renderedHTML)
+
+        }
+
+    }
+
+</script>
