@@ -15,17 +15,8 @@ module.exports = (sequelize, DataTypes) => {
       productStage: DataTypes.STRING,
       websiteUrl: DataTypes.STRING,
       contact: DataTypes.STRING,
-<<<<<<< HEAD
-<<<<<<< HEAD
-      bio: DataTypes.STRING(500000)
-=======
-      bio: DataTypes.STRING,
+      bio: DataTypes.STRING(500000),
       userid: DataTypes.UUID
->>>>>>> 1ef4eaaa71dc2449cc66437663c4a73b23e6929e
-=======
-      bio: DataTypes.STRING(500000)
-      userid: DataTypes.UUID
->>>>>>> be953d307ca5a2946640b1dfefac1ad2f893457c
     },
     {}
   );
