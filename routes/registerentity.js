@@ -3,10 +3,11 @@ const router = express.Router();
 const Sequelize = require("sequelize");
 const db = require('../models/index');
 const passport = require("passport");
+const validateUserLogin = require('./routeProtection').validateUserLogin;
 
 
-router.get('', passport.authenticate("jwt", {session: false}), (req, res) => {
-    res.render("registerentity", {});
+router.get('', validateUserLogin, (req, res) => {
+    res.render("registerEntity", {});
 });
 
 module.exports = router;

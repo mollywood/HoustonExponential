@@ -4,7 +4,6 @@ const Sequelize = require("sequelize");
 const db = require("../models/index");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
-const jwt = require("jsonwebtoken");
 const keys = require("../config/keys")
 
 // Load input validation
@@ -38,6 +37,7 @@ router.post("/register", (req, res) => {
     }
   }).spread((user, created) => {
     if (created) {
+      req.session.user = user.id
       res.render("login", {});
     } else {
         errors.email = "Email already exist"
@@ -57,6 +57,8 @@ router.get("/login", (req, res) => {
 // @desc Login User / Return JsonWebToken
 // @access Public
 router.post("/login", (req, res) => {
+
+  req.session = { user: null }
   const {errors, isValid} = validateLoginInput(req.body);
   if(!isValid) {
     return res.render("login", { errors: errors });
@@ -76,17 +78,9 @@ router.post("/login", (req, res) => {
     bcrypt.compare(req.body.password, user.password)
       .then(isMatch => {
         if(isMatch) {
-          //Create JWT payload
-          const payload = { id: user.id, email: user.email}
-          // Sign Token
-          jwt.sign(
-            payload,
-            keys.secretOrKey,
-            {expiresIn: 3600},
-            (err, token) => {
-              res.render("home", {});
-            }
-          );
+          req.session = { user: user.id }
+
+          res.redirect("/")
         } else {
           errors.password = "Password is incorrect"
           return res.render("login", { errors: errors });
@@ -94,6 +88,14 @@ router.post("/login", (req, res) => {
     });
   });
 });
+
+// @route POST routes/users/logout
+// @desc Logs out user
+// @access Public
+router.get('/logout', function(req, res){
+    req.session = null
+    res.redirect("/");
+})
 
 // @route GET routes/users/linkedin
 // @desc
@@ -118,18 +120,12 @@ router.get(
   })
 );
 
-// @route GET routes/users/current
-// @desc Return current user
-// @access Private
-router.get("/current", passport.authenticate("jwt", {session: false}), (req, res) => {
-  res.json({
-    id: req.user.id,
-     firstName: req.user.firstName,
-     lastName: req.user.lastName,
-     email: req.user.email,
-     linkedinprofile: req.user.linkedinprofile,
-     createdAt: req.user.createdAt,
-     updatedAt: req.user.updatedAt
+passport.serializeUser((user, done) => {
+  done(null, user.id)
+});
+passport.deserializeUser((user, done) => {
+  db.User.findById(id).then((user) => {
+    done(null, user);
   });
 });
 
