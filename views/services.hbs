@@ -1,7 +1,16 @@
 {{> header}}
-<h1>Services</h1>
-{{> servicesFilter}}
-<div class="container card-columns">
+
+<div class="text-center pt-3">
+    <h1>Services</h1>
+</div>
+
+<div class="container text-center pt-3">
+    {{> servicesFilter}}
+</div>
+
+
+<div id="services_wrapper" class="container card-columns pt-4 pb-3">
     {{> serviceCard}}
 </div>
+
 {{> footer}}

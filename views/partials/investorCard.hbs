@@ -1,11 +1,16 @@
 
 {{#each investorList}}
-    <div class="card" style="width: 18rem;">
+    <div class="card w-100">
         <img class="card-img-top" src="{{logo}}" alt="{{name}} logo">
         <div class="card-body">
             <h5 class="card-title">{{name}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{description}}</h6>
-            <a href="#" class="btn btn-blue">More Info</a>
+            <div class="text-center">
+                <form action="/investors/investorprofile" method="POST">
+                    <input name="investor_id" hidden value="{{id}}" />
+                    <button class="btn btn-blue mx-auto">More Info</button>
+                </form>
+            </div>
         </div>
         <div class="card-footer">
             <small class="text-muted">
