@@ -29,7 +29,7 @@
 }
 
 .whoweare-container {
-  height: 40vh;
+  height: 30rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,16 +37,16 @@
 }
 
 .whoweare-title {
-  font-size: 3rem
+  font-size: 2.5rem;
+  margin: 20px
 }
 
 .whoweare {
-  width: 50%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px
 }
 
 .whoweare-button {
@@ -57,7 +57,7 @@
 
 .whoweare-button:hover {
   background-color: #24BCE6;
-  color: #3F637B
+  color: white
 }
 
 .carousel-wrapper {
@@ -65,6 +65,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 30px
 }
 
 .company-cards {
@@ -109,7 +110,7 @@
   perspective: 1000px;
 }
 
-@media (min-width: 918px) {
+@media only screen and (min-width: 918px) {
   /* show 3 items */
   .carousel-inner .active,
   .carousel-inner .active+.carousel-item,
