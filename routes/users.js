@@ -21,11 +21,10 @@ router.get("/register", (req, res) => {
 // @desc Posts user inputs into database
 // @access Public
 router.post("/register", (req, res) => {
-  const {errors, isValid} = validateRegisterInput(req.body);
-  if(!isValid) {
+  const { errors, isValid } = validateRegisterInput(req.body);
+  if (!isValid) {
     return res.render("register", { errors: errors });
   }
-
   db.User.findOrCreate({
     where: {
       email: req.body.email
@@ -33,16 +32,16 @@ router.post("/register", (req, res) => {
     defaults: {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      password: req.body.password,
+      password: req.body.password
     }
   }).spread((user, created) => {
     if (created) {
       res.render("login", {});
     } else {
-        errors.email = "Email already exist"
-        return res.render("register", { errors: errors });
-      };
-    });
+      errors.email = "Email already exist";
+      return res.render("register", { errors: errors });
+    }
+  });
 });
 
 // @route GET routes/users/login
@@ -56,21 +55,19 @@ router.get("/login", (req, res) => {
 // @desc Login User / Return JsonWebToken
 // @access Public
 router.post("/login", (req, res) => {
-  const {errors, isValid} = validateLoginInput(req.body);
-  if(!isValid) {
+  const { errors, isValid } = validateLoginInput(req.body);
+  if (!isValid) {
     return res.render("login", { errors: errors });
   }
-
   db.User.findOne({
     where: {
-      email: req.body.email,
+      email: req.body.email
     }
   }).then(user => {
-    if(!user)  {
-      errors.email = "User not found"
+    if (!user) {
+      errors.email = "User not found";
       return res.render("login", { errors: errors });
     }
-
     //Checks for password
     bcrypt.compare(req.body.password, user.password)
       .then(isMatch => {
@@ -81,7 +78,6 @@ router.post("/login", (req, res) => {
             req.session.cookie.expires = new Date(Date.now() + expiresIn)
             req.session.cookie.maxAge = expiresIn
           }
-          console.log(req.isAuthenticated())
           res.redirect("/")
         } else {
           errors.password = "Password is incorrect"

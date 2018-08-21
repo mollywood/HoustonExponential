@@ -9,11 +9,11 @@
 
 
 <!-- Funding Stage Modal -->
-<div class="modal fade" id="FundingStage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="FundingStage" tabindex="-1" role="dialog" aria-labelledby="typeLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Funding Stage</h5>
+        <h5 class="modal-title" id="typeLabel">Funding Stage</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -24,18 +24,19 @@
 
           <option name="bootstrapped" value="bootstrapped">Bootstrapped</option>
           <option name="pre-seed" value="pre-seed">Pre-seed</option>
-          <option name="A" value="A">Seed</option>
+          <option name="seed" value="seed">Seed</option>
+          <option name="A" value="A">A</option>
           <option name="B" value="B">B</option>
           <option name="B" value="B">C</option>
           <option name="public" value="public">Public</option>
           <option name="revenue" value="revenue">Revenue Financed</option>
           <option name="established" value="established">established</option>
         </select>
+        <button type="submit" class="btn btn-primary">Save changes</button>
       </form>
-
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>
+
       </div>
     </div>
   </div>
@@ -43,11 +44,11 @@
 
 
 <!-- Founded Modal -->
-<div class="modal fade" id="Founded" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="Founded" tabindex="-1" role="dialog" aria-labelledby="typeLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Range</h5>
+        <h5 class="modal-title" id="typeLabel">Range</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -64,11 +65,11 @@
 </div>
 
 <!-- Business Model Modal -->
-<div class="modal fade" id="BusinessModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="BusinessModel" tabindex="-1" role="dialog" aria-labelledby="typeLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Business Model</h5>
+        <h5 class="modal-title" id="typeLabel">Business Model</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -81,10 +82,11 @@
           <option value="B2B2C">B2B2C</option>
           <option value="B2G">B2G</option>
         </select>
+        <button type="submit" class="btn btn-primary">Save changes</button>
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+
       </div>
     </div>
   </div>
@@ -92,11 +94,11 @@
 
 
 <!-- Product Stage Modal -->
-<div class="modal fade" id="ProductStage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="ProductStage" tabindex="-1" role="dialog" aria-labelledby="typeLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Product Stage</h5>
+        <h5 class="modal-title" id="typeLabel">Product Stage</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -111,21 +113,22 @@
           <option value="beta">BETA</option>
           <option value="released">RELEASED</option>
         </select>
+        <button type="submit" class="btn btn-primary">Save changes</button>
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+
       </div>
     </div>
   </div>
 </div>
 
 <!-- Number of employees Modal -->
-<div class="modal fade" id="Employees" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="Employees" tabindex="-1" role="dialog" aria-labelledby="typeLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Number of Employees</h5>
+        <h5 class="modal-title" id="typeLabel">Number of Employees</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -140,12 +143,13 @@
           <option value="500+">500+</option>
         </select>
         <button type="submit" class="btn btn-primary">Save changes</button>
-      </form <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 
@@ -299,7 +303,7 @@
     function filterGate(company) {
 
       //  --- just change the contents of the if and the else to match the specific form -- //
-      if (selectedOptions.includes(company.funingstage)) {
+      if (selectedOptions.includes(company.fundingstage)) {
         return company
       }
       else {
@@ -310,6 +314,80 @@
 
 
     filter_companies_array(filterGate)
+
+
+  }
+  )
+
+  // -------------- End of Funding Stage ------------
+
+
+  // -------------- Business Model ----------------
+  businessModelForm.submit((event) => {
+    event.preventDefault()
+
+    // ------ this code is specific to the unique .submit function ----
+    var selected = event.target.business_model.selectedOptions
+
+    var selectedOptions = []
+
+    for (var i = 0; i < selected.length; i++) {
+      var option = selected[i]
+      selectedOptions.push(option.value)
+    }
+    // ---------- //
+
+    function filterGate(company) {
+
+      //  --- just change the contents of the if and the else to match the specific form -- //
+      if (selectedOptions.includes(company.businessModel)) {
+        return company
+      }
+      else {
+        return undefined
+      }
+      // ------ //
+    }
+
+
+    filter_companies_array(filterGate)
+
+
+  }
+  )
+  // --------------- End of Business Model ----------
+
+  // -------------- Product Stage -------------
+  productStageForm.submit((event) => {
+    event.preventDefault()
+
+    // ------ this code is specific to the unique .submit function ----
+    var selected = event.target.product_stage.selectedOptions
+
+    var selectedOptions = []
+
+    for (var i = 0; i < selected.length; i++) {
+      var option = selected[i]
+      selectedOptions.push(option.value)
+    }
+    // ---------- //
+
+    function filterGate(company) {
+
+      //  --- just change the contents of the if and the else to match the specific form -- //
+      if (selectedOptions.includes(company.productStage)) {
+        return company
+      }
+      else {
+        return undefined
+      }
+      // ------ //
+    }
+
+
+    filter_companies_array(filterGate)
+
+
   }
   )
 </script>

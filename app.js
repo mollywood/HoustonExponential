@@ -2,22 +2,22 @@ const express = require("express");
 const app = express();
 const body_parser = require("body-parser");
 const exphbs = require("express-handlebars");
-const keys = require("./config/keys")
 
+const about = require('./routes/about');
 const companies = require("./routes/companies");
 const home = require("./routes/home");
 const investors = require("./routes/investors");
-const services = require("./routes/services");
-const users = require("./routes/users");
-const registerEntity = require("./routes/registerEntity");
 const registerCompany = require("./routes/registerCompany");
+const registerEntity = require("./routes/registerEntity");
 const registerInvestor = require("./routes/registerInvestor");
 const registerService = require("./routes/registerService");
+const services = require("./routes/services");
+const users = require("./routes/users");
 
 // Authentication packages
-const session = require("express-session");
-const passport = require("passport");
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
+const passport = require("passport");
+const session = require("express-session");
 
 //Middleware
 app.use(express.static("public"));
@@ -34,7 +34,7 @@ app.engine(
 app.set("view engine", ".hbs");
 
 app.use(session({
-    secret: keys.sessionKey,
+    secret: "thisshouldbechangedondeployment",
     resave: false,
     saveUninitialized: false
 }))
@@ -44,6 +44,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(
+  // the LinkedIn API keys should be hidden on deployment
   new LinkedInStrategy(
     {
       clientID: "78umadn462runs",
@@ -84,6 +85,7 @@ app.use("", home);
 app.use("/investors", investors);
 app.use("/services", services);
 app.use("/users", users);
+app.use('/about', about);
 app.use("/registerEntity", registerEntity);
 app.use("/registerCompany", registerCompany);
 app.use("/registerInvestor", registerInvestor);

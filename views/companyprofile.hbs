@@ -1,0 +1,50 @@
+{{> header}}
+
+<div class="container text-center">
+    <h1><a href="{{companyInfo.website}}">{{companyInfo.name}}</a></h1>
+    <h2 class="text-muted">{{companyInfo.description}}</h2>
+</div>
+
+<div class="container pt-3">
+    <div class="col-s-12 col-lg-3">
+        <img src="{{companyInfo.logo}}" class="img-logo img-responsive float-left mr-3" width="300px">
+    </div>
+    <div class="col-s-12 col-lg-12">
+        <p>{{companyInfo.bio}}</p>
+    </div>
+</div>
+
+<div class="container pt-3">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Category</th>
+                <th scope="col">Founded</th>
+                <th scope="col">Location</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Employees</th>
+                <th scope="col">Funding Stage</th>
+                <th scope="col">Business Model</th>
+                <th scope="col">Product Stage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="col">{{companyInfo.category}}</td>
+                <td scope="col">{{companyInfo.foundedDate}}</td>
+                <td scope="col">{{companyInfo.location}}</td>
+                <td scope="col">{{companyInfo.contact}}</td>
+                <td scope="col">{{companyInfo.employees}}</td>
+                <td scope="col">{{companyInfo.fundingstage}}</td>
+                <td scope="col">{{companyInfo.businessModel}}</td>
+                <td scope="col">{{companyInfo.productStage}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="text-center pt-3 pb-3">
+    <a href="/companies"><button class="btn btn-blue">Back to Companies</button></a>
+</div>
+
+{{> footer}}
