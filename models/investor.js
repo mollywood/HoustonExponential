@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     bio: DataTypes.STRING(500000),
     logo: DataTypes.STRING,
     userid: DataTypes.UUID
+
   }, {});
   Investor.associate = (models) => {
     // associations can be defined here

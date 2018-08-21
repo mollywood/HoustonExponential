@@ -64,7 +64,6 @@ router.get("/get_all", function(req, res) {
   });
 });
 
-
 /*
 router.post("/companies", (req, res) => {
   db.Company.findAll({ where: {productstage: } }).then();
