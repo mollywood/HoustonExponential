@@ -70,6 +70,14 @@ passport.use(
   )
 );
 
+//Used to change header
+app.use(function(req,res,next){
+if (req.session.user) {
+    res.locals.user = req.session.user;
+}
+next();
+});
+
 // Use routes
 app.use("/companies", companies);
 app.use("", home);

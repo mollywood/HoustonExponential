@@ -81,6 +81,7 @@ router.post("/login", (req, res) => {
             req.session.cookie.expires = new Date(Date.now() + expiresIn)
             req.session.cookie.maxAge = expiresIn
           }
+          console.log(req.isAuthenticated())
           res.redirect("/")
         } else {
           errors.password = "Password is incorrect"
