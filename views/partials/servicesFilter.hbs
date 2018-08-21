@@ -1,5 +1,4 @@
-
-{{!-- Button Group --}}
+ {{!-- Button Group --}}
 <div class="container filter-buttons mx-auto">
     <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#type">Type</button>
     <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#batchSize">Batch Size</button>
@@ -22,24 +21,24 @@
 <div class="modal fade" id="type" tabindex="-1" role="dialog" aria-labelledby="typeLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="typeLabel">Type</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {{#each serviceList}}
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="typeCheck">
-                            <label class="form-check-label" for="typeCheck">{{type}}</label>
-                        </div>
-                    {{/each}}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-blue">Submit</button>
-                </div>
+            <div class="modal-header">
+                <h5 class="modal-title" id="typeLabel">Type</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <p>Hold down the shift button to select multiple</p>
+            <form id="service_type_form">
+                <select multiple name="service_type" class="modal-body form-control form-control-lg">
+                    <option value="coworking">Co-working Space</option>
+                    <option value="incubator">Incubator</option>
+                    <option value="accelerator">Accelerator</option>
+                    <option value="entreprenuer">Entreprenuership Program</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -57,21 +56,18 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="batchSizeCheck1">
-                            <label class="form-check-label" for="batchSizeCheck1">1-10</label>
-                        </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="batchSizeCheck2">
-                            <label class="form-check-label" for="batchSizeCheck2">11-20</label>
-                        </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="batchSizeCheck3">
-                            <label class="form-check-label" for="batchSizeCheck3">21+</label>
-                        </div>
+                    <p>Hold down the shift button to select multiple</p>
+                    <form id="batch_size_form">
+                        <select multiple name="batch_size" class="modal-body form-control form-control-lg">
+                            <option value="1-10">1-10</option>
+                            <option value="11-20">11-20</option>
+                            <option value="21+">21+</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-blue">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -90,12 +86,172 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    
+
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-blue">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+
+    // ------- Type of Service --------
+
+    $.ajax({
+        url: "/services/get_all"
+    }).done(function (services) {
+
+        localStorage.setItem('hx_services', JSON.stringify(services))
+        var retrieved = localStorage.getItem('hx_services');
+        console.log(JSON.parse(retrieved), 'retrieved')
+
+    });
+
+
+    var serviceTypeForm = $('#service_type_form')
+    var batchSizeForm = $('#batch_size_form')
+    //var businessModelForm = $('#business_model_form')
+    //var fundingStageForm = $('#funding_stage_form')
+
+    serviceTypeForm.submit((event) => {
+        event.preventDefault()
+
+        // ------ this code is specific to the unique .submit function ----
+        var selected = event.target.service_type.selectedOptions
+
+        var selectedOptions = []
+
+        for (var i = 0; i < selected.length; i++) {
+            var option = selected[i]
+            selectedOptions.push(option.value)
+        }
+        // ---------- //
+
+
+        console.log(selectedOptions)
+        function filterGate(service) {
+
+            //  --- just change the contents of the if and the else to match the specific form -- //
+            if (selectedOptions.includes(service.type)) {
+                return service
+            }
+            else {
+                return undefined
+            }
+            // ------ //
+        }
+
+
+        filter_services_array(filterGate)
+
+    }
+
+    )
+
+    // this function is re-used to comply with DRY
+    function filter_services_array(filterGate) {
+
+        var servicesJson = JSON.parse(localStorage.getItem('hx_services'))
+
+        if (servicesJson && servicesJson.serviceList) {
+
+            var services = servicesJson.serviceList
+
+            var filtered = services.filter((service) => {
+
+                return filterGate(service)
+
+            })
+
+            render_results(filtered)
+
+        }
+    }
+
+    // this function is re-used to comply with DRY
+    function render_results(filtered) {
+
+
+
+        if (filtered && filtered.length) {
+
+            var servicesContainer = $('#services_wrapper')
+            var renderedHTML = ''
+
+            filtered.map((service) => {
+
+                var renderedService =
+                    `<div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="${service.logo}" alt="${service.name} logo">
+                  <div class="card-body">
+                      <h5 class="card-title">${service.name}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">${service.description}</h6>
+                      <div calss="text-center">
+                          <a href="#" class="btn btn-blue mx-auto">More Info</a>
+                      </div>
+                  </div>
+                  <div class="card-footer">
+                      <small class="text-muted">
+
+                              <div class="float-left">
+                                  Founded ${service.foundedDate}
+                              </div>
+                              <div class="float-right">
+                                  ${service.category}
+                              </div>
+
+                      </small>
+                  </div>
+              </div>`
+
+                renderedHTML += renderedService
+
+
+
+
+            })
+
+            servicesContainer.html(renderedHTML)
+
+        }
+
+    }
+    // ---------- End of Type of Service ---------
+
+    // ---------- Batch Size ------------
+    batchSizeForm.submit((event) => {
+        event.preventDefault()
+
+        // ------ this code is specific to the unique .submit function ----
+        var selected = event.target.batch_size.selectedOptions
+
+        var selectedOptions = []
+
+        for (var i = 0; i < selected.length; i++) {
+            var option = selected[i]
+            selectedOptions.push(option.value)
+        }
+        // ---------- //
+
+        function filterGate(company) {
+
+            //  --- just change the contents of the if and the else to match the specific form -- //
+            if (selectedOptions.includes(company.batchSize)) {
+                return company
+            }
+            else {
+                return undefined
+            }
+            // ------ //
+        }
+
+
+        filter_services_array(filterGate)
+
+
+    }
+    )
+</script>
