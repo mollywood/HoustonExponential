@@ -4,7 +4,6 @@ const Sequelize = require("sequelize");
 const db = require("../models/index");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
-const keys = require("../config/keys")
 
 // Load input validation
 const validateRegisterInput = require("../validation/register");
