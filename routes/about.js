@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-
 // @route GET /
 // @desc Renders about.hbs view
 // @access Public
@@ -10,6 +9,5 @@ router.get("", (req, res) => {
       title: "About"
     });
   });
-
 
 module.exports = router;
