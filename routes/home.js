@@ -8,6 +8,7 @@ const db = require('../models/index');
 // @access Public
 router.get("/", (req, res) => {
   db.Company.findAll().then(result => {
+    console.log(req.isAuthenticated())
     res.render("home", {
       title: "Welcome",
       companies: result
