@@ -2,24 +2,18 @@ const express = require("express");
 const app = express();
 const body_parser = require("body-parser");
 const exphbs = require("express-handlebars");
-
 const about = require('./routes/about');
 const companies = require("./routes/companies");
 const home = require("./routes/home");
 const investors = require("./routes/investors");
-<<<<<<< HEAD
-const services = require("./routes/services");
-const users = require("./routes/users");
-const about = require("./routes/about");
-const registerentity = require("./routes/registerentity");
-=======
->>>>>>> master
 const registerCompany = require("./routes/registerCompany");
-const registerEntity = require("./routes/registerEntity");
+const registerEntity = require("./routes/registerentity");
 const registerInvestor = require("./routes/registerInvestor");
 const registerService = require("./routes/registerService");
 const services = require("./routes/services");
 const users = require("./routes/users");
+const Sequelize = require("sequelize");
+const db = require("./models/index");
 
 // Authentication packages
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
@@ -79,17 +73,11 @@ passport.use(
 );
 
 //Used to change header
-<<<<<<< HEAD
-app.use(function(req, res, next) {
-  res.locals.isAuthenticated = req.isAuthenticated();
-  next();
-=======
 app.use(function(req,res,next){
 if (req.session.user) {
     res.locals.user = req.session.user;
 }
 next();
->>>>>>> master
 });
 
 // Use routes
@@ -98,13 +86,8 @@ app.use("", home);
 app.use("/investors", investors);
 app.use("/services", services);
 app.use("/users", users);
-<<<<<<< HEAD
-app.use("/about", about);
-app.use("/registerentity", registerentity);
-=======
 app.use('/about', about);
 app.use("/registerEntity", registerEntity);
->>>>>>> master
 app.use("/registerCompany", registerCompany);
 app.use("/registerInvestor", registerInvestor);
 app.use("/registerService", registerService);
