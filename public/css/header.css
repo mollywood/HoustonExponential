@@ -1,11 +1,9 @@
-
 .logo-header {
     width: 100px;
 }
 
 .nav-item-wrapper {
     width: 100%;
-   
 }
 
 .nav-item-box {
@@ -18,3 +16,14 @@
     display: flex;
 }
 
+@media only screen and (max-width: 918px) {
+    .nav-item-box {
+        flex-direction: column;
+    }
+    .nav-item-group>* {
+        margin: 10px
+    }
+    .shrink-search {
+        width: 15rem
+    }
+}
