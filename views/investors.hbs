@@ -1,7 +1,15 @@
 {{> header}}
-<h1>Investors</h1>
-{{> investorsFilter}}
-<div class="container card-columns">
+
+<div class="text-center pt-3">
+    <h1>Investors</h1>
+</div>
+
+<div class="container text-center pt-3">
+    {{> investorsFilter}}
+</div>
+
+<div id="investors_wrapper" class="container card-columns pt-4 pb-3">
     {{> investorCard}}
 </div>
+
 {{> footer}}

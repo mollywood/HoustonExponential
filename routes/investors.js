@@ -1,14 +1,14 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Sequelize = require('sequelize');
-const db = require('../models/index');
+const Sequelize = require("sequelize");
+const db = require("../models/index");
 
 // @route GET routes/investors
 // @desc Display investors on investors.hbs page
 // @access Public
-router.get('', (req,res) => {
-  db.Investor.findAll().then((investors) => {
-    res.render('investors', {investorList: investors})
+router.get("", (req, res) => {
+  db.Investor.findAll().then(investors => {
+    res.render("investors", { investorList: investors });
   });
 });
 
@@ -26,6 +26,22 @@ router.get("/register", (req, res) => {
 // @access Protected
 router.post("/register", (req, res) => {});
 
-
+router.get("/get_all", function(req, res) {
+  db.Investor.findAll().then(function(investors) {
+    res.json({ investorList: investors });
+  });
+});
+// @route POST routes/investors/investorprofile
+// @desc display investors profile page
+// @access Public
+router.post("/investorprofile", (req, res) => {
+  db.Investor.findOne({
+    where: {
+      id: req.body.investor_id
+    }
+  }).then(function(investor) {
+    res.render("investorprofile", { investorInfo: investor.dataValues });
+  });
+});
 
 module.exports = router;
