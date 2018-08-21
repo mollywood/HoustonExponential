@@ -4,6 +4,7 @@ const body_parser = require("body-parser");
 const exphbs = require("express-handlebars");
 const Sequelize = require("sequelize");
 const db = require("./models/index");
+
 const about = require('./routes/about');
 const companies = require("./routes/companies");
 const home = require("./routes/home");
@@ -14,8 +15,6 @@ const registerInvestor = require("./routes/registerInvestor");
 const registerService = require("./routes/registerService");
 const services = require("./routes/services");
 const users = require("./routes/users");
-const Sequelize = require("sequelize");
-const db = require("./models/index");
 
 // Authentication packages
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
