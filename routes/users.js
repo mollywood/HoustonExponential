@@ -37,7 +37,6 @@ router.post("/register", (req, res) => {
     }
   }).spread((user, created) => {
     if (created) {
-      req.session.user = user.id
       res.render("login", {});
     } else {
         errors.email = "Email already exist"
@@ -57,8 +56,6 @@ router.get("/login", (req, res) => {
 // @desc Login User / Return JsonWebToken
 // @access Public
 router.post("/login", (req, res) => {
-
-  req.session = { user: null }
   const {errors, isValid} = validateLoginInput(req.body);
   if(!isValid) {
     return res.render("login", { errors: errors });
@@ -78,8 +75,12 @@ router.post("/login", (req, res) => {
     bcrypt.compare(req.body.password, user.password)
       .then(isMatch => {
         if(isMatch) {
-          req.session = { user: user.id }
-
+          if(req.session) {
+            req.session.user = { userID: user.id }
+            let expiresIn = 10800000 // 3 hours
+            req.session.cookie.expires = new Date(Date.now() + expiresIn)
+            req.session.cookie.maxAge = expiresIn
+          }
           res.redirect("/")
         } else {
           errors.password = "Password is incorrect"
@@ -92,9 +93,10 @@ router.post("/login", (req, res) => {
 // @route POST routes/users/logout
 // @desc Logs out user
 // @access Public
-router.get('/logout', function(req, res){
-    req.session = null
-    res.redirect("/");
+router.get('/logout', (req, res) => {
+  req.logout();
+  req.session.destroy();
+  res.redirect("/");
 })
 
 // @route GET routes/users/linkedin

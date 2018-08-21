@@ -1,11 +1,9 @@
 module.exports = {
-  validateUserLogin: function (req,res,next) {
-    
-    console.log(req.session, 'fghjkkl');
-    if(req.session && req.session.user) {
+  validateLogin: function (req, res, next) {
+    if (req.session.user) {
       next()
     } else {
-        res.redirect('/users/login')
+      res.redirect("/users/login")
     }
   }
 }

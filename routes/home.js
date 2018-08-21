@@ -8,7 +8,6 @@ const app = require("../app")
 // @desc Renders home.hbs view
 // @access Public
 router.get("/", (req, res) => {
-  console.log(req.session, 'fghjkkl');
   db.Company.findAll().then(result => {
     res.render("home", {
       title: "Welcome",
