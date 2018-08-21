@@ -2,13 +2,15 @@ const express = require("express");
 const app = express();
 const body_parser = require("body-parser");
 const exphbs = require("express-handlebars");
+const Sequelize = require("sequelize");
+const db = require("./models/index");
 
 const about = require('./routes/about');
 const companies = require("./routes/companies");
 const home = require("./routes/home");
 const investors = require("./routes/investors");
 const registerCompany = require("./routes/registerCompany");
-const registerEntity = require("./routes/registerEntity");
+const registerEntity = require("./routes/registerentity");
 const registerInvestor = require("./routes/registerInvestor");
 const registerService = require("./routes/registerService");
 const services = require("./routes/services");
@@ -92,6 +94,7 @@ app.use("/registerCompany", registerCompany);
 app.use("/registerInvestor", registerInvestor);
 app.use("/registerService", registerService);
 app.use("/viewprofile", viewprofile);
+
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
