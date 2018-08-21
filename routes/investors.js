@@ -31,5 +31,17 @@ router.get("/get_all", function(req, res) {
     res.json({ investorList: investors });
   });
 });
+// @route POST routes/investors/investorprofile
+// @desc display investors profile page
+// @access Public
+router.post("/investorprofile", (req, res) => {
+  db.Investor.findOne({
+    where: {
+      id: req.body.investor_id
+    }
+  }).then(function(investor) {
+    res.render("investorprofile", { investorInfo: investor.dataValues });
+  });
+});
 
 module.exports = router;

@@ -31,5 +31,17 @@ router.get("/get_all", function(req, res) {
     res.json({ serviceList: services });
   });
 });
+// @route routes/services/serviceprofile
+// @desc POST display service profile page
+// @access Public
+router.post("/serviceprofile", (req, res) => {
+  db.Service.findOne({
+    where: {
+      id: req.body.service_id
+    }
+  }).then(function(service) {
+    res.render("serviceprofile", { serviceInfo: service.dataValues });
+  });
+});
 
 module.exports = router;

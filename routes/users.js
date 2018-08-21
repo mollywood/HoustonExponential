@@ -24,7 +24,7 @@ router.get("/register", (req, res) => {
 router.post("/register", (req, res) => {
   const {errors, isValid} = validateRegisterInput(req.body);
   if(!isValid) {
-    return res.status(400).json(errors);
+    return res.render("register", { errors: errors });
   }
 
   db.User.findOrCreate({
@@ -41,7 +41,7 @@ router.post("/register", (req, res) => {
       res.render("login", {});
     } else {
         errors.email = "Email already exist"
-        return res.status(400).json(errors);
+        return res.render("register", { errors: errors });
       };
     });
 });
@@ -59,7 +59,7 @@ router.get("/login", (req, res) => {
 router.post("/login", (req, res) => {
   const {errors, isValid} = validateLoginInput(req.body);
   if(!isValid) {
-    return res.status(400).json(errors);
+    return res.render("login", { errors: errors });
   }
 
   db.User.findOne({
@@ -69,7 +69,7 @@ router.post("/login", (req, res) => {
   }).then(user => {
     if(!user)  {
       errors.email = "User not found"
-      return res.status(404).json(errors);
+      return res.render("login", { errors: errors });
     }
 
     //Checks for password
@@ -84,15 +84,12 @@ router.post("/login", (req, res) => {
             keys.secretOrKey,
             {expiresIn: 3600},
             (err, token) => {
-              res.json({
-                success: true,
-                token: "Bearer " + token
-              });
+              res.render("home", {});
             }
           );
         } else {
           errors.password = "Password is incorrect"
-          return res.status(400).json(errors);
+          return res.render("login", { errors: errors });
         }
     });
   });
