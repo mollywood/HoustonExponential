@@ -4,6 +4,11 @@ const Sequelize = require("sequelize");
 const db = require('../models/index');
 const validateLogin = require('./routeProtection').validateLogin;
 
+router.get('', validateLogin, (req, res) => {
+    res.render("registerService", {});
+});
+
+module.exports = router;
 
 router.get('', (req, res) => {
     res.render("registerService", {});

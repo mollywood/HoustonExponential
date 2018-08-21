@@ -13,6 +13,7 @@ const registerInvestor = require("./routes/registerInvestor");
 const registerService = require("./routes/registerService");
 const services = require("./routes/services");
 const users = require("./routes/users");
+const viewprofile = require("./routes/viewprofile");
 
 // Authentication packages
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
@@ -90,6 +91,7 @@ app.use("/registerEntity", registerEntity);
 app.use("/registerCompany", registerCompany);
 app.use("/registerInvestor", registerInvestor);
 app.use("/registerService", registerService);
+app.use("/viewprofile", viewprofile);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));

@@ -5,7 +5,7 @@ const db = require('../models/index');
 const validateLogin = require('./routeProtection').validateLogin;
 
 router.get('', validateLogin, (req, res) => {
-    res.render("registerEntity", {});
+    res.render("registerInvestor", {});
 });
 
 module.exports = router;
