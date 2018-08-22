@@ -1,28 +1,24 @@
-
-{{#each companyList}}
-    <div class="card w-100">
-        <img class="card-img-top" src="{{logo}}" alt="{{name}} logo">
-        <div class="card-body">
-            <h5 class="card-title">{{name}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{description}}</h6>
-            <div class="text-center">
-                <form action="/companies/companyprofile" method="POST">
-                    <input name="company_id" hidden value="{{id}}" />
-                    <button class="btn btn-blue mx-auto">More Info</a>
-                </form>
-            </div>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">
-
-                    <div class="float-left">
-                        Founded {{foundedDate}}
-                    </div>
-                    <div class="float-right">
-                        {{category}}
-                    </div>
-
-            </small>
+ {{#each companyList}}
+<div class="card company-cards">
+    <div class="company-cards-img"><img class="card-img-top" src="{{logo}}" alt="{{name}} logo"></div>
+    <div class="card-body company-cards-text">
+        <h5 class="card-title">{{name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{description}}</h6>
+        <div calss="text-center">
+            <a href="#" class="btn btn-blue mx-auto">More Info</a>
         </div>
     </div>
+    <div class="card-footer">
+        <small class="text-muted">
+
+            <div class="float-left">
+                Founded {{foundedDate}}
+            </div>
+            <div class="float-right">
+                {{category}}
+            </div>
+
+        </small>
+    </div>
+</div>
 {{/each}}
