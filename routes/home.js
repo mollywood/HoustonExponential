@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Sequelize = require("sequelize");
 const db = require('../models/index');
+const app = require("../app")
 
 // @route GET /
 // @desc Renders home.hbs view

@@ -3,20 +3,6 @@ const router = express.Router();
 const Sequelize = require("sequelize");
 const db = require("../models/index");
 
-// @route GET routes/companies
-// @desc Display companies on companies.hbs page
-// @access Public
-// router.get("", (req, res) => {
-//   console.log("root url for companies");
-//   // need to access the query string which was just passed
-//   let stage = req.query.fundingstage;
-//   console.log(stage);
-
-//   db.Company.findAll().then(companies => {
-//     res.render("companies", { companyList: companies });
-//   });
-// });
-
 // @route GET routes/companies/register
 // @desc
 // @access Protected
@@ -48,7 +34,7 @@ router.get("/", function(req, res) {
 // @desc POST display company's profile page
 // @access Public
 router.post("/companyprofile", (req,res) => {
-  
+
   db.Company.findOne({
     where: {
       id : req.body.company_id
@@ -63,7 +49,6 @@ router.get("/get_all", function(req, res) {
     res.json({ companies: companies });
   });
 });
-
 
 /*
 router.post("/companies", (req, res) => {
