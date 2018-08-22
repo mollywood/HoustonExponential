@@ -4,8 +4,6 @@ const Sequelize = require("sequelize");
 const db = require("../models/index");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
-const jwt = require("jsonwebtoken");
-const keys = require("../config/keys");
 
 // Load input validation
 const validateRegisterInput = require("../validation/register");
@@ -26,7 +24,6 @@ router.post("/register", (req, res) => {
   if (!isValid) {
     return res.render("register", { errors: errors });
   }
-
   db.User.findOrCreate({
     where: {
       email: req.body.email
@@ -61,7 +58,6 @@ router.post("/login", (req, res) => {
   if (!isValid) {
     return res.render("login", { errors: errors });
   }
-
   db.User.findOne({
     where: {
       email: req.body.email
@@ -71,31 +67,33 @@ router.post("/login", (req, res) => {
       errors.email = "User not found";
       return res.render("login", { errors: errors });
     }
-
     //Checks for password
-    bcrypt.compare(req.body.password, user.password).then(isMatch => {
-      if (isMatch) {
-        //Create JWT payload
-        const payload = { id: user.id, email: user.email };
-        // Sign Token
-        jwt.sign(
-          payload,
-          keys.secretOrKey,
-          { expiresIn: 3600 },
-          (err, token) => {
-            console.log(req.isAuthenticated())
-            res.render("home", {});
+    bcrypt.compare(req.body.password, user.password)
+      .then(isMatch => {
+        if(isMatch) {
+          if(req.session) {
+            req.session.user = { userID: user.id }
+            let expiresIn = 10800000 // 3 hours
+            req.session.cookie.expires = new Date(Date.now() + expiresIn)
+            req.session.cookie.maxAge = expiresIn
           }
-        );
-      } else {
-        errors.password = "Password is incorrect";
-        return res.render("login", { errors: errors });
-      }
+          res.redirect("/")
+        } else {
+          errors.password = "Password is incorrect"
+          return res.render("login", { errors: errors });
+        }
     });
   });
-
-
 });
+
+// @route POST routes/users/logout
+// @desc Logs out user
+// @access Public
+router.get('/logout', (req, res) => {
+  req.logout();
+  req.session.destroy();
+  res.redirect("/");
+})
 
 // @route GET routes/users/linkedin
 // @desc
@@ -120,23 +118,11 @@ router.get(
   })
 );
 
-// @route GET routes/users/current
-// @desc Return current user
-// @access Private
-router.get(
-  "/current",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    res.json({
-      id: req.user.id,
-      firstName: req.user.firstName,
-      lastName: req.user.lastName,
-      email: req.user.email,
-      linkedinprofile: req.user.linkedinprofile,
-      createdAt: req.user.createdAt,
-      updatedAt: req.user.updatedAt
-    });
-  }
-);
+passport.serializeUser((user, done) => {
+  done(null, user)
+});
+passport.deserializeUser((user, done) => {
+    done(null, user);
+});
 
 module.exports = router;

@@ -2,13 +2,13 @@ const express = require("express");
 const router = express.Router();
 const Sequelize = require("sequelize");
 const db = require('../models/index');
+const app = require("../app")
 
 // @route GET /
 // @desc Renders home.hbs view
 // @access Public
 router.get("/", (req, res) => {
   db.Company.findAll().then(result => {
-    console.log(req.isAuthenticated())
     res.render("home", {
       title: "Welcome",
       companies: result
