@@ -8,28 +8,16 @@
         <p class="lead text-center">Log into your Houston Exponential account </p>
         <form action="/users/login" method='POST'>
           <div class="form-group">
-            <input type="email"
-              class="form-control form-control-lg"
-              placeholder="Email Address"
-              name="email"
-            />
-
-            {{#if errors.email}}
-              <div class="alert alert-danger">{{errors.email}}</div>
+            <input type="email" class="form-control form-control-lg" placeholder="Email Address" name="email" /> {{#if errors.email}}
+            <div class="alert alert-danger">{{errors.email}}</div>
             {{/if}}
 
           </div>
           <div class="form-group">
-            <input type="password"
-            class="form-control form-control-lg"
-            placeholder="Password"
-            name="password"
-          />
-
-          {{#if errors.password}}
+            <input type="password" class="form-control form-control-lg" placeholder="Password" name="password" /> {{#if errors.password}}
             <div class="alert alert-danger">{{errors.password}}</div>
-          {{/if}}
-          
+            {{/if}}
+
           </div>
           <input type="submit" class="btn btn-info btn-block mt-4" />
         </form>
@@ -44,5 +32,5 @@
     </div>
   </div>
 
-{{> footer}}
+  {{> smallContentFooter}}
 </div>
