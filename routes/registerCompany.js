@@ -8,13 +8,11 @@ router.get('', validateLogin, (req, res) => {
     res.render("registerCompany", {});
 });
 
-module.exports = router;
-
 router.get('', (req, res) => {
     res.render("registerCompany", {});
 });
 router.post("/registerCompany", (req, res) => {
-	db.Companies.findOrCreate({
+	db.Company.findOrCreate({
 	  where: {
 		name: req.body.cname
 	  },
@@ -31,11 +29,12 @@ router.post("/registerCompany", (req, res) => {
 		websiteUrl: req.body.websiteUrl,
 		contact: req.body.contact,
 		bio: req.body.bio,
-		userid: req.session.user
+		userid: req.session.email
 	  }
 	}).spread((company, created) => {
 	  if (created) {
 		res.render("companies", {});
+		console.log(req.body.cname);
 	  } else {
 		res.render("registerCompany", {
 		  message: "Company already exist"
@@ -43,4 +42,5 @@ router.post("/registerCompany", (req, res) => {
 	  }
 	});
   });
+
 module.exports = router;

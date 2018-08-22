@@ -6,12 +6,10 @@ const validateLogin = require('./routeProtection').validateLogin;
 
 
 router.get('', validateLogin, (req, res) => {
-    res.render("viewprofile", {});
-});
-router.post("viewprofile", (req, res) => {
+	console.log(req.session.email);
 	db.Company.findOne({
 		where: {
-			userid: req.body.user
+			userid: req.session.email
 		}
 	}).then(function(company) {
 		if (company) {
@@ -19,7 +17,7 @@ router.post("viewprofile", (req, res) => {
 	} else {
 		db.Investor.findOne({
 			where: {
-				userid: req.body.user
+				userid: req.session.email
 			}
 		}).then(function(investor) {
 			if (investor) {
@@ -28,15 +26,17 @@ router.post("viewprofile", (req, res) => {
 			else {
 				db.Service.findOne({
 					where: {
-						userid: req.body.user
+						userid: req.session.email
 					}
 				}).then(function(service) {
 					if (service) {
 					res.render("serviceprofile", { serviceInfo: service.dataValues });
 				}
 					else {
-						//throw error
+						res.render("registerentity", {});
 					}});
 				}});
 	}});
 });
+
+module.exports = router;
