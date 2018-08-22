@@ -53,8 +53,8 @@
                     </button>
                 </div>
                 <p>Hold down the shift button to select multiple</p>
-                <form id="service_type_form">
-                    <select multiple name="service_type" class="modal-body form-control form-control-lg">
+                <form id="investment_stage_form">
+                    <select multiple name="stage_type" class="modal-body form-control form-control-lg">
                         <option value="pre-seed">Pre-Seed</option>
                         <option value="pre-clinical trial">Pre-Clinical Trial</option>
                         <option value="seed">Seed</option>
@@ -67,7 +67,7 @@
                     <button type="submit" class="btn btn-primary">Save changes</button>
                 </form>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-blue">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -75,43 +75,74 @@
 </div>
 
 {{!-- Investment Range Modal --}}
-<div class="modal fade" id="investmentRange" tabindex="-1" role="dialog" aria-labelledby="investmentRangeLabel" aria-hidden="true">
+<div class="modal fade" id="investmentRange" tabindex="-1" role="dialog" aria-labelledby="typeLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="investmentRangeLabel">Investment Range</h5>
+                    <h5 class="modal-title" id="typeLabel">Investment Range</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-
+                    <form id="investment_range_form">
+                        <div class="form-row">
+                            <div class="form-group col-md-5">
+                                <span class="align-middle"></span>
+                                <input name="from" placeholder="10,000" type="text" class="form-control">
+                            </div>
+                            <div>
+                                <h1 class="form-group col-md-4">-</h1>
+                            </div>
+                            <div class="form-group col-md-5">
+                                <span class="align-middle"></span>
+                                <input name="until" placeholder="50,000,000" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-blue">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+
 {{!-- Managed Assets Modal --}}
-<div class="modal fade" id="managedAssets" tabindex="-1" role="dialog" aria-labelledby="managedAssetsLabel" aria-hidden="true">
+<div class="modal fade" id="managedAssets" tabindex="-1" role="dialog" aria-labelledby="typeLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="managedAssetsLabel">Managed Assets</h5>
+                    <h5 class="modal-title" id="typeLabel">Managed Assets</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-
+                    <form id="managed_assets_form">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <span class="align-middle"></span>
+                                <input name="from" placeholder="1,000,000" type="text" class="form-control">
+                            </div>
+                            <div>
+                                <h1 class="form-group col-md-4">-</h1>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <span class="align-middle"></span>
+                                <input name="until" placeholder="1,000,000,000" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-blue">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -119,21 +150,36 @@
 </div>
 
 {{!-- Portfolio Size Modal --}}
-<div class="modal fade" id="portfolioSize" tabindex="-1" role="dialog" aria-labelledby="portfolioSizeLabel" aria-hidden="true">
+<div class="modal fade" id="portfolioSize" tabindex="-1" role="dialog" aria-labelledby="typeLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="portfolioSizeLabel">Portfolio Size</h5>
+                    <h5 class="modal-title" id="typeLabel">Portfolio Size</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-
+                    <form id="portfolio_size_form">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <span class="align-middle"></span>
+                                <input name="from" placeholder="1" type="text" class="form-control">
+                            </div>
+                            <div>
+                                <h1 class="form-group col-md-4">-</h1>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <span class="align-middle"></span>
+                                <input name="until" placeholder="500" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-blue">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -141,21 +187,36 @@
 </div>
 
 {{!-- Founded Date Modal --}}
-<div class="modal fade" id="foundedDate" tabindex="-1" role="dialog" aria-labelledby="foundedDateLabel" aria-hidden="true">
+<div class="modal fade" id="foundedDate" tabindex="-1" role="dialog" aria-labelledby="typeLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="foundedDateLabel">Founded Date</h5>
+                    <h5 class="modal-title" id="typeLabel">Founded Date</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-
+                    <form id="founded_range_form">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <span class="align-middle"></span>
+                                <input name="from" placeholder="1992" type="text" class="form-control">
+                            </div>
+                            <div>
+                                <h1 class="form-group col-md-4">-</h1>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <span class="align-middle"></span>
+                                <input name="until" placeholder="2018" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-blue">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -178,8 +239,10 @@
 
     var investorTypeForm = $('#investor_type_form')
     var investmentStageForm = $('#investment_stage_form')
-    //var businessModelForm = $('#business_model_form')
-    //var fundingStageForm = $('#funding_stage_form')
+    var foundedRangeForm = document.getElementById('founded_range_form')
+    var portfolioSizeForm = document.getElementById('portfolio_size_form')
+    var managedAssetsForm = document.getElementById('managed_assets_form')
+    var investmentRangeForm = document.getElementById('investment_range_form')
 
     investorTypeForm.submit((event) => {
         event.preventDefault()
@@ -228,7 +291,6 @@
             var filtered = investors.filter((investor) => {
 
                 return filterGate(investor)
-                console.log(investor)
             })
 
             render_results(filtered)
@@ -285,4 +347,170 @@
 
     }
 
+
+    // -------------- Founded Range Form -----------------
+
+
+
+
+    foundedRangeForm.addEventListener('submit', (event) => {
+        event.preventDefault()
+        var from = event.target.from.value
+        var until = event.target.until.value
+
+        // ---------- //
+
+        function filterGate(investor) {
+
+
+            //  --- just change the contents of the if and the else to match the specific form -- //
+            if (investor.foundedDate <= until && investor.foundedDate >= from) {
+                return investor
+            }
+            else {
+                return undefined
+            }
+            // ------ //
+        }
+
+
+        filter_investors_array(filterGate)
+    })
+
+
+    // ----------- PORTFOLIO SIZE ---------------------
+
+    portfolioSizeForm.addEventListener('submit', (event) => {
+        event.preventDefault()
+        var from = event.target.from.value
+        var until = event.target.until.value
+
+        // ---------- //
+        function filterGate(investor) {
+
+
+            //  --- just change the contents of the if and the else to match the specific form -- //
+            if (Number(investor.portfolioSize) <= Number(until) && Number(investor.portfolioSize) >= Number(from)) {
+                return investor
+            }
+            else {
+                return undefined
+            }
+            // ------ //
+        }
+
+
+        filter_investors_array(filterGate)
+    })
+
+    //------------- Managed Assets -----------------
+
+    managedAssetsForm.addEventListener('submit', (event) => {
+        event.preventDefault()
+        var from = event.target.from.value
+        var until = event.target.until.value
+
+        // ---------- //
+        function filterGate(investor) {
+
+
+            //  --- just change the contents of the if and the else to match the specific form -- //
+            if (Number(investor.portfolioSize) <= Number(until) && Number(investor.portfolioSize) >= Number(from)) {
+                return investor
+            }
+            else {
+                return undefined
+            }
+            // ------ //
+        }
+
+
+        filter_investors_array(filterGate)
+    })
+
+
+    // -------------- Investment stages ------------------
+
+    investmentStageForm.submit((event) => {
+        event.preventDefault()
+
+        // ------ this code is specific to the unique .submit function ----
+        var selected = event.target.stage_type.selectedOptions
+
+        var selectedOptions = []
+        for (var i = 0; i < selected.length; i++) {
+            var option = selected[i]
+            selectedOptions.push(option.value)
+        }
+        // ---------- //
+
+
+        function filterGate(investor) {
+            console.log(investor)
+
+            //  --- just change the contents of the if and the else to match the specific form -- //
+            if (selectedOptions.includes(investor.investmentThesis)) {
+                return investor
+            }
+            else {
+                return undefined
+            }
+            // ------ //
+        }
+
+        filter_investors_array(filterGate)
+
+    })
+
+    // --------------- Investment Range -----------------
+
+    investmentRangeForm.addEventListener('submit', (event) => {
+        event.preventDefault()
+        var from = event.target.from.value.replace(/,/g, '');
+        var until = event.target.until.value.replace(/,/g, '');
+
+        // ---------- //
+        function filterGate(investor) {
+
+
+            //  --- just change the contents of the if and the else to match the specific form -- //
+            if (Number(investor.investmentRange) <= Number(until) && Number(investor.investmentRange) >= Number(from)) {
+                return investor
+            }
+            else {
+                return undefined
+            }
+            // ------ //
+        }
+
+
+        filter_investors_array(filterGate)
+
+    })
+
+    // ------------- Managed Assets ------------------
+
+    managedAssetsForm.addEventListener('submit', (event) => {
+        event.preventDefault()
+        var from = event.target.from.value.replace(/,/g, '');
+        var until = event.target.until.value.replace(/,/g, '');
+
+        // ---------- //
+        function filterGate(investor) {
+
+
+            //  --- just change the contents of the if and the else to match the specific form -- //
+            if (Number(investor.managedAssets) <= Number(until) && Number(investor.managedAssets) >= Number(from)) {
+                return investor
+            }
+            else {
+                return undefined
+            }
+            // ------ //
+        }
+
+
+        filter_investors_array(filterGate)
+
+    })
 </script>

@@ -48,17 +48,31 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="typeLabel">Range</h5>
+        <h5 class="modal-title" id="typeLabel">Founded Range</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        {{> slider}}
+        <form id="founded_range_form">
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <span class="align-middle"></span>
+              <input name="from" placeholder="1992" type="text" class="form-control">
+            </div>
+            <div>
+              <h1 class="form-group col-md-4">-</h1>
+            </div>
+            <div class="form-group col-md-4">
+              <span class="align-middle"></span>
+              <input name="until" placeholder="2018" type="text" class="form-control">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>
       </div>
     </div>
   </div>
@@ -117,7 +131,6 @@
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
       </div>
     </div>
   </div>
@@ -146,7 +159,6 @@
       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
       </div>
     </div>
   </div>
@@ -174,6 +186,9 @@
   var productStageForm = $('#product_stage_form')
   var businessModelForm = $('#business_model_form')
   var fundingStageForm = $('#funding_stage_form')
+  //var foundedRangeForm = $('founded_range_form')
+  var foundedRangeForm = document.getElementById('founded_range_form')
+
 
   numberOfEmployees.submit((event) => {
     event.preventDefault()
@@ -364,6 +379,8 @@
     // ------ this code is specific to the unique .submit function ----
     var selected = event.target.product_stage.selectedOptions
 
+
+
     var selectedOptions = []
 
     for (var i = 0; i < selected.length; i++) {
@@ -390,4 +407,40 @@
 
   }
   )
+
+  // -------------- End of Product Stage -----------------
+
+
+  // -------------- Founded Range Form -----------------
+
+
+
+
+  foundedRangeForm.addEventListener('submit', (event) => {
+    event.preventDefault()
+    var from = event.target.from.value
+    var until = event.target.until.value
+
+    // ---------- //
+
+    function filterGate(company) {
+
+
+      //  --- just change the contents of the if and the else to match the specific form -- //
+      if (company.foundedDate <= until && company.foundedDate >= from) {
+        return company
+      }
+      else {
+        return undefined
+      }
+      // ------ //
+    }
+
+
+    filter_companies_array(filterGate)
+  })
+
+
+
+
 </script>
