@@ -2,7 +2,13 @@ const express = require("express");
 const router = express.Router();
 const Sequelize = require("sequelize");
 const db = require('../models/index');
+const validateLogin = require('./routeProtection').validateLogin;
 
+router.get('', validateLogin, (req, res) => {
+    res.render("registerEntity", {});
+});
+
+module.exports = router;
 
 router.get('', (req, res) => {
     res.render("registerInvestor", {});
@@ -25,7 +31,8 @@ router.post("", (req, res) => {
 		portfolioSize: req.body.businessModel,
 		website: req.body.websiteUrl,
 		contact: req.body.contact,
-		bio: req.body.bio
+		bio: req.body.bio,
+		userid: req.session.user
 	  }
 	}).spread((investor, created) => {
 	  if (created) {

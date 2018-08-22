@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Sequelize = require("sequelize");
 const db = require('../models/index');
+const validateLogin = require('./routeProtection').validateLogin;
 
 
 router.get('', (req, res) => {
@@ -24,7 +25,8 @@ router.post("", (req, res) => {
 		website: req.body.website,
 		founded: req.body.foundedDate,
 		contact: req.body.contact,
-		bio: req.body.bio
+		bio: req.body.bio,
+		userid: req.session.user
 	  }
 	}).spread((service, created) => {
 	  if (created) {
