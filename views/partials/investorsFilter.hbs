@@ -75,12 +75,12 @@
 </div>
 
 {{!-- Investment Range Modal --}}
-<div class="modal fade" id="investmentRange" tabindex="-1" role="dialog" aria-labelledby="investmentRangeLabel" aria-hidden="true">
+<div class="modal fade" id="investmentRange" tabindex="-1" role="dialog" aria-labelledby="typeLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="investmentRangeLabel">Investment Range</h5>
+                    <h5 class="modal-title" id="typeLabel">Founded Date</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -90,17 +90,17 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <span class="align-middle"></span>
-                                <input placeholder="1992" type="text" class="form-control">
+                                <input name="from" placeholder="1992" type="text" class="form-control">
                             </div>
                             <div>
                                 <h1 class="form-group col-md-4">-</h1>
                             </div>
                             <div class="form-group col-md-4">
                                 <span class="align-middle"></span>
-                                <input placeholder="2018" type="text" class="form-control">
+                                <input name="until" placeholder="2018" type="text" class="form-control">
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -111,33 +111,34 @@
     </div>
 </div>
 
+
 {{!-- Managed Assets Modal --}}
-<div class="modal fade" id="managedAssets" tabindex="-1" role="dialog" aria-labelledby="managedAssetsLabel" aria-hidden="true">
+<div class="modal fade" id="managedAssets" tabindex="-1" role="dialog" aria-labelledby="typeLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="managedAssetsLabel">Managed Assets</h5>
+                    <h5 class="modal-title" id="typeLabel">Founded Date</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="">
+                    <form id="managed_assets_form">
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <span class="align-middle"></span>
-                                <input placeholder="1992" type="text" class="form-control">
+                                <input name="from" placeholder="1992" type="text" class="form-control">
                             </div>
                             <div>
                                 <h1 class="form-group col-md-4">-</h1>
                             </div>
                             <div class="form-group col-md-4">
                                 <span class="align-middle"></span>
-                                <input placeholder="2018" type="text" class="form-control">
+                                <input name="until" placeholder="2018" type="text" class="form-control">
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -149,32 +150,32 @@
 </div>
 
 {{!-- Portfolio Size Modal --}}
-<div class="modal fade" id="portfolioSize" tabindex="-1" role="dialog" aria-labelledby="portfolioSizeLabel" aria-hidden="true">
+<div class="modal fade" id="portfolioSize" tabindex="-1" role="dialog" aria-labelledby="typeLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="portfolioSizeLabel">Portfolio Size</h5>
+                    <h5 class="modal-title" id="typeLabel">Portfolio Size</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="">
+                    <form id="portfolio_size_form">
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <span class="align-middle"></span>
-                                <input placeholder="1992" type="text" class="form-control">
+                                <input name="from" placeholder="1" type="text" class="form-control">
                             </div>
                             <div>
                                 <h1 class="form-group col-md-4">-</h1>
                             </div>
                             <div class="form-group col-md-4">
                                 <span class="align-middle"></span>
-                                <input placeholder="2018" type="text" class="form-control">
+                                <input name="until" placeholder="500" type="text" class="form-control">
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -186,12 +187,12 @@
 </div>
 
 {{!-- Founded Date Modal --}}
-<div class="modal fade" id="foundedDate" tabindex="-1" role="dialog" aria-labelledby="foundedDateLabel" aria-hidden="true">
+<div class="modal fade" id="foundedDate" tabindex="-1" role="dialog" aria-labelledby="typeLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="foundedDateLabel">Founded Date</h5>
+                    <h5 class="modal-title" id="typeLabel">Founded Date</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -201,17 +202,17 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <span class="align-middle"></span>
-                                <input placeholder="1992" type="text" class="form-control">
+                                <input name="from" placeholder="1992" type="text" class="form-control">
                             </div>
                             <div>
                                 <h1 class="form-group col-md-4">-</h1>
                             </div>
                             <div class="form-group col-md-4">
                                 <span class="align-middle"></span>
-                                <input placeholder="2018" type="text" class="form-control">
+                                <input name="until" placeholder="2018" type="text" class="form-control">
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -238,8 +239,9 @@
 
     var investorTypeForm = $('#investor_type_form')
     var investmentStageForm = $('#investment_stage_form')
-    //var businessModelForm = $('#business_model_form')
-    //var fundingStageForm = $('#funding_stage_form')
+    var foundedRangeForm = document.getElementById('founded_range_form')
+    var portfolioSizeForm = document.getElementById('portfolio_size_form')
+    var managedAssetsForm = document.getElementById('managed_assets_form')
 
     investorTypeForm.submit((event) => {
         event.preventDefault()
@@ -344,5 +346,90 @@
         }
 
     }
+
+
+    // -------------- Founded Range Form -----------------
+
+
+
+
+    foundedRangeForm.addEventListener('submit', (event) => {
+        event.preventDefault()
+        var from = event.target.from.value
+        var until = event.target.until.value
+
+        // ---------- //
+
+        function filterGate(investor) {
+
+
+            //  --- just change the contents of the if and the else to match the specific form -- //
+            console.log(typeof investor.foundedDate, "invertasodd adffadsjlf")
+            if (investor.foundedDate <= until && investor.foundedDate >= from) {
+                return investor
+            }
+            else {
+                return undefined
+            }
+            // ------ //
+        }
+
+
+        filter_investors_array(filterGate)
+    })
+
+
+    // ----------- PORTFOLIO SIZE ---------------------
+
+    portfolioSizeForm.addEventListener('submit', (event) => {
+        event.preventDefault()
+        var from = event.target.from.value
+        var until = event.target.until.value
+
+        // ---------- //
+        console.log(typeof until, typeof from)
+        function filterGate(investor) {
+
+
+            //  --- just change the contents of the if and the else to match the specific form -- //
+            if (Number(investor.portfolioSize) <= Number(until) && Number(investor.portfolioSize) >= Number(from)) {
+                return investor
+            }
+            else {
+                return undefined
+            }
+            // ------ //
+        }
+
+
+        filter_investors_array(filterGate)
+    })
+
+    //------------- Managed Assets -----------------
+
+    managedAssetsForm.addEventListener('submit', (event) => {
+        event.preventDefault()
+        var from = event.target.from.value
+        var until = event.target.until.value
+
+        // ---------- //
+        console.log(typeof until, typeof from)
+        function filterGate(investor) {
+
+
+            //  --- just change the contents of the if and the else to match the specific form -- //
+            if (Number(investor.portfolioSize) <= Number(until) && Number(investor.portfolioSize) >= Number(from)) {
+                return investor
+            }
+            else {
+                return undefined
+            }
+            // ------ //
+        }
+
+
+        filter_investors_array(filterGate)
+    })
+
 
 </script>
