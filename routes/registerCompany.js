@@ -35,8 +35,6 @@ router.post("", validateLogin, (req, res) => {
         message: "Company already exists"
       });
     }
-const db = require('../models/index');
-const validateLogin = require('./routeProtection').validateLogin;
 
 router.get('', validateLogin, (req, res) => {
     res.render("registerEntity", {});
