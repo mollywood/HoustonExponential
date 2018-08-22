@@ -1,22 +1,29 @@
 .logo-footer {
-    width: 300px;
+  width: 300px;
 }
 
 .footer-box {
-    display: flex;
+  display: flex;
 }
 
 .social-links {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .social-links i {
-    font-size: 2.5em;
-    color: #3F637B;
+  font-size: 2.5em;
+  color: #3f637b;
 }
 
 a {
-    color: #3F637B;
+  color: #3f637b;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
