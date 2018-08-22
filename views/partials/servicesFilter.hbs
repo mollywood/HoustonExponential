@@ -3,18 +3,6 @@
     <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#type">Type</button>
     <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#batchSize">Batch Size</button>
     <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#foundedDate">Founded Date</button>
-    <button type="button" class="btn btn-blue">
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="academiaSupportedCheck">
-            <label class="form-check-label" for="academiaSupportedCheck">Academia Supported</label>
-        </div>
-    </button>
-    <button type="button" class="btn btn-blue">
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="associatedFundCheck">
-            <label class="form-check-label" for="associatedFundCheck">Associated Fund</label>
-        </div>
-    </button>
 </div>
 
 {{!-- Type Modal --}}
@@ -86,7 +74,22 @@
                     </button>
                 </div>
                 <div class="modal-body">
-
+                    <form id="founded_range_form">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <span class="align-middle"></span>
+                                <input name="from" placeholder="1992" type="text" class="form-control opacity">
+                            </div>
+                            <div>
+                                <h1 class="form-group col-md-4">-</h1>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <span class="align-middle"></span>
+                                <input name="until" placeholder="2018" type="text" class="form-control opacity">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -113,8 +116,8 @@
 
     var serviceTypeForm = $('#service_type_form')
     var batchSizeForm = $('#batch_size_form')
-    //var businessModelForm = $('#business_model_form')
-    //var fundingStageForm = $('#funding_stage_form')
+    var foundedRangeForm = document.getElementById('founded_range_form')
+
 
     serviceTypeForm.submit((event) => {
         event.preventDefault()
@@ -236,11 +239,11 @@
         }
         // ---------- //
 
-        function filterGate(company) {
+        function filterGate(service) {
 
             //  --- just change the contents of the if and the else to match the specific form -- //
-            if (selectedOptions.includes(company.batchSize)) {
-                return company
+            if (selectedOptions.includes(service.batchSize)) {
+                return service
             }
             else {
                 return undefined
@@ -254,4 +257,32 @@
 
     }
     )
+
+    // ---------------- End of Batch size ----------------
+
+    // ---------------- Founded Date -------------------
+    foundedRangeForm.addEventListener('submit', (event) => {
+        event.preventDefault()
+        var from = event.target.from.value
+        var until = event.target.until.value
+
+        // ---------- //
+
+        function filterGate(service) {
+            console.log(service)
+
+            //  --- just change the contents of the if and the else to match the specific form -- //
+            if (service.founded <= until && service.founded >= from) {
+                return service
+            }
+            else {
+                return undefined
+            }
+            // ------ //
+        }
+
+
+        filter_services_array(filterGate)
+    })
+
 </script>
