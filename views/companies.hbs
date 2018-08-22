@@ -1,18 +1,20 @@
 {{> header}}
+<div>
+    <div class="text-center pt-3">
+        <h1>Companies</h1>
+    </div>
 
-<div class="text-center pt-3">
-    <h1>Companies</h1>
-</div>
-
-<div class="container text-center pt-3">
-    {{> filter-companies}}
-</div>
+    <div class="container text-center pt-3">
+        {{> filter-companies}}
+    </div>
 
 
-<div id="companies_wrapper" class="container card-columns">
+    <div id="companies_wrapper" class="container card-columns">
 
-<div class="container card-columns pt-4 pb-3">
-    {{> companyCard}}
-</div>
+        <div class="container">
+            {{> companyCard}}
+        </div>
+    </div>
 
-{{> footer}}
+
+    {{> footer}}
