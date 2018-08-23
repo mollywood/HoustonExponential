@@ -14,7 +14,7 @@ Live Demo
 * [Code Examples](https://github.com/mollywood/HXProject/blob/master/README.md#code-examples)
 
 ## What It Is
-This is a collaborative project which sought to create a collaborative database of Houston-area start-ups, as well as investors and services. With this web application, users can add and update their business and allow others to search and review.
+This is a collaborative project which sought to create a comprehensive database of Houston-area start-ups, as well as investors and services. With this web application, users can add and update their business and allow others to search and review.
 
 ## What We Used
 * HTML/CSS
@@ -34,8 +34,14 @@ This is a collaborative project which sought to create a collaborative database 
 ## Challenges and Solutions
 
 ## MVP (Minimum Viable Product)
+*Create a SQL database to contain the comprehensive list of start-ups, investors, and services in Houston, TX
+*Integrate Linkedin authentication for registration and login
+*Develop forms to allow individuals to register a company, investor, or service
+*Allow access to the general public to search the database
 
 ## Our Stretch Goals
+*Create a page to update company, investor, or service info
+*Create a button to unfilter results and refresh on page
 
 ## Authors
 * [Jessica Robinson](https://github.com/jessicapolansky)
