@@ -12,11 +12,11 @@
     <div class="col-md-8 m-auto mt-10">
 	    <form action="/investors/register" method='POST'>
         <label for="name">Investor Name</label>
-	        <input type="text" class="form-control" name="name" placeholder="Company Name"required/>
+	        <input type="text" class="form-control" name="name" placeholder="Company Name"/>
         <label for="logo">Logo URL</label>
 	        <input type="url" class="form-control" name="logo" placeholder="Link to logo image"/>
         <label for="description">Description</label>
-	        <textarea rows="1" class="form-control" placeholder="Quick summary of your business" name="description" required/></textarea>
+	        <textarea rows="1" class="form-control" placeholder="Quick summary of your business" name="description" /></textarea>
         <label for="investorType">Type of Investor</label>
 	        <select name="investorType" class="form-control" >
             <option value="VC">VC</option>
@@ -29,7 +29,7 @@
     				<option value="Incubator">Incubator</option>
 	        </select>
         <label for="investmentThesis">Investment Thesis</label>
-	        <input type="text" class="form-control" name="investmentThesis" placeholder="Enter a street address or Houston neighborhood"required/>
+	        <input type="text" class="form-control" name="investmentThesis" placeholder="Enter a street address or Houston neighborhood"/>
         <label for="InvestmentRange">Investment Range</label>
 	        <select name="investmentRange" class="form-control">
             <option value="100k - 1mil">100k - 1mil</option>
@@ -48,7 +48,7 @@
         <label for="foundedDate">Founded Year</label>
 	        <input class="form-control" type="number" maxlength="4" placeholder="e.g. 2014" name="foundedDate"/>
         <label for="location">Location</label>
-          <input type="text" class="form-control" name="location" placeholder="Enter a street address or Houston neighborhood"required/>
+          <input type="text" class="form-control" name="location" placeholder="Enter a street address or Houston neighborhood"/>
         <label for="website">Company Website</label>
           <input class="form-control" name="website" type="url" placeholder="Link to company site"/>
         <label for="contact">Point of Contact</label>

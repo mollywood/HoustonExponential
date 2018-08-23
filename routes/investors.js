@@ -5,7 +5,7 @@ const db = require("../models/index");
 const validateLogin = require("./routeProtection").validateLogin;
 
 // @route GET routes/investors
-// @desc Display investors on investors.hbs page
+// @desc Queries database and displays investors on page
 // @access Public
 router.get("", (req, res) => {
   db.Investor.findAll().then(investors => {
@@ -13,11 +13,17 @@ router.get("", (req, res) => {
   });
 });
 
-router.get("/register", (req, res) => {
+// @route GET routes/investors/register
+// @desc Renders registerInvestor.hbs view
+// @access Protected
+router.get("/register", validateLogin, (req, res) => {
     res.render("registerInvestor", {});
 });
 
-router.post("/register", (req, res) => {
+// @route POST routes/investors/register
+// @desc Posts Investor inputs into database
+// @access Protected
+router.post("/register", validateLogin, (req, res) => {
 	db.Investor.findOrCreate({
 	  where: {
 		name: req.body.name
@@ -59,6 +65,9 @@ router.post("/investorprofile", (req, res) => {
   });
 });
 
+// @route GET routes/investors/get_all
+// @desc Queries database and sends investors data in json
+// @access Public
 router.get("/get_all", function(req, res) {
   db.Investor.findAll().then(function(investors) {
     res.json({ investorList: investors });

@@ -19,7 +19,7 @@ router.get("/register", (req, res) => {
 });
 
 // @route POST routes/users/register
-// @desc Posts user inputs into database
+// @desc Posts User inputs into database
 // @access Public
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -53,7 +53,7 @@ router.get("/login", (req, res) => {
 });
 
 // @route POST routes/users/login
-// @desc Login User / Return JsonWebToken
+// @desc Login User
 // @access Public
 router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
@@ -98,19 +98,18 @@ router.get('/logout', (req, res) => {
 })
 
 // @route GET routes/users/linkedin
-// @desc
+// @desc Authenticates through LinkedIn
 // @access Public
 router.get(
   "/linkedin",
   passport.authenticate("linkedin", { state: "SOME STATE" }),
   (req, res) => {
-    // The request will be redirected to LinkedIn for authentication, so this
-    // function will not be called.
+    // The request will be redirected to LinkedIn for authentication, so this function will not be called.
   }
 );
 
 // @route GET routes/users/linkedin/callback
-// @desc
+// @desc Authenticates through LinkedIn
 // @access Public
 router.get(
   "/linkedin/callback",
