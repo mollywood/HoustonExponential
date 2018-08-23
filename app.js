@@ -89,7 +89,6 @@ app.use("/investors", investors);
 app.use("/services", services);
 app.use("/users", users);
 app.use("/about", about);
-app.use("/registerEntity", registerEntity);
 app.use("/Company", registerCompany);
 app.use("/Investor", registerInvestor);
 app.use("/Service", registerService);
