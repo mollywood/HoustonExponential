@@ -1,6 +1,14 @@
 body {
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
 }
 label {
-	margin-top: .6rem;
+  margin-top: 0.6rem;
+}
+
+.opacity {
+  opacity: 0.35;
+}
+
+.modal-body {
+  margin: 0 auto;
 }
