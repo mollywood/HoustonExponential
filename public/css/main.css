@@ -9,6 +9,6 @@ label {
   opacity: 0.35;
 }
 
-.modal-body {
-  margin: 0 auto;
+centering {
+  justify-content: center;
 }
