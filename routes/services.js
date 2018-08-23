@@ -4,19 +4,25 @@ const Sequelize = require("sequelize");
 const db = require("../models/index");
 const validateLogin = require('./routeProtection').validateLogin;
 
-// @route GET routes/companies
-// @desc Display services on services.hbs page
+// @route GET routes/services
+// @desc Queries database and displays services on page
 // @access Public
-router.get("", (req, res) => {
+router.get("", validateLogin, (req, res) => {
   db.Service.findAll().then(services => {
     res.render("services", { serviceList: services });
   });
 });
 
-router.get("/register", (req, res) => {
+// @route GET routes/services/register
+// @desc Renders registerService.hbs view
+// @access Protected
+router.get("/register", validateLogin, (req, res) => {
     res.render("registerService", {});
 });
 
+// @route POST routes/services/register
+// @desc Posts Service inputs into database
+// @access Protected
 router.post("/register", (req, res) => {
 	db.Service.findOrCreate({
 	  where: {
@@ -45,8 +51,8 @@ router.post("/register", (req, res) => {
 	});
 });
 
-// @route routes/services/serviceprofile
-// @desc POST display service profile page
+// @route POST routes/services/serviceprofile
+// @desc displays service profile page
 // @access Public
 router.post("/serviceprofile", (req, res) => {
   db.Service.findOne({
@@ -58,6 +64,9 @@ router.post("/serviceprofile", (req, res) => {
   });
 });
 
+// @route GET routes/investors/get_all
+// @desc Queries database and sends services data in json
+// @access Public
 router.get("/get_all", function(req, res) {
   db.Service.findAll().then(function(services) {
     res.json({ serviceList: services });

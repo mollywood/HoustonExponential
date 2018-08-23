@@ -5,7 +5,7 @@ const db = require("../models/index");
 const validateLogin = require("./routeProtection").validateLogin;
 
 // @route GET routes/companies
-// @desc display companies on /companies page
+// @desc Queries database and displays companies on page
 // @access Public
 router.get("", (req, res) => {
   db.Company.findAll().then(companies => {
@@ -13,14 +13,17 @@ router.get("", (req, res) => {
   });
 });
 
-// @route POST routes/companies/register
-// @desc
+// @route GET routes/companies/register
+// @desc Renders registerCompany.hbs view
 // @access Protected
 router.get("/register", validateLogin, (req, res) => {
   res.render("registerCompany", {});
 });
 
-router.post("/register", (req, res) => {
+// @route POST routes/companies/register
+// @desc Posts Company inputs into database
+// @access Protected
+router.post("/register", validateLogin, (req, res) => {
   db.Company.findOrCreate({
     where: {
       name: req.body.name
@@ -49,8 +52,8 @@ router.post("/register", (req, res) => {
   });
 });
 
-// @route routes/companies/companyprofile
-// @desc POST display company's profile page
+// @route POST routes/companies/companyprofile
+// @desc Displays company's profile page
 // @access Public
 router.post("/companyprofile", (req,res) => {
   db.Company.findOne({
@@ -62,6 +65,9 @@ router.post("/companyprofile", (req,res) => {
     })
 })
 
+// @route GET routes/companies/get_all
+// @desc Queries database and sends companies data in json
+// @access Public
 router.get("/get_all", function(req, res) {
   db.Company.findAll().then(function(companies) {
     res.json({ companies: companies });
