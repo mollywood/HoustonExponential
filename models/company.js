@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       websiteUrl: DataTypes.STRING,
       contact: DataTypes.STRING,
       bio: DataTypes.STRING(500000),
-      userid: DataTypes.UUID
+      
     },
     {}
   );
