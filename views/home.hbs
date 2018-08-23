@@ -27,7 +27,7 @@
           <div class="card-body company-cards-text">
             <h5 class="card-title">{{name}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{description}}</h6>
-            <div calss="text-center">
+            <div class="text-center">
               <form action="/companies/companyprofile" method="POST">
                 <input name="company_id" hidden value="{{id}}" />
                 <button class="btn btn-blue mx-auto">More Info</button>
@@ -51,11 +51,11 @@
       {{/each}}
     </div>
     <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
     <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="false"></span>
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
   </div>
