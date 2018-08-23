@@ -1,4 +1,4 @@
- {{> header}} 
+ {{> header}}
  {{message}}
 
 <!-- Register -->
@@ -10,34 +10,34 @@
         <p class="lead text-center">Register a new Houston Exponential account</p>
         <form action="/users/register" method='POST'>
           <div class="form-group">
-            <input type="text" class="form-control form-control-lg" placeholder="First Name" name="firstName" /> 
+            <input type="text" class="form-control form-control-lg" placeholder="First Name" name="firstName" />
              {{#if errors.firstName}}
              <div class="alert alert-danger">{{errors.firstName}}</div>
              {{/if}}
           </div>
           <div class="form-group">
             <input type="text" class="form-control form-control-lg" :class="{' is-invalid': errors.lastName}" placeholder="Last Name"
-              name="lastName" /> 
+              name="lastName" />
              {{#if errors.lastName}}
              <div class="alert alert-danger">{{errors.lastName}}</div>
              {{/if}}
           </div>
           <div class="form-group">
             <input type="text" class="form-control form-control-lg" :class="{' is-invalid': errors.email}" placeholder="Email Address"
-              name="email" /> 
+              name="email" />
              {{#if errors.email}}
              <div class="alert alert-danger">{{errors.email}}</div>
              {{/if}}
           </div>
           <div class="form-group">
             <input type="password" class="form-control form-control-lg" :class="{' is-invalid': errors.password}" placeholder="Password"
-              name="password" /> 
+              name="password" />
              {{#if errors.password}}
              <div class="alert alert-danger">{{errors.password}}</div>
              {{/if}}
           </div>
           <div class="form-group">
-            <input type="password" class="form-control form-control-lg" placeholder="Confirm Password" name="password2" />            
+            <input type="password" class="form-control form-control-lg" placeholder="Confirm Password" name="password2" />
              {{#if errors.password2}}
              <div class="alert alert-danger">{{errors.password2}}</div>
              {{/if}}
@@ -46,7 +46,6 @@
         </form>
 
         <div class="text-center">
-          <h3>or</h3>
           <a href="/users/linkedin">
             <img src="/logos/Sign-in-Large---Default.png" alt="linkedin">
             </img>

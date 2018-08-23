@@ -1,6 +1,5 @@
-
-
 {{> header}}
+
 <div class="welcome-container">
   <div class="welcome-div"></div>
 
@@ -16,7 +15,7 @@
   <div class="whoweare text-center">
     <h4>We wanted to create a comprehensive database of Houston start-ups where users can add and update their business and
       allow others to search and review.</h4>
-    <a type="button" href="/users/register" class="btn whoweare-button">Join Us Now!</a></div>
+    <a type="button" href="/users/register" class="btn btn-blue mx-auto">Join Us Now!</a></div>
 </div>
 
 <div class="container-fluid carousel-wrapper">
@@ -29,8 +28,11 @@
           <div class="card-body company-cards-text">
             <h5 class="card-title">{{name}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{description}}</h6>
-            <div calss="text-center">
-              <a href="#" class="btn btn-blue mx-auto">More Info</a>
+            <div class="text-center">
+              <form action="/companies/companyprofile" method="POST">
+                <input name="company_id" hidden value="{{id}}" />
+                <button class="btn btn-blue mx-auto">More Info</button>
+              </form>
             </div>
           </div>
           <div class="card-footer">
@@ -59,9 +61,6 @@
     </a>
   </div>
 </div>
-</div>
-
-
 
 {{> footer}}
-<script src="/JavaScript/home.js"></script>
+<script src="/javascript/home.js"></script>

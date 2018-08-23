@@ -9,6 +9,11 @@ label {
   opacity: 0.35;
 }
 
-.modal-body {
-  margin: 0 auto;
+.centering {
+  justify-content: center;
+}
+
+/* Registration & Login LinkedIn Button */
+.text-center {
+  padding-top: 10px;
 }
