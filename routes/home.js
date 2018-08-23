@@ -37,7 +37,10 @@ router.post("/globalsearch", (req, res) => {
   var responded = false
   if(req.body && req.body.name){
     console.log(req.body)
-    db.Company.findAll({ where: { name: { $like: '%' + queryString + '%'} } }  ).then((companies)=> {
+    db.Company.findAll({ 
+      where: {
+         name: { $like: '%' + queryString + '%'} } })
+         .then((companies)=> {
       console.log(companies)
       if(companies && companies.length){
         if(resultsArray.length){
@@ -52,7 +55,10 @@ router.post("/globalsearch", (req, res) => {
       respond()
     });
 
-    db.Service.findAll({ where: { name: { $like: '%' + queryString + '%'} } }  ).then((services) =>{
+    db.Service.findAll({ 
+      where: { 
+        name: { $like: '%' + queryString + '%'} } }  )
+        .then((services) =>{
       if(services && services.length){
         if(resultsArray.length){
           resultsArray = [resultsArray? resultsArray : null, ...services]
@@ -61,15 +67,17 @@ router.post("/globalsearch", (req, res) => {
           resultsArray = services
         }
 
-
       }
 
       results = results + 1
       respond()
     });
 
-    db.Investor.findAll({ where: { name: { $like: '%' + queryString + '%'} } }  ).then((investors)=> {
 
+    db.Investor.findAll({ 
+      where: { 
+        name: { $like: '%' + queryString + '%'} } }  )
+        .then((investors)=> {
       if(investors && investors.length){
         if(resultsArray.length){
           resultsArray = [resultsArray, ...investors]
@@ -78,11 +86,12 @@ router.post("/globalsearch", (req, res) => {
           resultsArray = investors
         }
 
-
       }
       results = results + 1
       respond()
-    });
+    })
+
+    
 
     function respond(){
 
@@ -92,6 +101,7 @@ router.post("/globalsearch", (req, res) => {
       }
     }
 
+  
   }
 
 });
