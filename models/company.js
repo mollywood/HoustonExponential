@@ -15,11 +15,10 @@ module.exports = (sequelize, DataTypes) => {
       productStage: DataTypes.STRING,
       websiteUrl: DataTypes.STRING,
       contact: DataTypes.STRING,
-      bio: DataTypes.STRING(500000),
-      userid: DataTypes.UUID
-    },
-    {}
-  );
-  Company.associate = models => {};
+      bio: DataTypes.STRING(500000)
+    }, {});
+  Company.associate = models => {
+    // associations can be defined here
+  };
   return Company;
 };

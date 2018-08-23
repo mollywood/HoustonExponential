@@ -49,12 +49,6 @@
   align-items: center;
 }
 
-.whoweare-button {
-  margin: 20px;
-  background-color: #3F637B;
-  color: white
-}
-
 .whoweare-button:hover {
   background-color: #24BCE6;
   color: white

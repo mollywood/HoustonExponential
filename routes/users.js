@@ -9,6 +9,8 @@ const passport = require("passport");
 const validateRegisterInput = require("../validation/register");
 const validateLoginInput = require("../validation/login");
 
+const validateLogin = require('./routeProtection').validateLogin;
+
 // @route GET routes/users/register
 // @desc Renders register.hbs view
 // @access Public
@@ -37,7 +39,7 @@ router.post("/register", (req, res) => {
     if (created) {
       res.render("login", {});
     } else {
-      errors.email = "Email already exist";
+      errors.email = "Email already exists";
       return res.render("register", { errors: errors });
     }
   });
@@ -123,6 +125,10 @@ passport.serializeUser((user, done) => {
 });
 passport.deserializeUser((user, done) => {
     done(null, user);
+});
+
+router.get('/registerEntity', validateLogin, (req, res) => {
+    res.render("registerEntity", {});
 });
 
 module.exports = router;
