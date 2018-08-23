@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     website: DataTypes.STRING,
     bio: DataTypes.STRING(500000),
-    logo: DataTypes.STRING,
+    logo: DataTypes.STRING
   }, {});
   Investor.associate = (models) => {
     // associations can be defined here
