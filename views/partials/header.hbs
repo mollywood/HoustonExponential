@@ -22,8 +22,8 @@
             </li>
           </div>
           <div class="nav-item-group">
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2 shrink-search" type="search" placeholder="Search" aria-label="Search">
+              <form class="form-inline my-2 my-lg-0" id="search-form">
+                <input name="search" id="search-function" class="form-control mr-sm-2 shrink-search" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
                   <i class="fas fa-search"></i>
                 </button>
@@ -59,3 +59,21 @@
 
   </div>
 </nav>
+
+<script>
+
+$( document ).ready(function() {
+  $('#search-form').on('submit',(e)=>{
+    e.preventDefault()
+  var userInput = e.target.search.value
+  console.log(jQuery)
+    $.ajax({
+      url: "/globalsearch",
+      method: "POST",
+      data: {name: userInput},
+      dataType: 'json'
+    }).done(function(response){console.log(response.results)})
+  })
+});
+
+</script>
