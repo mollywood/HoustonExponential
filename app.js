@@ -4,7 +4,7 @@ const body_parser = require("body-parser");
 const exphbs = require("express-handlebars");
 const Sequelize = require("sequelize");
 const db = require("./models/index");
-const about = require('./routes/about');
+const about = require("./routes/about");
 const companies = require("./routes/companies");
 const home = require("./routes/home");
 const investors = require("./routes/investors");
@@ -22,7 +22,7 @@ const session = require("express-session");
 
 //Middleware
 app.use(express.static("public"));
-app.use(body_parser.urlencoded({extended: false}));
+app.use(body_parser.urlencoded({ extended: false }));
 app.use(body_parser.json());
 
 app.engine(
@@ -34,11 +34,13 @@ app.engine(
 );
 app.set("view engine", ".hbs");
 
-app.use(session({
+app.use(
+  session({
     secret: "thisshouldbechangedondeployment",
     resave: false,
     saveUninitialized: false
-}))
+  })
+);
 
 // Passport Middleware
 app.use(passport.initialize());
@@ -73,11 +75,11 @@ passport.use(
 );
 
 //Used to change header
-app.use(function(req,res,next){
-if (req.session.user) {
+app.use(function(req, res, next) {
+  if (req.session.user) {
     res.locals.user = req.session.user;
-}
-next();
+  }
+  next();
 });
 
 // Use routes
@@ -86,12 +88,11 @@ app.use("", home);
 app.use("/investors", investors);
 app.use("/services", services);
 app.use("/users", users);
-app.use('/about', about);
+app.use("/about", about);
 app.use("/registerEntity", registerEntity);
-app.use("/registerCompany", registerCompany);
-app.use("/registerInvestor", registerInvestor);
-app.use("/registerService", registerService);
-
+app.use("/Company", registerCompany);
+app.use("/Investor", registerInvestor);
+app.use("/Service", registerService);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));

@@ -1,20 +1,20 @@
-{{> header}}
-
-  {{message}}
+{{> header}} {{message}}
 
 <div class="container">
 	<h1 class="text-center" style="margin-top: 20px">Create an Investor Profile</h1>
 </div>
-<form action="/registerInvestor" method='POST'>
+
 <div class="container">
-      <div class="row"><div class="col-md-8 m-auto mt-10">
-		<label for="iname">Investor Name</label>
+	<div class="row">
+		<div class="col-md-8 m-auto mt-10">
+			<form action="/registerInvestor/registerInvestor" method='POST'></form>
+			<label for="iname">Investor Name</label>
 			<input class="form-control" type="text" id="iname" required/>
-		<label for="logo">Logo URL</label>
-			<input id="logo" class="form-control" type="url" placeholder="Link to logo image"/>
-		<label for="idescription">Description</label>
+			<label for="logo">Logo URL</label>
+			<input id="logo" class="form-control" type="url" placeholder="Link to logo image" />
+			<label for="idescription">Description</label>
 			<textarea rows="1" class="form-control" id="idescription" placeholder="Quick summary of your business" required/></textarea>
-		<label for="investorType">Type of Investor</label>
+			<label for="investorType">Type of Investor</label>
 			<select class="form-control" id="investorType">
 				<option value="VC">VC</option>
 				<option value="Corporate VC">Corporate VC</option>
@@ -25,9 +25,9 @@
 				<option value="Angel">Angel</option>
 				<option value="Incubator">Incubator</option>
 			</select>
-		<label for="investmentThesis">Investment Thesis</label>
+			<label for="investmentThesis">Investment Thesis</label>
 			<input class="form-control" placeholder="Basic Investment Requirements" type="text" id="investmentThesis" required/>
-		<label for="investmentThesis">Investment Range</label>
+			<label for="investmentThesis">Investment Range</label>
 			<select class="form-control" id="investmentRange">
 				<option value="volvo">10k - 50k</option>
 				<option value="saab">50k - 100k</option>
@@ -35,14 +35,14 @@
 				<option value="audi">250k - 1mil</option>
 				<option value="audi">> 1mil</option>
 			</select>
-		<label for="managedAssets">Managed Assets</label>
+			<label for="managedAssets">Managed Assets</label>
 			<select class="form-control" id="managedAssets">
 				<option value="opel">100k - 1mil</option>
 				<option value="volvo">1mil - 5mil</option>
 				<option value="saab">6mil - 10mil</option>
 				<option value="opel">Unlimited</option>
 			</select>
-		<label for="portfolioSize">Portfolio Size</label>
+			<label for="portfolioSize">Portfolio Size</label>
 			<select class="form-control" id="portfolioSize">
 				<option value="opel">1 - 10</option>
 				<option value="volvo">11 - 50</option>
@@ -50,23 +50,22 @@
 				<option value="opel">101 - 250</option>
 				<option value="opel">250 - 500</option>
 			</select>
-		<label for="foundedDate">Founded Year</label>
-			<input class="form-control" type="number" maxlength="4" id="foundedDate" 
-			placeholder="e.g. 2014"/>
-		<label for="ilocation">Location</label>
-			<input type="text" class="form-control" id="ilocation" 
-			placeholder="Enter a street address or Houston neighborhood"required/>
-		<label for="website">Company Web site</label>
-			<input class="form-control" id="website" type="url" 
-			placeholder="Link to company site"/>
-		<label for="contact">Point of Contact</label>
-			<input class="form-control" id="contact" placeholder="e.g. John Smith"/>
-		<label for="bio">About Summary</label>
-			<textarea rows="3" class="form-control" id="bio" 
-			placeholder="A more in-depth summary of your business's origins, interests, and future plans."></textarea>
+			<label for="foundedDate">Founded Year</label>
+			<input class="form-control" type="number" maxlength="4" id="foundedDate" placeholder="e.g. 2014" />
+			<label for="ilocation">Location</label>
+			<input type="text" class="form-control" id="ilocation" placeholder="Enter a street address or Houston neighborhood" required/>
+			<label for="website">Company Web site</label>
+			<input class="form-control" id="website" type="url" placeholder="Link to company site" />
+			<label for="contact">Point of Contact</label>
+			<input class="form-control" id="contact" placeholder="e.g. John Smith" />
+			<label for="bio">About Summary</label>
+			<textarea rows="3" class="form-control" id="bio" placeholder="A more in-depth summary of your business's origins, interests, and future plans."></textarea>
 
-	<input type="submit" class="btn btn-info btn-block mt-4"/>
-</div></div></div>
-</form>
+			<input type="submit" class="btn btn-info btn-block mt-4" />
+			</form>
+		</div>
+	</div>
+</div>
+
 
 {{> footer}}
