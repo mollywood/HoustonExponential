@@ -1,57 +1,55 @@
 {{> header}}
-
-  {{message}}
+{{message}}
 
 <div class="container">
-	<h1 class="text-center" style="margin-top: 20px">Create a Service Hub Profile</h1>
+  <h1 class="text-center" style="margin-top: 20px">
+    Create a Service Profile
+  </h1>
 </div>
-<form action="/registerService" method='POST'>
+
 <div class="container">
-      <div class="row"><div class="col-md-8 m-auto mt-10">
-		<label for="sname">Service Name</label>
-			<input class="form-control" type="text" id="sname" required/>
-		<label for="type">Type of Service</label>
-			<select class="form-control" id="type">
-				<option value="Accelerator">Accelerator</option>
-				<option value="Corporate Accelerator">Corporate Accelerator</option>
-				<option value="Co-Working Space">Co-Working Space</option>
-				<option value="Entrepreneurship Program">Entrepreneurship Program</option>
-			</select>
-		<label for="sdescription">Description</label>
-			<textarea rows="1" class="form-control" id="sdescription" placeholder="Quick summary of your business" required/></textarea>
-		<label for="batchSize">Batch Size</label>
-			<select class="form-control" id="batchSize">
-				<option value="1 - 10">1 - 10</option>
-				<option value="11 - 20">11 - 20</option>
-				<option value="21 +">21 +</option>
-			</select>
-		<label for="website">Company Web site</label>
-			<input class="form-control" id="website" type="url" placeholder="Link to company site"/>
-		<label for="founded">Founded Year</label>
-			<input class="form-control" type="number" maxlength="4" id="founded" placeholder="e.g. 2004"/>
-		<label for="slocation">Location</label>
-			<input type="text" class="form-control" id="slocation" placeholder="Enter a street address or Houston neighborhood"required/>
-		<div class="form-check">
-    		<input type="checkbox" class="form-check-input" id="academiaSupported">
-    		<label class="form-check-label" for="academiaSupported">Academia Supported?</label>
+  <div class="row">
+    <div class="col-md-8 m-auto mt-10">
+	    <form action="/services/register" method='POST'>
+        <label for="name">Service Name</label>
+	        <input type="text" class="form-control" name="name" placeholder="Service Name"/>
+        <label for="logo">Logo URL</label>
+	        <input type="url" class="form-control" name="logo" placeholder="Link to logo image"/>
+        <label for="description">Description</label>
+	        <textarea rows="1" class="form-control" placeholder="Quick summary of your business" name="description" /></textarea>
+        <label for="type">Type of Service</label>
+	        <select name="type" class="form-control" >
+            <option value="Accelerator">Accelerator</option>
+    				<option value="Corporate Accelerator">Corporate Accelerator</option>
+    				<option value="Co-Working Space">Co-Working Space</option>
+    				<option value="Entrepreneurship Program">Entrepreneurship Program</option>
+	        </select>
+        <label for="associatedFund">Associated Fund</label>
+    			<input type="text" class="form-control" name="associatedFund" placeholder="If applicable, enter the investor name associated with this service"/>
+        <div class="form-check">
+        		<input type="checkbox" class="form-check-input" name="academiaSupported">
+        		<label class="form-check-label" for="academiaSupported">Academia Supported?</label>
+        </div>
+        <label for="batchSize">Batch Size</label>
+	        <select name="batchSize" class="form-control">
+            <option value="1 - 10">1 - 10</option>
+    				<option value="11 - 20">11 - 20</option>
+    				<option value="21 +">21 +</option>
+	        </select>
+        <label for="founded">Founded Year</label>
+	        <input class="form-control" type="number" maxlength="4" placeholder="e.g. 2014" name="founded"/>
+        <label for="location">Location</label>
+          <input type="text" class="form-control" name="location" placeholder="Enter a street address or Houston neighborhood"/>
+        <label for="website">Company Website</label>
+          <input class="form-control" name="website" type="url" placeholder="Link to company site"/>
+        <label for="contact">Point of Contact</label>
+	        <input class="form-control" name="contact" type="url" placeholder="e.g. John Smith: johnsmith@company.com, (281) 555-5555"/>
+        <label for="bio">About Summary</label>
+	        <textarea rows="3" class="form-control" name="bio" placeholder="A more in-depth summary of your business's origins, interests, and future plans."></textarea>
+        <input type="submit" class="btn btn-info btn-block mt-4"/>
+      </form>
+    </div>
   </div>
-		<label for="logo">Logo URL</label>
-			<input id="logo" class="form-control" type="url" placeholder="Link to logo image"/>
-		<label for="desc">About Summary</label>
-			<textarea rows="3" class="form-control" id="desc" 
-			placeholder="A more in-depth summary of your business's origins, interests, and future plans."></textarea>
-		<label for="associatedFund">Associated Fund</label>
-			<input type="text" class="form-control" id="associatedFund" placeholder="Enter the investor name associated with this hub"required/>
-		<label for="website">Web site</label>
-			<input class="form-control" id="website" type="url">
-		<label for="contact">Point of Contact</label>
-			<input class="form-control" id="contact" placeholder="e.g. John Smith: johnsmith@company.com, (281) 555-5555"/>
-		<label for="bio">About Summary</label>
-		<textarea rows="3" class="form-control" id="bio" 
-		placeholder="A more in-depth summary of your business's origins, interests, and future plans."></textarea>
-	
-	<input type="Submit" class="btn btn-info btn-block mt-4"/>
-</div></div></div>
-</form>
+</div>
 
 {{> footer}}

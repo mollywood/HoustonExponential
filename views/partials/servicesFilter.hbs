@@ -2,7 +2,7 @@
 <div class="container filter-buttons mx-auto">
     <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#type">Type</button>
     <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#batchSize">Batch Size</button>
-    <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#foundedDate">Founded Date</button>
+    <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#foundedDate">Founded</button>
 </div>
 
 {{!-- Type Modal --}}
@@ -15,7 +15,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <p>Hold down the shift button to select multiple</p>
+            <p>Hold down the command/control button to select multiple</p>
             <form id="service_type_form">
                 <select multiple name="service_type" class="modal-body form-control form-control-lg">
                     <option value="coworking">Co-working Space</option>
@@ -44,7 +44,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Hold down the shift button to select multiple</p>
+                    <p>Hold down the command/control button to select multiple</p>
                     <form id="batch_size_form">
                         <select multiple name="batch_size" class="modal-body form-control form-control-lg">
                             <option value="1-10">1-10</option>
@@ -68,24 +68,24 @@
         <div class="modal-content">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="foundedDateLabel">Founded Date</h5>
+                    <h5 class="modal-title" id="foundedDateLabel">Founded Range</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form id="founded_range_form">
-                        <div class="form-row">
+                        <div class="form-row centering">
                             <div class="form-group col-md-4">
                                 <span class="align-middle"></span>
-                                <input name="from" placeholder="1992" type="text" class="form-control">
+                                <input name="from" placeholder="1992" type="text" class="form-control opacity">
                             </div>
                             <div>
                                 <h1 class="form-group col-md-4">-</h1>
                             </div>
                             <div class="form-group col-md-4">
                                 <span class="align-middle"></span>
-                                <input name="until" placeholder="2018" type="text" class="form-control">
+                                <input name="until" placeholder="2018" type="text" class="form-control opacity">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Save changes</button>

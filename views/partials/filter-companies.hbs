@@ -18,7 +18,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <p>Hold down the shift button to select multiple</p>
+      <p>Hold down the command/control to select multiple</p>
       <form id="funding_stage_form">
         <select multiple name="funding_stage" multiple class="modal-body form-control form-control-lg">
 
@@ -55,17 +55,18 @@
       </div>
       <div class="modal-body">
         <form id="founded_range_form">
-          <div class="form-row">
+          <div class="form-row centering">
             <div class="form-group col-md-4">
               <span class="align-middle"></span>
-              <input name="from" placeholder="1992" type="text" class="form-control">
+              <input name="from" placeholder="1992" type="text" class="form-control opacity">
             </div>
             <div>
               <h1 class="form-group col-md-4">-</h1>
             </div>
-            <div class="form-group col-md-4 text-center">
-              <span class="pagination-center"></span>
-              <input name="until" placeholder="2018" type="text" class="form-control">
+
+            <div class="form-group col-md-4">
+              <span class="align-middle"></span>
+              <input name="until" placeholder="2018" type="text" class="form-control opacity">
             </div>
           </div>
           <button type="submit" class="btn btn-primary">Save changes</button>
@@ -88,7 +89,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <p>Hold down the shift button to select multiple</p>
+      <p>Hold down the command/control to select multiple</p>
       <form id="business_model_form">
         <select multiple name="business_model" class="modal-body form-control form-control-lg">
           <option value="B2B">B2B</option>
@@ -117,7 +118,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <p>Hold down the shift button to select multiple</p>
+      <p>Hold down the command/control to select multiple</p>
       <form id="product_stage_form">
         <select multiple name="product_stage" class="modal-body form-control form-control-lg">
           <option value="customer development">CUSTOMER DEVELOPMENT</option>
@@ -146,7 +147,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <p>Hold down the shift button to select multiple</p>
+      <p>Hold down the command/control to select multiple</p>
       <form id="number_of_employees_form">
         <select multiple name="number_of_employees" class="modal-body form-control form-control-lg">
           <option value="1-10">1-10</option>
@@ -265,7 +266,7 @@
                   <div class="card-body">
                       <h5 class="card-title">${company.name}</h5>
                       <h6 class="card-subtitle mb-2 text-muted">${company.description}</h6>
-                      <div calss="text-center">
+                      <div class="text-center">
                           <a href="#" class="btn btn-blue mx-auto">More Info</a>
                       </div>
                   </div>

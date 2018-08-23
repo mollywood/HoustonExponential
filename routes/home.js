@@ -4,8 +4,9 @@ const Sequelize = require("sequelize");
 const db = require('../models/index');
 const app = require("../app")
 const Op = Sequelize.Op
+
 // @route GET /
-// @desc Renders home.hbs view
+// @desc Renders home.hbs view and queries database for companies
 // @access Public
 router.get("/", (req, res) => {
   db.Company.findAll().then(result => {
@@ -16,7 +17,7 @@ router.get("/", (req, res) => {
   });
 });
 
-// @ route POST/globalsearch
+// @ route POST /globalsearch
 // @ desc Makes an API call for search
 // @ access Public
 router.post("/globalsearch", (req, res) => {
@@ -27,7 +28,7 @@ router.post("/globalsearch", (req, res) => {
   })
    return str.join(' ')
   }
-  
+
   var queryString = titleCase(req.body.name);
 
   var resultsArray = []
@@ -49,7 +50,7 @@ router.post("/globalsearch", (req, res) => {
           resultsArray = companies
         }
       }
-      
+
       results = results + 1
       respond()
     });
@@ -65,11 +66,13 @@ router.post("/globalsearch", (req, res) => {
         else{
           resultsArray = services
         }
+
       }
 
       results = results + 1
       respond()
     });
+
 
     db.Investor.findAll({ 
       where: { 
@@ -82,6 +85,7 @@ router.post("/globalsearch", (req, res) => {
         else{
           resultsArray = investors
         }
+
       }
       results = results + 1
       respond()

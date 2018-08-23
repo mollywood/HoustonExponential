@@ -16,9 +16,9 @@ module.exports = (sequelize, DataTypes) => {
       websiteUrl: DataTypes.STRING,
       contact: DataTypes.STRING,
       bio: DataTypes.STRING(500000)
-    },
-    {}
-  );
-  Company.associate = models => {};
+    }, {});
+  Company.associate = models => {
+    // associations can be defined here
+  };
   return Company;
 };
