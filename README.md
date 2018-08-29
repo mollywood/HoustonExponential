@@ -44,7 +44,6 @@ This is a collaborative project which sought to create a comprehensive database 
 * Create a button to unfilter results and refresh on page
 
 ## Authors
-* [Jessica Robinson](https://github.com/jessicapolansky)
 * [Katy Gibson](https://github.com/Klgibson528)
 * [Molly Wood](https://github.com/mollywood)
 * [Sean Johnson-Sippial](https://github.com/jetsetta)
