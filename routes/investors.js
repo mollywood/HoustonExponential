@@ -16,40 +16,41 @@ router.get("", (req, res) => {
 // @route GET routes/investors/register
 // @desc Renders registerInvestor.hbs view
 // @access Protected
-router.get("/register", validateLogin, (req, res) => {
-    res.render("registerInvestor", {});
+router.get("/register", (req, res) => {
+  res.render("registerInvestor", {});
 });
 
 // @route POST routes/investors/register
 // @desc Posts Investor inputs into database
 // @access Protected
-router.post("/register", validateLogin, (req, res) => {
-	db.Investor.findOrCreate({
-	  where: {
-		name: req.body.name
-	  },
-	  defaults: {
-		logo: req.body.logo,
-		description: req.body.description,
-		investorType: req.body.investorType,
-		location: req.body.location,
-		investmentThesis: req.body.investmentThesis,
-		investmentThesis: req.body.investmentThesis,
-		foundedDate: req.body.foundedDate,
-		managedAssets: req.body.productStage,
-		portfolioSize: req.body.businessModel,
-		website: req.body.websiteUrl,
-		contact: req.body.contact,
-		bio: req.body.bio,
-	  }
-	}).spread((investor, created) => {
-	  if (created) {
-		res.redirect("/investors")
-	  } else {
-		  res.render("registerInvestor", {
-		  message: "Investor already exists"});
-    };
-	});
+router.post("/register", (req, res) => {
+  db.Investor.findOrCreate({
+    where: {
+      name: req.body.name
+    },
+    defaults: {
+      logo: req.body.logo,
+      description: req.body.description,
+      investorType: req.body.investorType,
+      location: req.body.location,
+      investmentThesis: req.body.investmentThesis,
+      investmentRange: req.body.investmentRange,
+      foundedDate: req.body.foundedDate,
+      managedAssets: req.body.managedAssets,
+      portfolioSize: req.body.portfolioSize,
+      website: req.body.websiteUrl,
+      contact: req.body.contact,
+      bio: req.body.bio
+    }
+  }).spread((investor, created) => {
+    if (created) {
+      res.redirect("/investors");
+    } else {
+      res.render("registerInvestor", {
+        message: "Investor already exists"
+      });
+    }
+  });
 });
 
 // @route POST routes/investors/investorprofile
