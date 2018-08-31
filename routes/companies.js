@@ -16,14 +16,14 @@ router.get("", (req, res) => {
 // @route GET routes/companies/register
 // @desc Renders registerCompany.hbs view
 // @access Protected
-router.get("/register", validateLogin, (req, res) => {
+router.get("/register", (req, res) => {
   res.render("registerCompany", {});
 });
 
 // @route POST routes/companies/register
 // @desc Posts Company inputs into database
 // @access Protected
-router.post("/register", validateLogin, (req, res) => {
+router.post("/register", (req, res) => {
   db.Company.findOrCreate({
     where: {
       name: req.body.name
@@ -44,26 +44,27 @@ router.post("/register", validateLogin, (req, res) => {
     }
   }).spread((company, created) => {
     if (created) {
-      res.redirect("/companies")
+      res.redirect("/companies");
     } else {
-		    res.render("registerCompany", {
-		    message: "Company already exists"});
-      };
+      res.render("registerCompany", {
+        message: "Company already exists"
+      });
+    }
   });
 });
 
 // @route POST routes/companies/companyprofile
 // @desc Displays company's profile page
 // @access Public
-router.post("/companyprofile", (req,res) => {
+router.post("/companyprofile", (req, res) => {
   db.Company.findOne({
     where: {
-      id : req.body.company_id
+      id: req.body.company_id
     }
   }).then(function(company) {
-    res.render("companyprofile", {companyInfo: company.dataValues})
-    })
-})
+    res.render("companyprofile", { companyInfo: company.dataValues });
+  });
+});
 
 // @route GET routes/companies/get_all
 // @desc Queries database and sends companies data in json
