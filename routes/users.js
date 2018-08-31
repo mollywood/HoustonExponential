@@ -9,7 +9,7 @@ const passport = require("passport");
 const validateRegisterInput = require("../validation/register");
 const validateLoginInput = require("../validation/login");
 
-const validateLogin = require('./routeProtection').validateLogin;
+const validateLogin = require("./routeProtection").validateLogin;
 
 // @route GET routes/users/register
 // @desc Renders register.hbs view
@@ -70,20 +70,19 @@ router.post("/login", (req, res) => {
       return res.render("login", { errors: errors });
     }
     //Checks for password
-    bcrypt.compare(req.body.password, user.password)
-      .then(isMatch => {
-        if(isMatch) {
-          if(req.session) {
-            req.session.user = { userID: user.id }
-            let expiresIn = 10800000 // 3 hours
-            req.session.cookie.expires = new Date(Date.now() + expiresIn)
-            req.session.cookie.maxAge = expiresIn
-          }
-          res.redirect("/")
-        } else {
-          errors.password = "Password is incorrect"
-          return res.render("login", { errors: errors });
+    bcrypt.compare(req.body.password, user.password).then(isMatch => {
+      if (isMatch) {
+        if (req.session) {
+          req.session.user = { userID: user.id };
+          let expiresIn = 10800000; // 3 hours
+          req.session.cookie.expires = new Date(Date.now() + expiresIn);
+          req.session.cookie.maxAge = expiresIn;
         }
+        res.redirect("/");
+      } else {
+        errors.password = "Password is incorrect";
+        return res.render("login", { errors: errors });
+      }
     });
   });
 });
@@ -91,11 +90,15 @@ router.post("/login", (req, res) => {
 // @route POST routes/users/logout
 // @desc Logs out user
 // @access Public
-router.get('/logout', (req, res) => {
+router.get("/logout", (req, res) => {
   req.logout();
   req.session.destroy();
   res.redirect("/");
-})
+});
+
+router.get("/registerEntity", (req, res) => {
+  res.render("registerEntity", {});
+});
 
 // @route GET routes/users/linkedin
 // @desc Authenticates through LinkedIn
@@ -111,6 +114,7 @@ router.get(
 // @route GET routes/users/linkedin/callback
 // @desc Authenticates through LinkedIn
 // @access Public
+
 router.get(
   "/linkedin/callback",
   passport.authenticate("linkedin", {
@@ -120,14 +124,10 @@ router.get(
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user)
+  done(null, user);
 });
 passport.deserializeUser((user, done) => {
-    done(null, user);
-});
-
-router.get('/registerEntity', validateLogin, (req, res) => {
-    res.render("registerEntity", {});
+  done(null, user);
 });
 
 module.exports = router;
